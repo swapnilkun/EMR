@@ -1,0 +1,45 @@
+﻿@model IEnumerable<ExcellentMarketResearch.Models.spSelectRoleAction_Result>
+
+@{
+    ViewBag.Title = "RoleActionIndex";
+}
+
+<h2>Role Action </h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-bordered">
+    <tr>
+        <th>
+            Role Name
+        </th>
+        <th>
+          Role ID
+        </th>
+        <th>
+            Role Actions
+        </th>
+        <th>Actions</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.RoleName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RoleAction)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "RoleActionEdit", new {  id=item.RId  }) |
+            @Html.ActionLink("Details", "RoleActionDetail", new {  id=item.RId  }) |
+            @Html.ActionLink("Delete", "RoleActionDelete", new {  id=item.RId })
+        </td>
+    </tr>
+}
+
+</table>

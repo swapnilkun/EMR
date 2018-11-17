@@ -1,0 +1,148 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@model IPagedList<ExcellentMarketResearch.Areas.Admin.Models.ViewModel.ReportVM>
+@{
+    ViewBag.Title = "PublisherRelatedReports";
+}
+<section class="page-title-section" style="height:100px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="page-header-wrap">
+                    <div class="page-header">
+                        @{Html.RenderAction("SearchingPartialView", "Home");}
+                    </div>
+                   @* <ol class="breadcrumb">
+                        <li><a href="/">Home</a></li>
+                        <li><a>Reports</a></li>
+                        <li class="active">Report Details</li>
+                    </ol>*@
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Single-Service-Start -->
+<section class="single-service-contents">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-5 col-xs-12">
+                <div class="service-sidebar sidebar-wrapper">
+
+                    <div class="widget">
+                        <h2 class="widget-title">Services</h2>
+                        <ul class="service-list">
+                            <li><a href="air.html" class="icon-air">Air transportation</a></li>
+                            <li><a href="marine.html" class="icon-marine">Marine transportation</a></li>
+                            <li><a href="moving.html" class="icon-store">Moving &amp; storage</a></li>
+                            <li><a href="shipping.html" class="icon-shipping">Shipping &amp; operations</a></li>
+                            <li><a href="transportation.html" class="icon-transportation">Transportation logistics</a></li>
+                            <li class="active"><a href="trucking.html" class="icon-trucking">Trucking</a></li>
+                        </ul>
+                    </div>
+                    <!-- /.widget -->
+
+                    <div class="widget">
+                        <div class="download-wrap company">
+                            <a href="#">Company profile <span>Download</span><i class="fa fa-download"></i></a>
+                        </div>
+                        <!-- /.download-wrap -->
+                        <div class="download-wrap annual">
+                            <a href="#">Annual Report <span>Download</span><i class="fa fa-download"></i></a>
+                        </div>
+                        <!-- /.download-wrap -->
+                        <div class="download-wrap brochure">
+                            <a href="#">Corporate Brochure <span>Download</span><i class="fa fa-download"></i></a>
+                        </div>
+                        <!-- /.download-wrap -->
+                    </div>
+                    <!-- /.widget -->
+
+                    <div class="widget">
+                        <h2 class="widget-title">Office Hours</h2>
+                        <div class="textwidget">
+                            <p>
+                                Monday -
+                                                    Friday: 9:00 - 18:00<br>
+                                Saturday: 9:00 - 2:00<br>
+                                Holidays: 9:00 - 12:00
+                            </p>
+                        </div>
+                    </div>
+                    <!-- /.widget -->
+                </div>
+                <!-- /.sidebar-wrapper -->
+            </div>
+            <!-- /.col -->
+
+            <div class="col-md-9 col-sm-7 col-xs-12">
+                <div class="col-md-12">
+                    @{ int i = 0; }
+                    @foreach (var item in Model)
+                    {
+                        if (i++ % 2 == 0)
+                        {
+                        <div class="row report-lst-view">
+                            <div class="col-md-3 report-img">
+                                <img />
+                            </div>
+                            <div class="col-md-9 report-content">
+                                <a href="@Url.Action("ReportDetail", "Report", new { @ReportUrl = item.ReportUrl })">
+                                    <h3 class="panel-title">@item.ReportTitle</h3>
+                                </a>
+                                <div class="panel-body category-short-note">
+                                    <p class="date-info"><i class="fa fa-calendar"></i>@item.PublishingDate.ToString("MMM-yy") | <a href="@Url.Action("PublisherRelatedReports", "Report", new { @puburl = item.PublishingUrl })">@item.PublisherName </a>| <a href="@Url.Action("CategoryRelatedReports", "Report", new { @caturl = item.CategoryUrl })">@item.CategoryName </a></p>
+
+                                    @Html.Raw(item.FullDescription)...
+
+                                    <br>
+                                    <a rel="nofollow" href="@Url.Action("ReportDetail", "Report", new { @ReportUrl = item.ReportUrl })">View More <i class="fa fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        }
+                        else
+                        {
+                        <div class="row report-lst-view">
+                            <div class="col-md-9 report-content">
+                                <a href="@Url.Action("ReportDetail", "Report", new { @ReportUrl = item.ReportUrl })">
+                                    <h3 class="panel-title">@item.ReportTitle</h3>
+                                </a>
+                                <div class="panel-body category-short-note">
+                                    <p class="date-info"><i class="fa fa-calendar"></i>@item.PublishingDate.ToString("MMM-yy") | <a href="@Url.Action("PublisherRelatedReports", "Report", new { @puburl = item.PublishingUrl })">@item.PublisherName </a>| <a href="@Url.Action("CategoryRelatedReports", "Report", new { @caturl = item.CategoryUrl })">@item.CategoryName </a></p>
+
+                                    @Html.Raw(item.FullDescription)...
+
+                                    <br>
+                                    <a rel="nofollow" href="@Url.Action("ReportDetail", "Report", new { @ReportUrl = item.ReportUrl })">View More <i class="fa fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+                            <div class="col-md-3 report-img">
+                                <img />
+                            </div>
+
+                        </div>
+                        }
+
+                    }
+                </div>
+
+
+                <ul class="pagination">
+
+
+                    @Html.PagedListPager(Model, pageno => Url.Action("PublisherRelatedReports", new
+                   {
+                       pageno,
+                   }), new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded, DisplayPageCountAndCurrentLocation = true })
+
+
+                </ul>
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+</section>

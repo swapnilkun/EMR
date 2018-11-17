@@ -1,0 +1,18 @@
+﻿@model IEnumerable<ExcellentMarketResearch.Models.Category>
+@{
+    ViewBag.Title = "PartialCat";
+}
+
+  <div class="service-sidebar sidebar-wrapper" >
+
+                    <div class="widget">
+                        <h2 class="widget-title">Categories</h2>
+                        <ul class="service-list">
+                            @foreach (var item in Model)
+                            {
+                              <li><a href="@Url.Action("CategoryRelatedReports", "Report", new { @caturl = item.CategoryUrl })" class="icon-store">@item.CategoryName</a></li>   
+                            }
+                        </ul>
+                    </div>
+                    <!-- /.widget -->
+                </div>

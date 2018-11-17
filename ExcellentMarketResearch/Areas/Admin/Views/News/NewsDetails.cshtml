@@ -1,0 +1,104 @@
+﻿@model ExcellentMarketResearch.Models.NewsMaster
+@{
+    ViewBag.Title = "NewsDetails";
+}
+
+<h2>NewsDetails</h2>
+
+<fieldset>
+    <legend>NewsMaster</legend>
+    <table class="table table-bordered">
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.NewsId)
+            </td>
+            <td>
+            @Html.DisplayNameFor(model => model.NewsTitle)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.NewsUrl)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.NewsDescription)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.MetaTitle)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.Keywords)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.MetaDescritpion)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model=>model.CategoryId)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.PublishingDate)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.CreatedBy)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.ModifiedBy)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.ModifiedDate)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.NewsId)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.NewsTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.NewsUrl)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.NewsDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.MetaTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Keywords)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.MetaDescritpion)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.CategoryId)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.PublishingDate)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.CreatedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.ModifiedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.CreatedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.ModifiedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.IsActive)
+            </td>
+        </tr>
+    </table>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "NewsEdit", new { id = Model.NewsId }) |
+    @Html.ActionLink("Back to List", "NewsIndex")
+</p>

@@ -1,0 +1,313 @@
+﻿@model ExcellentMarketResearch.Models.ViewModel.BuyingVM
+@{
+    //var _OBJBuingForm = new MRSAssignment.Controllers.BuyingInfoController();
+    //var CountryNames = _OBJBuingForm.GetCountries();
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#Checkout_country").change(function () {
+            var v = $(this).val();
+            debugger;
+            $.ajax({
+                type: "post",
+                url: '@Url.Action("GetCountryCode", "InquiryForm")',
+                data: JSON.stringify({ 'countryname':v }),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    debugger;
+                    $("#Phonecode_").empty();//just cleans all html from the control, element
+                    $("#Phonecode_").val(data);
+                    //foreach loop
+                    //$.each(data, function (i, Phonecode) {
+                    //    $("#PhoneCode_").append( Phonecode.Value)
+                    //})
+
+                },
+                error: function (res) {
+                    alert(res.responseText);
+                }
+            });
+        });
+    });
+</script>
+
+
+<style type="text/css">
+    .rdbmargin {
+        margin-left: 80px;
+    }
+
+    .validation-summary-errors {
+        color: #b94a48;
+    }
+
+    .field-validation-error {
+        color: #b94a48;
+    }
+</style>
+<section class="page-title-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="page-header-wrap">
+                    <div class="page-header">
+                        <h1>CheckOut Page</h1>
+                    </div>
+                    <ol class="breadcrumb">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Reports</a></li>
+                        <li class="active">CheckOut Page</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@using (Html.BeginForm("CheckoutForm", "ReportBuying", FormMethod.Post, new { @class = "form-horizontal", @id = "Buyingform" }))
+{
+    @Html.ValidationSummary(true)
+    <!-- Single-Service-Start -->
+    <section class="single-service-contents checkout">
+        <div class="container">
+            <div class="row">
+                <div class="panel-group">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">Your Oarder Details</div>
+                        <div class="panel-body">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="input-medium col-sm-1" for="name">Title:</label>
+                                    <div class="col-sm-10"><a href="@Url.Action("ReportDetail", "Report", new { @ReportUrl = Model.ReportUrl })">@Model.ReportTitle</a></div>
+                                    @*    @Html.HiddenFor(model => model.RealCaptcha, new { @id = "#txtCaptcha" })*@
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="input-medium col-sm-1" for="name">Type:</label>
+                                    <div class="col-sm-10">
+                                        @Html.DisplayFor(model => model.Type)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="input-medium col-sm-1" for="name">Price:</label>
+                                    <div class="col-sm-10">
+                                        $ @Html.DisplayFor(model => model.Price)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="panel-group">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">Personal Details (secure with us)</div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label required">Name</label>
+                                        <div class="col-md-9 inputGroupContainer">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                                @Html.TextBoxFor(model => model.Name, new { @class = "form-control", @placeholder = "Enter Name", @id = "name" })
+                                            </div>
+                                            @Html.ValidationMessageFor(model => model.Name)
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label required">E-Mail</label>
+                                        <div class="col-md-9 inputGroupContainer">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                                                @Html.TextBoxFor(model => model.EmailId, new { @class = "form-control", @placeholder = "myname@example.com", @id = "email" })
+                                            </div>
+                                            @Html.ValidationMessageFor(model => model.EmailId)
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label required">Country</label>
+                                        <div class="col-md-9 selectContainer">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-plane"></i></span>
+                                                @Html.DropDownListFor(m => m.Country, from l in new ExcellentMarketResearch.Models.ViewModel.InquiryVM().GetCountries()
+                                                                                      select new SelectListItem
+                                                                                      {
+                                                                                          Text = l.nicename,
+                                                                                          Value = l.nicename.ToString()
+                                                                                      }, "- Select Country -", new { @Class = "form-control", @id = "Checkout_country" })
+                                            </div>
+                                            @Html.ValidationMessageFor(model => model.Country)
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label required">Phone </label>
+                                        <div class="col-md-3 inputGroupContainer">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                                                @Html.TextBoxFor(model => model.AreaCode, new { @class = "form-contol areacodebuyingcss", @placeholder = "Area-Code",@id="Phonecode_" })
+                                            </div>
+                                            @Html.ValidationMessageFor(model => model.AreaCode)
+                                            <span class="field-validation-valid"></span>
+                                        </div>
+                                        <div class="col-md-6 inputGroupContainer">
+                                            @Html.TextBoxFor(model => model.PhoneNumber, new { @class = "form-control", @placeholder = "Phone-Number", @id = "phonenumber" })
+                                            @Html.ValidationMessageFor(model => model.PhoneNumber)
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label required">Company</label>
+                                        <div class="col-md-9 inputGroupContainer">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-users"></i></span>
+                                                @Html.TextBoxFor(model => model.Company, new { @class = "form-control", @placeholder = " Company ", @id = "company" })
+                                            </div>
+                                            @Html.ValidationMessageFor(model => model.Company)
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label required">Designation/Title</label>
+                                        <div class="col-md-9 inputGroupContainer">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-building"></i></span>
+                                                @Html.TextBoxFor(model => model.Designation, new { @class = "form-control", @placeholder = "Designation/Title", @id = "designation" })
+                                            </div>
+                                            @Html.ValidationMessageFor(model => model.Designation)
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label required">Address:</label>
+                                        <div class="col-md-8 inputGroupContainer">
+                                            <div class="input-group" style="width: 100%;">
+                                                @Html.TextAreaFor(model => model.Address, new { @class = "form-control", @id = "address", @placeholder = " Enter Address  " })
+                                            </div>
+                                            @Html.ValidationMessageFor(model => model.Address)
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label required">City</label>
+                                        <div class="col-sm-8 selectContainer">
+                                            <div class="input-group" style="width: 100%;">
+                                                @Html.TextBoxFor(model => model.City, new { @class = "form-control radiuszero", @id = "city" })
+                                            </div>
+                                            @Html.ValidationMessageFor(model => model.City)
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label required">State:</label>
+                                        <div class="col-sm-8 selectContainer">
+                                            <div class="input-group" style="width: 100%;">
+                                                @Html.TextBoxFor(model => model.State, new { @class = "form-control radiuszero", @id = "state" })
+                                            </div>
+                                            @Html.ValidationMessageFor(model => model.State)
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label required">Zip Code:</label>
+                                        <div class="col-sm-8 selectContainer">
+                                            <div class="input-group" style="width: 100%;">
+                                                @Html.TextBoxFor(model => model.Zipcode, new { @class = "form-control radiuszero", @id = "zipcode" })
+                                            </div>
+                                            @Html.ValidationMessageFor(model => model.Zipcode)
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="input-medium col-sm-4" for="captcha"></label>
+                                        <div class="col-sm-7 ">
+                                            <img id="CaptchaImg" alt="Captcha" src="@Url.Action("CaptchaImage")" style="" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label required">Enter captcha:</label>
+                                        <div class="col-sm-8 selectContainer">
+                                            <div class="input-group" style="width: 100%;">
+                                                @Html.TextBoxFor(model => model.CaptchaCode, new { @id = "txtInput", @class = "form-control", @placeholder = "Enter Captcha" })
+                                            </div>
+                                            @Html.ValidationMessageFor(model => model.CaptchaCode)
+                                            <p class="help-block">
+                                                <label id="captchaError" style="color: red"></label>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.row -->
+                            <div class="row container">
+                                @Html.HiddenFor(model => model.CustomerId)
+                                @Html.HiddenFor(model => model.CustomerMessage)
+                                @Html.HiddenFor(model => model.Type)
+                                @Html.HiddenFor(model => model.ReportId)
+                                @Html.HiddenFor(model => model.ReportTitle)
+                                @Html.HiddenFor(model => model.ReportUrl)
+                                @Html.HiddenFor(model => model.Price)
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        <input data-val="true" data-val-required="Payment type is required." id="hdnPaymentType" name="PaymentType" type="hidden" value="" />
+                                        <div class="divtitle"><strong><span class="glyphicon glyphicon-shopping-cart"></span>Please select your preferred payment type <span class="field-validation-valid" data-valmsg-for="PaymentType" data-valmsg-replace="true"></span></strong></div>
+                                        <div class="col-sm-2 gaywayicon"></div>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-sm-2 gaywayicon">
+                                                <label>
+                                                    <input type="radio" name="paymentmode" value="paypal" id="RadioGroup1_1" style="margin-left: 85px;" checked onchange="jsPaymentType(this)" />
+                                                    <img src="~/img/PayPal2.png" class="img-responsive" />
+                                                </label>
+                                            </div>
+
+                                            <div class="col-sm-2 gaywayicon">
+                                                <label>
+                                                    <input type="radio" name="paymentmode" value="wireTransfer" id="RadioGroup1_3" style="margin-left: 85px;" onchange="jsPaymentType(this)" />
+                                                    <img src="~/img/wire-transfer.png" class="img-responsive" />
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <div class="form-group">
+                                                    <br />
+                                                    <div class=" col-sm-7 gaywayicon">
+                                                        <button type="submit" id="btnSubmit" class="btn btn-warning btnsize"><strong>Proceed To Payment </strong></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.row -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.row -->
+
+        </div>
+        <!-- /.container -->
+    </section>
+    <!-- Single-Service-End-->
+}
+
+
+
+
+
+

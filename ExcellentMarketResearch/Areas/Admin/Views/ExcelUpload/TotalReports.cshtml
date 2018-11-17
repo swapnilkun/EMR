@@ -1,0 +1,39 @@
+﻿@model IEnumerable<ExcellentMarketResearch.Models.ReportMaster>
+@{
+    ViewBag.Title = "TotalReports";
+}
+
+<h2>TotalReports</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table border="1">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ReportId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReportTitle)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReportId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReportTitle)
+            </td>
+
+            <td>
+            @Html.ActionLink("Edit", "Edit","ReportMaster" ,new {  id=item.ReportId }) |
+            @Html.ActionLink("Details", "Details", new {  id=item.ReportId }) |
+            @Html.ActionLink("Delete", "Delete", new {  id=item.ReportId  })
+            </td>
+        </tr>
+    }
+
+</table>

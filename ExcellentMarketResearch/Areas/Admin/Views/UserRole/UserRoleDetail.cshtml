@@ -1,0 +1,33 @@
+﻿@model ExcellentMarketResearch.Models.spDetailsUserRole_Result
+@{
+    ViewBag.Title = "UserRoleDetail";
+}
+<table class="table table-bordered">
+    <tr>
+        <td>
+            Name
+        </td>
+        <td>
+            User-ID
+        </td>
+        <td>
+            Roles
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.DisplayFor(model => model.UserFName)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.UserId)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.UserRole)
+        </td>
+    </tr>
+</table>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+

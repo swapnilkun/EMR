@@ -1,0 +1,43 @@
+﻿@model IEnumerable<ExcellentMarketResearch.Models.spLatestNews_Result>
+@{
+    ViewBag.Title = "LatestNewsForIndexPage";
+    Layout = null;
+}
+<div class="row row-content">
+    <div class="col-md-12">
+        <div id="testimonial-carousel" class="carousel slide" data-ride="carousel">
+
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                @{int counter = 0;}
+                @foreach (var item in Model)
+                {
+                    <li data-target="#testimonial-carousel" data-slide-to="@counter" class="@(counter == 0 ? "active" : "")"></li>
+                    counter++;
+                }
+                
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                @{int counter1 = 0;}
+                @foreach (var item in Model)
+                {                    
+                    <div class="item @(counter1 == 0 ? " active" : "")">
+
+                        <div class="testimonial-content">
+                            <span class="client-title">@item.NewsTitle</span>
+                            <p>@Html.Raw(item.LongDescription)</p>
+                        </div>
+                        <!-- /.testimonial-content -->
+                    </div>
+                    counter1++;
+                }
+            </div>
+
+        </div>
+        <!-- /.carousel -->
+    </div>
+    <!-- /.col-md-12 -->
+</div>
+<!-- /.row -->

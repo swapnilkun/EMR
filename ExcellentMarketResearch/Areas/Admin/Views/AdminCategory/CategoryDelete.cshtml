@@ -1,0 +1,49 @@
+﻿@model ExcellentMarketResearch.Models.CategoryMaster
+@{
+    ViewBag.Title = "CategoryDelete";
+}
+
+<h2>CategoryDelete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+
+<table class="table table-bordered">
+    <tr>
+        @Html.HiddenFor(model=>model.CategoryId)
+        <td>Category Name</td>
+       @* <td>Domain</td>*@
+        <td>MetaTitle</td>
+        <td>CategoryURL</td>
+        <td>Keywords</td>
+        <td>Description</td>
+        <td>ParentCategoryId</td>
+        @*<td>CategoryIcon</td>*@
+        <td>CreatedBy</td>
+        <td>ModifiedBy</td>
+        <td>CreatedDate</td>
+        <td>ModifiedDate</td>
+        <td>IsActive</td>
+    </tr>
+    <tr>
+        <td>@Html.DisplayFor(model=>model.CategoryName)</td>
+        @*<td>@Html.DisplayFor(model=>model.Domain)</td>*@
+        <td>@Html.DisplayFor(model=>model.MetaTitle)</td>
+        <td>@Html.DisplayFor(model=>model.CategoryUrl)</td>
+        <td>@Html.DisplayFor(model=>model.Keywords)</td>
+        <td>@Html.DisplayFor(model=>model.LongDescription)</td>
+        <td>@Html.DisplayFor(model=>model.ParentCategoryId)</td>
+        @*<td>@Html.DisplayFor(model=>model.CategoryIcon)</td>*@
+        <td>@Html.DisplayFor(model=>model.CreatedBy)</td>
+        <td>@Html.DisplayFor(model=>model.ModifiedBy)</td>
+        <td>@Html.DisplayFor(model=>model.CreatedDate)</td>
+        <td>@Html.DisplayFor(model=>model.ModifiedDate)</td>
+        <td>@Html.DisplayFor(model=>model.IsActive)</td>
+    </tr>
+  
+</table>
+@using (Html.BeginForm("CategoryDelete","Category",FormMethod.Post)) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "CategoryIndex")
+    </p>
+}

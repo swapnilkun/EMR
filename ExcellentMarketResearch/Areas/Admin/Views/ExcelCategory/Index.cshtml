@@ -1,0 +1,54 @@
+﻿
+
+<style type="text/css">
+    .divmargin {
+        margin:30px;
+    }
+</style>
+@using (Html.BeginForm("Import", "ExcelCategory", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="container" style="background-color:#e8c0c0;width:50%">
+        <div class="divmargin">
+            <table>
+                <tr>
+                    <td style="font-family:Calibri;font-size:22px;color:#b200ff">Excel File
+                    </td>
+                    <td>
+                        <div class="col-sm-10">
+                            <input type="file" name="excelfile" />
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="divmargin">
+            <table>
+                <tr>
+                    <td>
+                        <br />
+                    </td>
+                    <td>
+                        <div style="color: red;margin-left:100px;">
+                            @ViewBag.Error
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="divmargin">
+            <table>
+                <tr>
+                    <td></td>
+                    <td colspan="2">
+                        <input type="submit" value="Import Excel" class="btn-success" style="margin-left:100px;"/>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+  
+  
+}
+
+

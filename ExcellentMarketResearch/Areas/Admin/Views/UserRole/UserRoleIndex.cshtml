@@ -1,0 +1,48 @@
+﻿@model IEnumerable<ExcellentMarketResearch.Models.spUserRoleSelect_Result>
+@{
+      ViewBag.Title = "UserRoleIndex";
+}
+
+<h2 style="font-family:Calibri; margin-left: 250px">User Role</h2>
+
+<p style="font-family: Calibri; margin-left: 250px">
+    @Html.ActionLink("Create New", "UserRoleCreate")
+</p>
+<div class="container">
+    <div class="col-sm-12">
+        <table class="table table-bordered" style="width:80%; margin-left: 120px">
+            <tr>
+                <th>Name
+                </th>
+                <th>User ID
+                </th>
+                <th>Roles
+                </th>
+                <th>Actions
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserFName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserRole)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "UserRoleEdit", new { id = item.UserId }) |
+                        @Html.ActionLink("Details", "UserRoleDetail", new { id = item.UserId }) |
+                        @Html.ActionLink("Delete", "UserRoleDelete", new { id = item.UserId })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>
+

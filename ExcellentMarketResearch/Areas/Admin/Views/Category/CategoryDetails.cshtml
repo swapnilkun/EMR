@@ -1,0 +1,44 @@
+﻿@model ExcellentMarketResearch.Models.CategoryMaster
+@{
+    ViewBag.Title = "CategoryDetail";
+}
+
+<h2>CategoryDetail</h2>
+<table class="table table-bordered">
+    <tr>
+        @Html.HiddenFor(model=>model.CategoryId)
+        <td>Category Name</td>
+        <td>CategoryURL</td>
+        <td>MetaTitle</td>
+        <td>Keywords</td>
+        <td>Sort Description</td>
+        <td>Long Description</td>
+        <td>ParentCategoryId</td>
+        @*<td>CategoryIcon</td>*@
+        <td>CreatedBy</td>
+        <td>ModifiedBy</td>
+        <td>CreatedDate</td>
+        <td>ModifiedDate</td>
+        <td>IsActive</td>
+    </tr>
+    <tr>
+        <td>@Html.DisplayFor(model=>model.CategoryName)</td>
+        <td>@Html.DisplayFor(model=>model.CategoryUrl)</td>
+        <td>@Html.DisplayFor(model=>model.MetaTitle)</td>
+        <td>@Html.DisplayFor(model=>model.Keywords)</td>
+        <td>@Html.DisplayFor(model=>model.ShortDescription)</td>
+        <td>@Html.DisplayFor(model=>model.LongDescription)</td>
+        <td>@Html.DisplayFor(model=>model.ParentCategoryId)</td>
+       @* <td>@Html.DisplayFor(model=>model.CategoryIcon)</td>*@
+        <td>@Html.DisplayFor(model=>model.CreatedBy)</td>
+        <td>@Html.DisplayFor(model=>model.ModifiedBy)</td>
+        <td>@Html.DisplayFor(model=>model.CreatedDate)</td>
+        <td>@Html.DisplayFor(model=>model.ModifiedDate)</td>
+        <td>@Html.DisplayFor(model=>model.IsActive)</td>
+    </tr>
+  
+</table>
+<p>
+    @Html.ActionLink("Edit", "CategoryEdit", new {id=Model.CategoryId  }) |
+    @Html.ActionLink("Back to List", "CategoryIndex")
+</p>

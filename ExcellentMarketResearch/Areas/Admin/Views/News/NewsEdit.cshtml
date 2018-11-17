@@ -1,0 +1,149 @@
+﻿@model ExcellentMarketResearch.Areas.Admin.Models.ViewModel.NewsVM
+@{
+    ViewBag.Title = "Create";
+}
+<style>
+    .field-validation-error {
+        color: red;
+    }
+
+    .table tbody tr td {
+        text-align: right;
+        border-top: none;
+    }
+</style>
+<h2 style="margin-left: 280px;">Create</h2>
+<script src="~/Content/ckeditor_4.6.2_full/ckeditor/ckeditor.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $(".txtCalender").datepicker();
+    });
+</script>
+<div style="margin-left: 280px;">
+    @Html.ActionLink("Back to List", "NewsIndex")
+</div>
+<div class="Container">
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(x => x.CreatedBy)
+        @Html.HiddenFor(x => x.CreatedDate)
+        @Html.HiddenFor(x => x.NewsId)
+        @Html.ValidationSummary(true)
+
+        <table class="table" style="width: 85%; margin-left: 130px">
+            <tr>
+                <td colspan="2">
+                    <label class="control-label " for="pwd">News Title </label>
+                </td>
+                <td colspan="3">
+                    @Html.TextBoxFor(model => model.NewsTitle, new { @Class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.NewsTitle)
+                    <div style="color: red; font-family: Calibri; font-weight: bold">
+                        @ViewBag.DuplicateNewsTitle
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <label class="control-label" for="pwd">News URL </label>
+                </td>
+                <td colspan="3">
+                    @Html.TextBoxFor(model => model.NewsURL, new { @Class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.NewsURL)
+                    <div style="color: red; font-family: Calibri; font-weight: bold">
+                        @ViewBag.NewsURL
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <label class="control-label" for="pwd">Category </label>
+                </td>
+                <td colspan="3">
+                    @Html.DropDownListFor(model => model.CategoryId, from l in new ExcellentMarketResearch.Areas.Admin.Models.DAL.NewsRepository().GetCategories()
+                                                                     select new SelectListItem
+                                                                     {
+                                                                         Text = l.CategoryName,
+                                                                         Value = l.CategoryId.ToString()
+                                                                     }
+                                                                , new { @Class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.CategoryId)
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <label class="control-label " for="pwd">Meta Title </label>
+                </td>
+                <td colspan="3">
+                    @Html.TextBoxFor(model => model.MetaTitle, new { @Class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.MetaTitle)
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <label class="control-label" for="pwd">Meta Keywords </label>
+                </td>
+                <td colspan="3">
+                    @Html.TextBoxFor(model => model.MetaKeywords, new { @Class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.MetaKeywords)
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <label class="control-label" for="pwd">Meta Description </label>
+                </td>
+                <td colspan="3">
+                    @Html.TextBoxFor(model => model.MetaDescription, new { @Class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.MetaDescription)
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <label class="control-label" for="pwd">Publishing Date</label>
+                </td>
+                <td colspan="3">
+                    @Html.TextBoxFor(model => model.NewsPublishingDate, new { @class = "txtCalender form-control" })
+                    @Html.ValidationMessageFor(model => model.NewsPublishingDate)
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <label class="control-label" for="pwd">NewsDetail</label>
+                </td>
+                <td colspan="3">
+                    @Html.TextAreaFor(model => model.NewsDetail, new { @id = "NewsDetails1" })
+                    <script type="text/javascript"> CKEDITOR.replace('NewsDetails1'); </script>
+                    @Html.ValidationMessageFor(model => model.NewsDetail)
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <label class="control-label" for="pwd">Is Active</label>
+                </td>
+                <td colspan="3" style="text-align: left">
+                    @Html.CheckBoxFor(model => model.IsActive)
+                    @Html.ValidationMessageFor(model => model.IsActive)
+                </td>
+            </tr>
+            <tr>
+                <td>Report Image 
+                </td>
+                <td>
+                    <input type="file" name="file" id="file" class="form-control" value="@Model.NewsImage" />
+                    @Html.ValidationMessageFor(model => model.NewsImage)
+                </td>
+                <td>
+                    <input type="image" src="@Model.NewsImage" height="200" width="200"/>
+                </td>
+            </tr>
+        </table>
+        <div class="form-group" style="margin-left: 280px;">
+            <div class="col-sm-12">
+                <p>
+                    <input type="submit" value="Create" id="btnsubmit" class="btn-primary" />
+                </p>
+            </div>
+        </div>
+    }
+</div>
+

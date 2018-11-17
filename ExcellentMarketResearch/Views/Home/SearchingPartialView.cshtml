@@ -1,0 +1,73 @@
+﻿@model ExcellentMarketResearch.Areas.Admin.Models.ViewModel.ReportVM
+@{
+
+}
+@*<link href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css" rel="stylesheet" />
+<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>*@
+
+@*<script type="text/javascript">
+    var x = {};
+    $(document).ready(function () {
+        x = $("#ReportId");
+        ValidateInput(x);
+    });
+    function ValidateInput() {
+        if (x.val() != '') {
+            $('#btnsubmit').attr('disabled', false);
+        }
+        else {
+            $('#btnsubmit').attr('disabled', true);
+        }
+    }
+</script>
+
+<script type="text/javascript">
+    $(function () {
+        $("#ReportId").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: '@Url.Action("GetReports", "Report")',
+                    type: 'post',
+                    dataType: 'json',
+                    data: {
+                        'ReportKey': request.term
+                    },
+                    success: function (data) {
+
+                        response(data);
+                    },
+                    error: function (err) {
+
+                        console.log(err);
+                    }
+                });
+            },
+            minLength: 3,
+            select: function (event, ui) {
+                debugger;
+                $("#ReportId").val(ui.item.label);
+                //window.location = "/report/" + ui.item.value;
+            }
+        });
+    });
+</script>*@
+
+@using (Html.BeginForm("SearchedReports", "Report", FormMethod.Get, new { @id = "form", @class = "searchreports" }))
+{
+   
+
+                            <div class="col-md-8">
+                                <input name="searchkey" type="text" id="ReportId" class="form-control" placeholder="Search ..." onkeyup="ValidateInput()" />
+                            </div>
+                            <div class="col-md-2">
+                                <button type="submit" class="btn btn-primary">Search</button>
+                            </div>
+           
+               
+}
+
+
+
+
+
+

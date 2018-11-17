@@ -1,0 +1,297 @@
+﻿@model ExcellentMarketResearch.Areas.Admin.Models.ViewModel.ReportVM
+@{
+    ViewBag.Title = "ReportCreate";
+}
+<script src="~/Content/ckeditor_4.6.2_full/ckeditor/ckeditor.js"></script>
+<style>
+    .table tbody tr td {
+        text-align: right;
+        border-top: none;
+    }
+</style>
+<script type="text/javascript">
+    $(function () {
+        $(".txtCalender").datepicker();
+    });
+</script>
+@*<script type="text/javascript">
+    $(document).ready(function () {
+        $("#ParentCategory").change(function () {
+            debugger;
+            var v = $(this).val();
+            $.ajax({
+                type: "post",
+                url: '@Url.Action("GetChildCategory", "Report")',
+                data: "{'id:'" + v + "}",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                sucess: function (data) {
+                    $("#ChildCategory").empty();
+                    $("#ChildCategory").append('<option>-Select Category-</option> ');
+                    //foreach data
+                    $.each(data, function (i, ParentCategory) {
+                        $("#ChildCategory").append('<option value="' + ParentCategory.Value + '">' + ParentCategory.Text + '</option>', "-Select-")
+                    })
+                },
+                error: function (res) {
+                    alert(res.responseText);
+                }
+            });
+        });
+        $("ChildCategory").change(function () {
+            var v = $(this).val();
+            $.ajax({
+                type: "post",
+                url: '@Url.Action("GetChildOfChild","Report")',
+                data: "{'id':" + v + "}",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                sucess: function (data) {
+                    $("#ChildOfChild").empty();
+                    $("#ChildOfChild").append('<option>-Select Category -</option> ');
+                    $.each(data, function (i, ChildCategory) {
+                        $("#ChildOfChild").append('<option value="' + ChildCategory.value + '">' + ChildCategory.Text + '</option>', "-Select-")
+                    })
+                },
+                error: function (res) {
+                    alert(res.responseText);
+                }
+            });
+        });
+
+    });
+
+</script>*@
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        debugger;
+        $("#ParentCategory").change(function () {
+            var v = $(this).val();
+
+            $.ajax({
+                type: "post",
+                url: '@Url.Action("GetChildCategory", "Report")',
+                data: "{ 'id':" + v + "}",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    debugger;
+                    $("#ChildCategory").empty();//just cleans all html from the control, element
+                    $("#ChildCategory").append('<option>-Select Category-</option>');
+                    //foreach loop
+                    $.each(data, function (i, ParentCategory) {
+                        $("#ChildCategory").append('<option value="' + ParentCategory.Value + '">' + ParentCategory.Text + '</option>', "-Select-")
+                    })
+
+                },
+                error: function (res) {
+                    alert(res.responseText);
+                }
+            });
+        });
+        $("#ChildCategory").change(function () {
+            var v = $(this).val();
+            $.ajax({
+                type: "post",
+                url: '@Url.Action("GetChildofchild", "Report")',
+                data: "{ 'id':" + v + "}",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    $("#ChildofChild").empty();//just cleans all html from the control, element
+                    $("#ChildofChild").append('<option>-Select-</option>');
+                    //foreach loop
+                    $.each(data, function (i, Childcategory) {
+                        $("#ChildofChild").append('<option value="' + Childcategory.Value + '">' + Childcategory.Text + '</option>', "-Select-")
+                    })
+                },
+                error: function (res) {
+                    alert(res.responseText);
+                }
+            })
+        });
+    });
+</script>
+
+<h2 style="margin-left: 180px; font-family: Calibri">Report Create</h2>
+
+@using (Html.BeginForm("ReportEdit","Report",FormMethod.Post))
+{
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model=>model.ReportId)
+    @Html.HiddenFor(model=>model.CreatedBy)
+    @Html.HiddenFor(model=>model.CreatedDate)
+
+    <table class="table" style="margin: 50px; width: 75%">
+        <tr>
+            <td>Report Title
+            </td>
+            <td colspan="5">
+                @Html.TextBoxFor(model => model.ReportTitle, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ReportTitle)
+            </td>
+        </tr>
+        <tr>
+            <td>ReportUrl
+            </td>
+            <td colspan="5">
+                @Html.TextBoxFor(model => model.ReportUrl, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ReportUrl)
+            </td>
+        </tr>
+        <tr>
+            <td>Long Description
+            </td>
+            <td colspan="5">
+                @Html.TextAreaFor(model => model.FullDescription, new { @id ="fulldesccdkeditor1" })
+                <script type="text/javascript">CKEDITOR.replace('fulldesccdkeditor1');</script>
+                @Html.ValidationMessageFor(model => model.FullDescription)
+            </td>
+        </tr>
+        <tr>
+            <td>Table Of Content
+            </td>
+            <td colspan="5">
+                @Html.TextAreaFor(model => model.TableofContent, new { @class = "text-editor", id = "tblofcontentcdkeditor1" })
+                <script type="text/javascript"> CKEDITOR.replace('tblofcontentcdkeditor1'); </script>
+                @Html.ValidationMessageFor(model => model.TableofContent)
+            </td>
+        </tr>
+        <tr>
+            <td>Publishing Date
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.PublishingDate, new { @class = "form-control txtCalender" })
+                @Html.ValidationMessageFor(model => model.PublishingDate)
+            </td>
+            <td>Publishing Name
+            </td>
+            <td>
+                @Html.DropDownListFor(model => model.PublisherId, from l in new ExcellentMarketResearch.Areas.Admin.Models.ViewModel.ReportVM().GetPublisher().ToList()
+                                                                  select new SelectListItem
+                                                                  {
+                                                                      Text = l.PublisherName,
+                                                                      Value = l.PublisherId.ToString()
+                                                                  }, "-select publisher-", new { @class = "form-control" }
+
+                )
+            </td>
+            <td>
+                Delivery Type
+            </td>
+            <td>
+                 @Html.DropDownListFor(model => model.DeliveryTypeId, from l in new  ExcellentMarketResearch.Areas.Admin.Models.ViewModel.ReportVM().GetDeliveryType().ToList()
+                                                                   select new SelectListItem
+                                                                   {
+                                                                       Text = l.ReportDeliveryType1,
+                                                                       Value = l.ReportDeliveryTypeId.ToString()
+                                                                   }, "-Document Type-", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ReportTypeId)
+            </td>
+        </tr>
+        <tr>
+            <td>Parent Category
+            </td>
+            <td>
+                @Html.HiddenFor(model => model.CategoryId, new { @id = "CategoryId" })
+                @Html.DropDownList("ddlcategoryId",(List<SelectListItem>)ViewBag.ParentCategory," -Select Category-", new { @class = "form-control", @id = "ParentCategory", @onchange = "javascript:$('#CategoryId').val($(this).val());" })
+                @Html.ValidationMessageFor(model => model.CategoryId)
+            </td>
+            <td>
+                Child Category
+            </td>
+            <td>
+                @Html.DropDownList("childcategory1",(List<SelectListItem>)ViewBag.ChildCategory,"- select Category -",new { @class="form-control",@id = "ChildCategory",@onchange = "javascript:$('#CategoryId').val($(this).val());" })
+             </td>
+            <td>
+                Child Of Child
+            </td>
+            <td>
+            @Html.DropDownList("ChildofChild1", (List<SelectListItem>)ViewBag.ChildOfChild, "-Select Category-", new {@class="form-control", @id = "ChildofChild", @onchange = "javascript:$('#CategoryId').val($(this).val());" })
+            </td>
+        </tr>
+        <tr>
+            <td>Number Of Pages 
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.NumberOfPage, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.NumberOfPage)
+            </td>
+            <td>Report Type
+            </td>
+            <td>
+                @Html.DropDownListFor(model => model.ReportTypeId, from l in new ExcellentMarketResearch.Areas.Admin.Models.ViewModel.ReportVM().GetReportType().ToList()
+                                                                   select new SelectListItem
+                                                                   {
+                                                                       Text = l.ReportType1,
+                                                                       Value = l.ReportTypeId.ToString()
+                                                                   }, "-Report Type-", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ReportTypeId)
+            </td>
+            <td>Discount Price
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.DiscountPercentage, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.DiscountPercentage)
+            </td>
+        </tr>
+        <tr>
+            <td>Single User Price
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.PriceSingleUser, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.PriceSingleUser)
+            </td>
+            <td>Multi User Price
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.PriceMultiUser, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.PriceMultiUser)
+            </td>
+            <td>Corporate User 
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.PriceCUL, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.PriceCUL)
+            </td>
+        </tr>
+        <tr>
+            <td>IsActive
+            </td>
+            <td style="text-align: left">
+                @Html.CheckBoxFor(model => model.IsActive)
+                @Html.ValidationMessageFor(model => model.IsActive)
+            </td>
+            <td>IsUpcomming
+            </td>
+            <td style="text-align: left;">
+                @Html.CheckBoxFor(model => model.IsUpcomming)
+                @Html.ValidationMessageFor(model => model.IsUpcomming)
+            </td>
+        </tr>
+        <tr>
+            <td>Report Image 
+            </td>
+            <td>
+                <input type="file" name="file" id="file" class="form-control" value="@Model.ReportImage" />
+                @Html.ValidationMessageFor(model => model.ReportImage)
+            </td>
+            <td>
+                <input type="image" src="@Model.ReportImage" height="200" width="200"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Create" id="btnsubmit" class="btn-primary" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.ActionLink("Back to List", "Index")
+            </td>
+        </tr>
+    </table>
+}
+
+

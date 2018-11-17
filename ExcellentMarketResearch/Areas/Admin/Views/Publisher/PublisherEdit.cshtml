@@ -1,0 +1,148 @@
+﻿@model ExcellentMarketResearch.Areas.Admin.Models.ViewModel.PublisherVM
+@{
+    ViewBag.Title = "PublisherEdit";
+}
+<style type="text/css">
+    .table tbody tr td {
+        border-top: none;
+    }
+    .field-validation-error {
+        color:red;
+    }
+</style>
+@using (Html.BeginForm("PublisherEdit","Publisher",FormMethod.Post))
+{
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    @Html.HiddenFor(model=>model.PublisherId)
+    @Html.HiddenFor(model=>model.CreatedBy)
+    @Html.HiddenFor(model=>model.CreatedDate)
+
+        <table class="table" style="text-align:right; width: 80%;margin-top:50px">
+            <tr>
+                <td>
+                    @Html.Label("Company Name")
+                </td>
+                <td>
+                    @Html.TextBoxFor(model => model.PublisherName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.PublisherName)
+                    <table>
+                        <tr>
+                            <td style="color: red">
+                                @ViewBag.DuplicateCompanyName
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td>
+                    @Html.Label("Contact Name")
+                </td>
+                <td>
+                    @Html.TextBoxFor(model => model.ContactName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ContactName)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.Label("Contact Number")
+                </td>
+                <td>
+                    @Html.TextBoxFor(model => model.PublisherContactNumber, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.PublisherContactNumber)
+                </td>
+                <td>
+                    @Html.Label("Keywords")
+                </td>
+                <td>
+                    @Html.TextBoxFor(model => model.Keywords, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Keywords)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Title)
+                </td>
+                <td>
+                    @Html.TextBoxFor(model => model.Title, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Title)
+                    <table>
+                        <tr>
+                            <td style="color: red">
+                                @ViewBag.DuplicateTitle
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td>
+                    @Html.LabelFor(model => model.PublisherUrl)
+                </td>
+                <td>
+                    @Html.TextBoxFor(model => model.PublisherUrl, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.PublisherUrl)
+                    <table>
+                        <tr>
+                            <td style="color: red">
+                                @ViewBag.DuplicateURL
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    @Html.Label("Address")
+                </td>
+                <td colspan="3">
+                    @Html.TextAreaFor(model => model.Address, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Address)
+                </td>
+
+            </tr>
+            <tr>
+
+                <td>
+                    @Html.Label("Long Description")
+                </td>
+                <td colspan="3">
+                    @Html.TextAreaFor(model => model.LongDescription, new { @class = "form-control" })
+                    @*  <script type="text/javascript">CKEDITOR.replace('PublisherDescription')</script>*@
+                    @Html.ValidationMessageFor(model => model.Description)
+                </td>
+            </tr>
+
+            <tr>
+
+                <td>
+                    @Html.Label("Long Description")
+                </td>
+                <td colspan="3">
+                    @Html.TextAreaFor(model => model.ShortDescription, new { @class = "form-control" })
+                    @*  <script type="text/javascript">CKEDITOR.replace('PublisherDescription')</script>*@
+                    @Html.ValidationMessageFor(model => model.ShortDescription)
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    @Html.Label("Meta Description")
+                </td>
+                <td colspan="3" style="text-align: right;">
+                    @Html.TextAreaFor(model => model.MetaDescription, new { @class = "form-control" })
+                    @*    <script type="text/javascript">CKEDITOR.replace('PublisherMetaDescription')</script>*@
+                    @Html.ValidationMessageFor(model => model.MetaDescription)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>
+                        <input type="submit" value="Update" class="btn btn-primary" />
+                    </p>
+                </td>
+            </tr>
+        </table>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "PublisherIndex")
+</div>

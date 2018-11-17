@@ -1,0 +1,119 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@model IPagedList<ExcellentMarketResearch.Areas.Admin.Models.ViewModel.ReportVM>
+@{
+    ViewBag.Title = "All Latest Market Research Reports ";
+                            // Layout = null;
+}
+
+@*<link href="~/Content/PagedList.css" rel="stylesheet" />*@
+
+
+
+<style>
+    .field-validation-error {
+        color: red;
+    }
+</style>
+<section class="page-title-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="page-header-wrap">
+                    <div class="page-header">
+                        <h1>Reports</h1>
+                        <div class="report-search-section">@{Html.RenderAction("SearchingPartialView", "Home");}</div>
+                    </div>
+                    <ol class="breadcrumb">
+                        <li><a href="/">Home</a></li>
+                        <li class="active">Category Related Reports</li>
+                    </ol>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Single-Service-Start -->
+<section class="single-service-contents">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-5 col-xs-12">
+                @{Html.RenderAction("PartialCat", "Category");}
+            </div>
+            <!-- /.col -->
+            <div class="col-md-9 col-sm-7 col-xs-12">
+
+                <div class="col-md-12">
+                    @{ int i = 0; }
+                    @foreach (var item in Model)
+                    {
+                        if (i++ % 2 == 0)
+                        {
+                        <div class="row report-lst-view">
+                            <div class="col-md-3 report-img">
+                                <img src="~/img/icons/@(String.Format("{0}{1}", item.ReportImage, ".png"))" />
+                            </div>
+                            <div class="col-md-9 report-content">
+                                <a href="@Url.Action("ReportDetail", "Report", new { @ReportUrl = item.ReportUrl })">
+                                    <h3 class="panel-title">@item.ReportTitle</h3>
+                                </a>
+                                <div class="panel-body category-short-note">
+                                    <p class="date-info"><i class="fa fa-calendar"></i>@item.PublishingDate.ToString("MMM-yy") | <a href="@Url.Action("PublisherRelatedReports", "Report", new { @puburl = item.PublishingUrl })">@item.PublisherName </a>| <a href="@Url.Action("CategoryRelatedReports", "Report", new { @caturl = item.CategoryUrl })">@item.CategoryName </a></p>
+
+                                    @Html.Raw(item.FullDescription)...
+
+                                    <br>
+                                    <a rel="nofollow" href="@Url.Action("ReportDetail", "Report", new { @ReportUrl = item.ReportUrl })">View More <i class="fa fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        }
+                        else
+                        {
+                        <div class="row report-lst-view">
+                            <div class="col-md-9 report-content">
+                                <a href="@Url.Action("ReportDetail", "Report", new { @ReportUrl = item.ReportUrl })">
+                                    <h3 class="panel-title">@item.ReportTitle</h3>
+                                </a>
+                                <div class="panel-body category-short-note">
+                                    <p class="date-info"><i class="fa fa-calendar"></i>@item.PublishingDate.ToString("MMM-yy") | <a href="@Url.Action("PublisherRelatedReports", "Report", new { @puburl = item.PublishingUrl })">@item.PublisherName </a>| <a href="@Url.Action("CategoryRelatedReports", "Report", new { @caturl = item.CategoryUrl })">@item.CategoryName </a></p>
+
+                                    @Html.Raw(item.FullDescription)...
+
+                                    <br>
+                                    <a rel="nofollow" href="@Url.Action("ReportDetail", "Report", new { @ReportUrl = item.ReportUrl })">View More <i class="fa fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+                            <div class="col-md-3 report-img">
+                                <img src="~/img/icons/@(String.Format("{0}{1}", item.ReportImage, ".png"))" />
+                            </div>
+
+                        </div>
+                        }
+
+                    }
+                </div>
+
+                <!-- PAGINATION -->
+                <section class="pagination-wrap">
+                    <div class="blog-pagination">
+                        <ul class="pagination text-center">
+                            @Html.PagedListPager(Model, pageno => Url.Action("CategoryRelatedReports", new
+                            {
+                                pageno,
+                            }), new PagedListRenderOptions() { LinkToPreviousPageFormat = "Prev", LinkToNextPageFormat = "Next", LiElementClasses = new List<string> { "myClass" } })
+
+                        </ul>
+                    </div>
+                </section>
+                <!-- END PAGINATION -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+</section>

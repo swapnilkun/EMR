@@ -1,0 +1,109 @@
+﻿@model IEnumerable<ExcellentMarketResearch.Models.PublisherMaster>
+@{
+    ViewBag.Title = "PublisherIndex";
+}
+
+<h2>Publisher Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "PublisherCreate")
+</p>
+
+<table class="table table-bordered">
+    <tr>
+        <th>PublisherId
+        </th>
+        <th>CompanyName
+        </th>
+        <th>ContactName
+        </th>
+        <th>ContactNumber
+        </th>
+        <th>Address
+        </th>
+      
+        <th>PublisherUrl
+        </th>
+        <th>Short Description
+        </th>
+        <th>
+            Long Description
+        </th>
+        <th>
+           MetaDescription
+        </th>
+        <th>
+         Keywords
+        </th>
+        @* <th>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModifiedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModifiedDate)
+        </th>*@
+        <th>Actions
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PublisherId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PublisherName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContactName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PublisherContactNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+          
+            <td>
+                @Html.DisplayFor(modelItem => item.publisherUrl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShortDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LongDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MetaDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Keywords)
+            </td>
+            @* <td>
+            @Html.DisplayFor(modelItem => item.CreatedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModifiedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModifiedDate)
+        </td>*@
+            <td>
+            @Html.ActionLink("Edit", "PublisherEdit", new { id = item.PublisherId }) |
+            @Html.ActionLink("Details", "PublisherDetails", new { id = item.PublisherId }) |
+            @Html.ActionLink("Delete", "PublisherDelete", new { id = item.PublisherId })
+            </td>
+        </tr>
+    }
+
+</table>
+

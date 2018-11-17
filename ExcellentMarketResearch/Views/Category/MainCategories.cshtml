@@ -1,0 +1,80 @@
+﻿@model IEnumerable<ExcellentMarketResearch.Models.Category>
+@{
+    ViewBag.Title = "Market Research Trade Categories";
+ 
+}
+
+<section class="page-title-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="page-header-wrap">
+                    <div class="page-header">
+                        <h1>Reports Category</h1>
+                    </div>
+                    <ol class="breadcrumb">
+                        <li><a href="/">Home</a></li>
+                        <li class="active">Reports Category</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Single-Service-Start -->
+<section class="single-service-contents">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-5 col-xs-12">
+                <div class="service-sidebar sidebar-wrapper">
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Latest Reports</div>
+                        <div class="panel-body">
+                            @{Html.RenderAction("LatestReport", "Report");}
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.sidebar-wrapper -->
+            </div>
+            <!-- /.col -->
+            <div class="col-md-8 col-sm-7 col-xs-12">
+                <div class="CategoryListing">
+                    <div class="row">
+                        @{ int counter = 0;}
+
+                       @foreach (var item in Model)
+                        {
+                            <div class="col-md-4">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" data-toggle="collapse" data-target="#demo-@counter"><span>@item.CategoryName</span> <img src="~/img/icons/@(String.Format("{0}{1}", item.CategoryUrl, ".png"))" /></div>
+                                    <div id="demo-@counter" class="panel-body collapse">
+                                        <ul>
+                                            <li><a href="@Url.Action("CategoryRelatedReports", "Report", new { @caturl = item.CategoryUrl })">@item.CategoryName</a>
+                                                <ul>
+                                                    @foreach (var childitem in item.ChildCategory)
+                                                    {
+                                                        <li><a href="@Url.Action("CategoryRelatedReports", "Report", new { @caturl = childitem.CategoryUrl })">@childitem.CategoryName</a></li>
+                                                    }
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                                                    counter++;
+                        }
+
+                    </div>
+                </div>
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+</section>
+<!-- Single-Service-End-->
+
+

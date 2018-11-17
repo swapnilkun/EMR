@@ -1,0 +1,273 @@
+﻿@model IEnumerable<ExcellentMarketResearch.Areas.Admin.Models.ViewModel.ReportVM>
+
+@{
+    ViewBag.Title = "LatestReportsForNews";
+}
+
+<h2>LatestReportsForNews</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ReportId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReportTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReportUrl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FullDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Summary)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TableofContent)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ListofCharts)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ListOfFigure)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Methodology)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FreeAnalysis)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MetaTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MetaKeywords)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MetaDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReportImage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PublishingDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PriceSingleUser)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PriceMultiUser)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PriceCUL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DiscountPercentage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumberOfPage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PublisherId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReportTypeId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DeliveryTypeId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsUpcomming)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryUrl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShortCatDesc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LongCatDesc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReportTypeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PublisherName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PublishingUrl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DeliveryTypeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModifiedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModifiedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LongPublisherDesc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShortPublisherDesc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pagesize)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReportId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReportTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReportUrl)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FullDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Summary)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TableofContent)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ListofCharts)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ListOfFigure)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Methodology)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FreeAnalysis)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MetaTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MetaKeywords)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MetaDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReportImage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PublishingDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PriceSingleUser)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PriceMultiUser)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PriceCUL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DiscountPercentage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumberOfPage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PublisherId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CategoryId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsActive)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReportTypeId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DeliveryTypeId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsUpcomming)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CategoryName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CategoryUrl)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShortCatDesc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LongCatDesc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReportTypeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PublisherName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PublishingUrl)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DeliveryTypeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModifiedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModifiedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LongPublisherDesc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShortPublisherDesc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pagesize)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

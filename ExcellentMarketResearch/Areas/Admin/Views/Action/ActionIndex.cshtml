@@ -1,0 +1,42 @@
+﻿@model IEnumerable<ExcellentMarketResearch.Models.ActionMaster>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-bordered">
+    <tr>
+        <th>
+          Action ID
+        </th>
+        <th>
+           Action Name
+        </th>
+        <th>
+          IsActive
+        </th>
+        <th>
+            Action Link
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ActionId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ActionName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsValid)
+        </td>
+       
+        <td>
+            @Html.ActionLink("Edit", "Edit", new {  id=item.ActionId  }) |
+            @Html.ActionLink("Details", "Details", new {  id=item.ActionId  }) |
+            @Html.ActionLink("Delete", "Delete", new {  id=item.ActionId  })
+        </td>
+    </tr>
+}
+
+</table>

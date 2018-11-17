@@ -1,0 +1,135 @@
+﻿@model ExcellentMarketResearch.Areas.Admin.Models.ViewModel.ReportVM
+@{
+    ViewBag.Title = "ReportDetails";
+}
+
+<table class="table table-bordered">
+    <tr>
+        <td>Report Title
+        </td>
+        <td>Report Url
+        </td>
+        <td>FullDescription
+        </td>
+        <td>Table Of Content
+        </td>
+        <td>Meta Title
+        </td>
+        <td>Meta Keywords
+        </td>
+        <td>Meta Description
+        </td>
+        <td>Report Image
+        </td>
+        <td>Publishing Date
+        </td>
+        <td>single User Price
+        </td>
+        <td>Multi User Price
+        </td>
+        <td>Corporate User Price
+        </td>
+        <td>Discount Price
+        </td>
+        <td>Number Of Page
+        </td>
+        <td>Publiher Name
+        </td>
+        <td>Category Name
+        </td>
+        <td>IsActive
+        </td>
+        <td>IsUpcomming
+        </td>
+        <td>Delivery Type
+        </td>
+        <td>Report Type
+        </td>
+        <td>CreatedBy
+        </td>
+        <td>ModifiedBy
+        </td>
+        <td>CreatedDate
+        </td>
+        <td>ModifiedDate
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.DisplayFor(model => model.ReportTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.ReportUrl)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.FullDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.TableofContent)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.MetaTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.MetaKeywords)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.MetaDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.ReportImage)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.PublishingDate)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.PriceSingleUser)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.PriceMultiUser)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.PriceCUL)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.DiscountPercentage)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.NumberOfPage)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.PublisherName)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.CategoryName)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.IsActive)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.IsUpcomming)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.ReportTypeName)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.DeliveryTypeName)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.CreatedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.ModifiedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.CreatedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.ModifiedDate)
+        </td>
+    </tr>
+</table>
+<p>
+    @Html.ActionLink("Edit", "ReportEdit", new { id = Model.ReportId }) |
+    @Html.ActionLink("Back to List", "ReportIndex")
+</p>

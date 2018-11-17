@@ -1,0 +1,54 @@
+﻿@model ExcellentMarketResearch.Areas.Admin.Models.ViewModel.LoginVM
+@{
+    ViewBag.Title = "Login";
+    Layout = null;
+}
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-3.2.1.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.3.2.6.js"></script>
+@using (Html.BeginForm("Login", "Adminlogin", FormMethod.Post))
+{
+    @Html.ValidationSummary(true)
+
+    <div class="container" style="background-color:#7691a4;margin-top:180px;">
+
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.EmailId)
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="editor-field">
+                    @Html.TextBoxFor(model => model.EmailId, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.EmailId)
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.Pwd)
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="editor-field">
+                    @Html.TextBoxFor(model => model.Pwd, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.EmailId)
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <input type="submit" value="Login" class="btn btn-primary" />
+            </div>
+        </div>
+
+    </div>
+    
+  
+}

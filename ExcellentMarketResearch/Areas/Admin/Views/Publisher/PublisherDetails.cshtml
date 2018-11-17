@@ -1,0 +1,101 @@
+﻿@model ExcellentMarketResearch.Areas.Admin.Models.ViewModel.PublisherVM
+@{
+    ViewBag.Title = "PublisherDetails";
+ }
+<table class="table table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PublisherId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PublisherName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ContactName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PublisherContactNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PublisherUrl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LongDescription)
+        </th>
+           <th>
+            @Html.DisplayNameFor(model => model.ShortDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MetaDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Keywords)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModifiedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModifiedDate)
+        </th>
+    </tr>
+    <tr>
+        <td>
+            @Html.DisplayFor(item => item.PublisherId)
+        </td>
+        <td>
+            @Html.DisplayFor(item => item.PublisherName)
+        </td>
+        <td>
+            @Html.DisplayFor(item => item.ContactName)
+        </td>
+        <td>
+            @Html.DisplayFor(item => item.PublisherContactNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(item => item.Address)
+        </td>
+        <td>
+            @Html.DisplayFor(item => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(item => item.PublisherUrl)
+        </td>
+        <td>
+            @Html.DisplayFor(item => item.LongDescription)
+        </td>
+        <td>
+             @Html.DisplayFor(item => item.ShortDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(item => item.MetaDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(item => item.Keywords)
+        </td>
+        <td>
+            @Html.DisplayFor(item => item.CreatedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(item => item.ModifiedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(item => item.CreatedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(item => item.ModifiedDate)
+        </td>
+    </tr>
+</table>
+    @Html.ActionLink("Edit", "PublisherEdit", new { id = Model.PublisherId }) 

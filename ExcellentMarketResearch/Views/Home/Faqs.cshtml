@@ -1,0 +1,177 @@
+﻿@{
+    ViewBag.Title = "Faqs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="page-title-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="page-header-wrap">
+                    <div class="page-header">
+                        <h1>@ViewBag.Message</h1>
+                    </div>
+                    <ol class="breadcrumb">
+                        <li><a href="@Url.Action("index", "Home")">Home</a></li>
+                        <li class="active">@ViewBag.Message</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="faq-contents">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-5 col-xs-12">
+                <div class="service-sidebar sidebar-wrapper">
+                    @{Html.RenderAction("PartialCat", "Category");}
+                </div>
+                <!-- /.sidebar-wrapper -->
+            </div>
+            <!-- /.col -->
+            <div class="col-md-9 col-sm-7 col-xs-12">
+                <h1>Frequently Asked Questions</h1>
+                <div class="faq-accordions">
+                    <div class="accordion" id="accordion">
+                        <div class="accordion-group">
+                            <div class="accordion-heading">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                    What is Excellent Market Research?
+                                </a>
+                            </div>
+                            <div id="collapseOne" class="accordion-body collapse in">
+                                <div class="accordion-inner">
+                                    <p>Excellent Market Research is one of the largest collections of market research reports from numerous publishers. We have a team of industry specialists providing unbiased insights on reports to best meet requirements of our clients.</p>
+                                </div>
+                            </div>
+                            <!-- /.accordion-group-->
+                        </div>
+                        <!-- /.accordion-group-->
+                        <div class="accordion-group">
+                            <div class="accordion-heading">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                                    Why use Excellent Market Research?
+                                </a>
+                            </div>
+                            <div id="collapseTwo" class="accordion-body collapse">
+                                <div class="accordion-inner">
+
+                                    <p>
+                                        Excellent Market Research offers comprehensive collection of competitive intelligence market research reports from number of global publishers. Our research specialists have in-depth knowledge about the industry and years of experience. This makes use stand out from our competitors when it comes to quality.
+                                    </p>
+
+                                </div>
+                            </div>
+                            <!-- /.accordion-body-->
+                        </div>
+                        <!-- /.accordion-group-->
+                        <div class="accordion-group">
+                            <div class="accordion-heading">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                                    How can I use Excellent Market Research? How do I purchase reports from Excellent Market Research?
+                                </a>
+                            </div>
+                            <div id="collapseThree" class="accordion-body collapse">
+                                <div class="accordion-inner">
+                                    <p>One can begin with searching keyword relevant to the market or browse research by markets or topics. When the relevant results appear on the screen, click on the title to view the extensive product information including a descriptive summary and table of content. Purchasing the report online from the website is quite easier. Click on the buy now option and select the copy (single user/multi user) you are looking for. Follow the steps visible on the screen or call the number provided on our website for further assistance. You can speak to one of our industry specific research specialists. They can help you find the suitable report meeting your requirement and help you answer any questions in your research.</p>
+                                </div>
+                            </div>
+                            <!-- /.accordion-body-->
+                        </div>
+                        <!-- /.accordion-group-->
+                        <div class="accordion-group">
+                            <div class="accordion-heading">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+                                    What type of research reports do you offer?
+                                </a>
+                            </div>
+                            <div id="collapseFour" class="accordion-body collapse">
+                                <div class="accordion-inner">
+                                    <p>We offer syndicated as well as customized market research reports to our customers, which feature qualitative and quantitative research on different markets, companies, and industries. Length of the report ranges anywhere from 50 to 100 pages including exhaustive company profiles, market forecast and market dynamics. Most reports are stand alone studies that are available as PDF downloads.</p>
+                                </div>
+                            </div>
+                            <!-- /.accordion-body-->
+                        </div>
+                        <!-- /.accordion-group-->
+                        <div class="accordion-group">
+                            <div class="accordion-heading">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
+                                    Who produces the reports?
+                                </a>
+                            </div>
+                            <div id="collapseFive" class="accordion-body collapse">
+                                <div class="accordion-inner">
+                                    <p>
+                                        The market research reports offered at Excellent Market Researchare produced by numerous leading global publishers and research firms.
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- /.accordion-body-->
+                        </div>
+                        <!-- /.accordion-group-->
+                        <div class="accordion-group">
+                            <div class="accordion-heading">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseSix">
+                                    How are the reports priced?
+                                </a>
+                            </div>
+                            <div id="collapseSix" class="accordion-body collapse">
+                                <div class="accordion-inner">
+                                    <p>
+                                        The price of any research study depends on various factors, some of which include length of the study, availability of information via secondary research, number of primary interviews to be conducted for completion of the study, and feasibility of the niche.
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- /.accordion-body-->
+                        </div>
+                        <!-- /.accordion-group-->
+                        <div class="accordion-group">
+                            <div class="accordion-heading">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven">
+                                    What types of payment modes are accepted?
+                                </a>
+                            </div>
+                            <div id="collapseSeven" class="accordion-body collapse">
+                                <div class="accordion-inner">
+                                    <p>
+                                        For online purchase of market research reports, we accept Visa, American Express, Mastercard, Discover, and Diner’s Club cards.
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- /.accordion-body-->
+                        </div>
+                        <!-- /.accordion-group-->
+                        <div class="accordion-group">
+                            <div class="accordion-heading">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseEight">
+                                    What is the difference between single user, multi-user and enterprise license?
+                                </a>
+                            </div>
+                            <div id="collapseEight" class="accordion-body collapse">
+                                <div class="accordion-inner">
+                                    <p>
+                                        The definitions of these licenses are as follows:
+                                    </p>
+                                    <p>
+                                        <ul>
+                                            <li>The purchase of a 'Single User License' grants access to a specific report for one person only and must not be shared with other employees within the same company.</li>
+                                            <li>The purchase of a 'Multi User License’ grants access to a specific report for two to five users only within the same department within the same company.</li>
+                                            <li>The purchase of an 'Enterprise License’ grants access to a specific report to a company wide audience. This includes subsidiary companies or other companies within a group of companies.</li>
+                                        </ul>
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- /.accordion-body-->
+                        </div>
+                        <!-- /.accordion-group-->
+                    </div>
+                </div>
+                <!-- /.faq-accordions -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+</section>

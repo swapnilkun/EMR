@@ -1,0 +1,193 @@
+﻿@model ExcellentMarketResearch.Models.ViewModel.InquiryVM
+@{
+    Layout = null;
+}
+<link href="~/css/style.css" rel="stylesheet" />
+
+<script src="https://www.google.com/recaptcha/api.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#country_").change(function () {
+            var v = $(this).val();
+            debugger;
+            $.ajax({
+                type: "post",
+                url: '@Url.Action("GetCountryCode", "InquiryForm")',
+                data: JSON.stringify({ 'countryname':v }),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    debugger;
+                    $("#PhoneCode_").empty();//just cleans all html from the control, element
+                    $("#PhoneCode_").val(data);
+                    //foreach loop
+                    //$.each(data, function (i, Phonecode) {
+                    //    $("#PhoneCode_").append( Phonecode.Value)
+                    //})
+
+                },
+                error: function (res) {
+                    alert(res.responseText);
+                }
+            });
+        });
+    });
+</script>
+<style type="text/css">
+    .field-validation-error {
+        color: red;
+    }
+
+    .help-block {
+        color: red;
+    }
+
+    .customrequiredsign {
+        color: red;
+    }
+</style>
+<div class="outerdiv">
+    <div class="innerdiv">
+
+        <h5></h5>
+        <div class="alert">
+            @Html.Raw(ViewBag.FormTitle)
+        </div>
+
+        @using (Html.BeginForm("InquiryForm", "InquiryForm", FormMethod.Post, new { @class = "form-horizontal", @id = "Enquiryform_" + Model.FormType }))
+        {
+            @Html.ValidationSummary(true)
+
+            @Html.HiddenFor(model => model.RealCaptcha, new { @id = "txtCaptcha_" + Model.FormType })
+
+            @Html.HiddenFor(model => model.FormType)
+            @Html.HiddenFor(model => model.ReportId)
+            @Html.HiddenFor(model => model.ReportTitle)
+            @Html.HiddenFor(model => model.ReportUrl)
+
+            <div class="form-group">
+                <label class="col-md-3 control-label required">Name<span class="customrequiredsign">*</span></label>
+                <div class="col-md-8 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                        @Html.TextBoxFor(model => model.Name, new { @class = "form-control", @placeholder = "Enter Name", @id = "name_" + Model.FormType })
+                    </div>
+                    @Html.ValidationMessageFor(model => model.Name)
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-3 control-label required">E-Mail<span class="customrequiredsign">*</span></label>
+                <div class="col-md-8 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                        @Html.TextBoxFor(model => model.EmailId, new { @class = "form-control", @placeholder = "myname@example.com", @id = "email_" + Model.FormType })
+                    </div>
+                    @Html.ValidationMessageFor(model => model.EmailId)
+                </div>
+            </div>
+              <div class="form-group">
+                <label class="col-md-3 control-label required">Country</label>
+                <div class="col-md-8 selectContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-plane"></i></span>
+                        @Html.HiddenFor(model => model.Country, new { @id = "CategoryId" })
+                        @Html.DropDownListFor(m => m.Country, from l in new ExcellentMarketResearch.Models.ViewModel.InquiryVM().GetCountries()
+                                                              select new SelectListItem
+                                                              {
+                                                                  Text = l.nicename,
+                                                                  Value = l.nicename.ToString()
+                                                              }, "- Select Country -", new { @Class = "form-control", @id = "country_" , @onchange = "javascript:$('#CategoryId').val($(this).val());"})
+
+                    </div>
+                    @Html.ValidationMessageFor(model => model.Country)
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-3 control-label required">Phone<span class="customrequiredsign">*</span> </label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                        @*<input class="form-control" id="PhoneCode_"+ Model.FormType +" name="AreaCode" placeholder="1212" type="text" value=" " readonly >*@
+                        @Html.TextBoxFor(m => m.AreaCode, new { @Class = "form-control", @id = "PhoneCode_",@readonly="readonly",@placeholder = "Phone-Code" })
+@*                        @Html.DropDownListFor(m => m.AreaCode, from l in new ExcellentMarketResearch.Models.ViewModel.InquiryVM().GetCountries()
+                                                               select new SelectListItem
+                                                               {
+                                                                   Text = l.nicename + "  +"+ l.phonecode,
+                                                                   Value = l.phonecode.ToString()
+                                                               }, "- Select Country -", new { @Class = "form-control", @id = "Phonecode_" + Model.FormType })*@
+                    </div>
+                    @Html.ValidationMessageFor(model => model.AreaCode)
+
+                    <span class="field-validation-valid"></span>
+                </div>
+                <div class="col-md-4 inputGroupContainer">
+                    @Html.TextBoxFor(model => model.PhoneNumber, new { @class = "form-control", @placeholder = "Phone-Number", @id = "phonenumber_" })
+                    @Html.ValidationMessageFor(model => model.PhoneNumber)
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-3 control-label required">Company<span class="customrequiredsign">*</span></label>
+                <div class="col-md-8 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-users"></i></span>
+                        @Html.TextBoxFor(model => model.Company, new { @class = "form-control", @placeholder = " Company ", @id = "company_" + Model.FormType })
+                    </div>
+                    @Html.ValidationMessageFor(model => model.Company)
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-3 control-label required">Designation/Title</label>
+                <div class="col-md-8 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-building"></i></span>
+                        @Html.TextBoxFor(model => model.Designation, new { @class = "form-control", @placeholder = "Designation/Title", @id = "designation_" + Model.FormType })
+                    </div>
+                    @Html.ValidationMessageFor(model => model.Designation)
+                </div>
+            </div>
+          
+            <div class="form-group">
+                <label class="col-md-3 control-label required">How can we help you ?</label>
+                <div class="col-md-8 inputGroupContainer">
+                    <div class="input-group" style="width: 100%;">
+                        @Html.TextAreaFor(model => model.CustomerMessage, new { @class = "form-control", @placeholder = "Let us know, How can we help you ? ", @id = "message_" + Model.FormType })
+                    </div>
+                    @Html.ValidationMessageFor(model => model.CustomerMessage)
+                </div>
+            </div>
+            @*<div class="form-group">
+                <label class="col-md-3 control-label required">Captcha<span class="customrequiredsign">*</span></label>
+                <div class="col-md-8 inputGroupContainer">
+                    <div class="input-group" style="width: 100%;">
+                        @Html.TextBoxFor(model => model.CaptchaCode, new { @class = "form-control", @placeholder = "Enter Captcha", @id = "txtInput_" + Model.FormType })
+                    </div>
+                    <p class="help-block">
+                        <label id="captchaError_@Model.FormType"></label>
+                    </p>
+                    @Html.ValidationMessageFor(model => model.CaptchaCode)
+                    @Html.HiddenFor(model => model.ReportId)
+                </div>
+            </div>*@
+            <div class="form-group">
+                <label class="col-md-3 control-label">
+                </label>
+                <div class="col-md-8 ">
+                    @*<img id="CaptchImg" style="background-color:#01819c"  src="@Url.Action("GetCaptchaImage", "InquiryForm", new { @EncryText = Model.RealCaptcha })" />*@
+                    <div class="g-recaptcha" data-sitekey="6LdU_nUUAAAAAA3JRpz9CyoMobL_rrNDniMknFbM"></div>
+                </div>
+            </div>
+
+            <!-- Success message -->
+            <!-- Button -->
+            
+            <div class="form-group">
+                <label class="col-md-3 control-label"></label>
+                <div class="col-md-4">
+                    <button type="Submit" onclick="ValidateForm(event, '@Model.FormType');" id="btnSubmit_@Model.FormType" class="btn btn-warning">Submit</button>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>

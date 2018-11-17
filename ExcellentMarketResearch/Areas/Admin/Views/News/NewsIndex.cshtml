@@ -1,0 +1,32 @@
+﻿@model IEnumerable<ExcellentMarketResearch.Models.NewsMaster>
+@{
+    ViewBag.Title = "NewsIndex";
+}
+
+<h2 style="font-family:Calibri;margin-left:200px;">News Index</h2>
+
+<p style="margin-left:200px;">
+    @Html.ActionLink("Create New", "NewsCreate")
+</p>
+<table class="table table-bordered" style="width:75%;margin:50px;">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NewsTitle)
+        </th>
+        <th>Actions
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NewsTitle)
+            </td>
+            <td>
+            @Html.ActionLink("Edit", "NewsEdit", new { id = item.NewsId }) |
+            @Html.ActionLink("Details", "NewsDetails", new { id = item.NewsId }) |
+            @Html.ActionLink("Delete", "NewsDelete", new { id = item.NewsId })
+            </td>
+        </tr>
+    }
+</table>

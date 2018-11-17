@@ -1,0 +1,27 @@
+﻿@model ExcellentMarketResearch.Models.spDetailsRoleAction_Result
+@{
+    ViewBag.Title = "RoleActionDetail";
+}
+
+<table class="table table-bordered">
+    <tr>
+        <td>
+            Role Name
+        </td>
+        <td>
+            Role Actions
+        </td>
+    </tr>
+    <tr>
+        <td>
+           @Html.DisplayFor(m=>m.RoleName)
+        </td>
+        <td>
+            @Html.DisplayFor(m=>m.RoleAction)
+        </td>
+    </tr>
+</table>
+<p>
+    @Html.ActionLink("Edit", "RoleActionEdit", new {  id=Model.RId }) |
+    @Html.ActionLink("Back to List", "RoleActionIndex")
+</p>

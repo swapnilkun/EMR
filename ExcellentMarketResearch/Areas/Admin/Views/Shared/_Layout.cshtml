@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>My WebSite</title>
+    @*    <link href="~/MyStyle.css" type="text/css" rel="stylesheet" />*@
+
+@*    <script src="~/QYGROUP/../Content/ckeditor_4.6.2_basic/ckeditor/ckeditor.js" type="text/javascript"></script>*@
+    <script src="//code.jquery.com/jquery-3.2.1.min.js" type="text/javascript"></script>
+
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.js" type="text/javascript"></script>
+    <script src="//code.jquery.com/ui/1.10.3/jquery-ui.js" type="text/javascript"></script>
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+    <link href="~/Areas/CustomAreaStyleSheet.css" rel="stylesheet" />
+    @Styles.Render("~/bundles/bootstrapstyle")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/bootstrapscript")
+
+    <style>
+          .field-validation-error {
+          color:red;
+      }
+    </style>
+
+    @*<script src="~/MRSAssignment/Scripts/jquery-1.9.1.min.js"></script>
+    <script src="~/MRSAssignment/Scripts/jquery.validate.min.js"></script>
+    <script src="~/MRSAssignment/Scripts/jquery.validate.unobtrusive.min.js"></script>*@
+
+    <script>
+
+        $(document).ready(
+      /* This is the function that will get executed after the DOM is fully loaded */
+      function () {
+          /* Next part of code handles hovering effect and submenu appearing */
+          $('.nav li').hover(
+            function () { //appearing on hover
+                $('ul', this).fadeIn();
+            },
+            function () { //disappearing on hover
+                $('ul', this).fadeOut();
+            }
+          );
+      }
+    );
+    </script>
+    <style type="text/css">
+        #logingmenu {
+            margin-left: 90%;
+            height: 20px;
+            width: auto;
+        }
+
+        #contactcolumn {
+            float: right;
+        }
+
+        a {
+            text-decoration: none;
+            background-color: transparent;
+        }
+
+        #footer a {
+            color: white;
+        }
+
+        .rowpadding {
+            margin-top: 10px;
+        }
+
+        .contactfontsize {
+            font-size: 11px;
+        }
+
+        #contactlist div {
+            padding-left: 20px;
+            float: left;
+            font-size: 12px;
+        }
+
+        img {
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="logingmenu">
+        <table>
+            <tr>
+                <td style="margin-left: 80%">
+                    @Html.ActionLink("Logout", "Logout", "Login")
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+            <div class="row">
+            </div>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div id="Header">
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                        </div>
+                        <ul class="nav navbar-nav">
+                            <li>@Html.ActionLink("Report", "ReportIndex", "Report")</li>
+                            <li>@Html.ActionLink("Category", "CategoryIndex", "Category")</li>
+                            <li>@Html.ActionLink("Publisher", "PublisherIndex", "Publisher")</li>
+                            <li>@Html.ActionLink("News", "NewsIndex", "News")</li>
+                            <li>@Html.ActionLink("Role", "RoleActionIndex", "RoleAction")</li>
+                            <li>@Html.ActionLink("Redirect URL", "Create", "ReportRedirect")</li>
+                            <li>@Html.ActionLink("Create User", "UserRoleIndex", "UserRole")</li>
+                            <li>@Html.ActionLink("ExcelUpload", "Index", "ExcelUpload")</li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            @RenderBody()
+        </div>
+    </div>
+    <div class="row">
+        <div id="footer" style="color: white; margin: 22px;">
+        </div>
+    </div>
+</body>
+</html>
+

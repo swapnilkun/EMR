@@ -1,0 +1,81 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@model IPagedList<ExcellentMarketResearch.Models.CategoryMaster>
+@{
+    ViewBag.Title = "Category Index";
+}
+<script type="text/javascript">
+    var x = {};
+    $(document).ready(function z() {
+        x = $("#CategoryId").val();
+        ValidateInput(x);
+    });
+    function ValidateInput(x) {
+        if (x.val() != '') {
+            $('#btnsubmit').attr('disabled', false);
+        }
+        else {
+            $('#btnsubmit').attr('disabled', true);
+        }
+    }
+</script>
+<p>
+    @Html.ActionLink("Create New", "CreateCategory")
+</p>
+
+@using (Html.BeginForm("CategoryIndex", "Category", FormMethod.Get))
+{
+    <table class="table">
+        <tr>
+            <td>
+                <div class="container" style="width:60%; margin-left: 250px; margin-bottom: 50px">
+                    <div class="input-group">
+                        <input type="text" name="CategoryName" class="form-control" id="CategoryId" placeholder="Search Category" />
+                        <span class="input-group-btn">
+                            <button class="btn btn-search" type="submit"><i class="fa fa-search fa-fw">Search</i></button>
+                        </span>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+}
+<table class="table table-bordered" style="margin: 30px">
+    <tr>
+        <td>Category-ID
+        </td>
+        <td>Category Name
+        </td>
+        <td>Actions
+        </td>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryName)
+            </td>
+            <td>
+            @Html.ActionLink("Edit", "CategoryEdit", new { id = item.CategoryId }) |
+            @Html.ActionLink("Details", "CategoryDetails", new { id = item.CategoryId }) |
+            @Html.ActionLink("Delete", "CategoryDelete", new { id = item.CategoryId })
+            </td>
+        </tr>
+    }
+
+</table>
+<table class="table" style="margin: 30px">
+    <tr>
+        <td>
+            @Html.PagedListPager(Model, pageno => Url.Action("CategoryIndex", new
+       {
+           pageno,
+           CategoryName = @Request.QueryString["CategoryName"]
+
+       }), new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded, DisplayPageCountAndCurrentLocation = true })
+        </td>
+    </tr>
+</table>

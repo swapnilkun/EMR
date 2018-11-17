@@ -1,0 +1,107 @@
+﻿@model ExcellentMarketResearch.Models.NewsMaster
+@{
+    ViewBag.Title = "NewsDelete";
+}
+
+<h2>NewsDelete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+
+  <table class="table table-bordered">
+      @Html.HiddenFor(model=>model.NewsId)
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.NewsId)
+            </td>
+            <td>
+            @Html.DisplayNameFor(model => model.NewsTitle)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.NewsUrl)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.NewsDescription)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.MetaTitle)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.Keywords)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.MetaDescritpion)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model=>model.CategoryId)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.PublishingDate)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.CreatedBy)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.ModifiedBy)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.ModifiedDate)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.NewsId)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.NewsTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.NewsUrl)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.NewsDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.MetaTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Keywords)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.MetaDescritpion)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.CategoryId)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.PublishingDate)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.CreatedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.ModifiedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.CreatedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.ModifiedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.IsActive)
+            </td>
+        </tr>
+    </table>
+@using (Html.BeginForm("NewsDelete", "News",FormMethod.Post))
+{
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

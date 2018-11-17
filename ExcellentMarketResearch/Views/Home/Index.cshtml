@@ -1,0 +1,429 @@
+﻿@model IEnumerable<ExcellentMarketResearch.Models.CategoryMaster>
+@{
+    ViewBag.Title = "Index";
+}
+
+﻿<div id="main-carousel" class="carousel slide hero-slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#main-carousel" data-slide-to="0" class="active"></li>
+        <li data-target="#main-carousel" data-slide-to="1"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+        @*     <form class="searchreports">
+            <div class="col-md-12">
+                <div class="col-md-7"><input class="form-control homesearch" type="search" value="" placeholder=" "></div>
+                <div class="col-md-3">  <select class="form-control" name="category">
+                                            <option>-- Select Catory --</option>
+                                        </select>
+                </div>
+                <div class="col-md-2"><button type="submit" class="btn btn-primary">Search</button></div>
+            </div>
+            </form>*@
+        @{Html.RenderAction("SearchingPartialView", "Home");}
+
+        <div class="item active">
+            <img src="/img/slider/slide-1.jpg" alt="Excellent Market Research">
+            <!--Slide Image-->
+
+            <div class="container">
+                <div class="carousel-caption">
+                    <h1 class="animated bounceIn">We value your time and money</h1>
+                </div>
+                <!--.carousel-caption-->
+            </div>
+            <!--.container-->
+        </div>
+        <!--.item-->
+
+        <div class="item">
+            <img src="/img/slider/slide-2.jpg" alt="Excellent Market Research">
+            <!--Slide Image-->
+
+            <div class="container">
+                <div class="carousel-caption">
+
+                    <h1 class="animated bounceIn">We value your time and money</h1>
+                </div>
+                <!--.carousel-caption-->
+            </div>
+            <!--.container-->
+        </div>
+        <!--.item-->
+    </div>
+    <!--.carousel-inner-->
+    <!-- Controls -->
+    <a class="left carousel-control" href="#main-carousel" role="button" data-slide="prev">
+        <i class="fa fa-angle-left" aria-hidden="true"></i>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#main-carousel" role="button" data-slide="next">
+        <i class="fa fa-angle-right" aria-hidden="true"></i>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+<!-- #main-carousel-->
+<!-- services start -->
+<section class="service-home section-padding">
+    <div class="container text-center">
+        <div class="row text-center">
+            <div class="col-xs-12">
+                <h2 class="section-title">Popular Categories</h2>
+                <span class="section-sub">Powered by Isotope, your portfolio has never been more engaging</span>
+            </div>
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-xs-12 col-md-12 popular-categories-row">
+                <div class="row">
+                    @* @{int i = 0;}
+                        @foreach (var item in ViewBag.ParentCategory)
+                        {
+                            if (i == 6)
+                            {
+                                break;
+                                @:</div><div class="row">
+                                    i = 0;
+                            }
+                           <div class="col-sm-12 col-md-2">
+                               <div class="popular-categories">
+                                   <i class="fa fa-medkit" aria-hidden="true"></i>
+                                   <p class="cat-title"><a href="@Url.Action("CategoryRelatedReports", "Report", new { @Caturl = item.CategoryUrl })">@item.CategoryName</a></p>
+                                   <p class="cat-info"></p>
+                               </div>
+                           </div>
+                            i++;
+                        }*@
+                    <div class="col-sm-12 col-md-2">
+                        <div class="popular-categories">
+                            <img src="~/img/icons/consumer-goods.png" />
+                            <p class="cat-title"><a href="/category/consumer-goods">Consumer Goods</a></p>
+                            <p class="cat-info"></p>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-2">
+                        <div class="popular-categories">
+                            <img src="~/img/icons/chemical-and-materials.png" />
+                            <p class="cat-title"><a href="/category/chemical-and-materials">Chemical and Materials</a></p>
+                            <p class="cat-info"></p>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-2">
+                        <div class="popular-categories">
+                            <img src="~/img/icons/food-beverage.png" />
+                            <p class="cat-title"><a href="/category/food-beverage">Food & Beverages</a></p>
+                            <p class="cat-info"></p>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-2">
+                        <div class="popular-categories">
+                            <img src="~/img/icons/technology-media.png" />
+                            <p class="cat-title"><a href="/category/technology-media">Technology & Media</a></p>
+                            <p class="cat-info"></p>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-2">
+                        <div class="popular-categories">
+                            <img src="~/img/icons/manufacturing-and-construction.png" />
+                            <p class="cat-title"><a href="/category/manufacturing-construction">Manufacturing & Construction</a></p>
+                            <p class="cat-info"></p>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-2">
+                        <div class="popular-categories">
+                            <img src="~/img/icons/electrical-and-electronic-device.png" />
+                            <p class="cat-title"><a href="/category/electronics">Electrical & Electronic Device</a></p>
+                            <p class="cat-info"></p>
+                        </div>
+                    </div>
+                </div>
+                <a href="@Url.Action("MainCategories", "Category")" class="btn btn-primary quote-btn">All Categories</a>
+            </div>
+            <!-- /.row -->
+
+            <div class="row content-row" style="display: none;">
+                <div class="col-sm-4">
+                    <div class="service">
+                        <div class="service-thumb-home">
+                            <a href="#">
+                                <img src="img/trans.jpg" alt="">
+                            </a>
+                        </div>
+
+                        <h3>Transportation &amp; Logistics</h3>
+                        <p>
+                            Holisticly synergize maintainable intellectual<br>
+                            capital via viral interfaces. Energistically<br>
+                            embrace funyctionalized
+                        </p>
+                        <a class="readmore" href="#">Read More &nbsp;<i class="fa fa-angle-right"></i> </a>
+                    </div>
+                </div>
+                <!-- /.col-sm-4 -->
+
+                <div class="col-sm-4">
+                    <div class="service">
+                        <div class="service-thumb-home">
+                            <a href="#">
+                                <img src="img/moving.jpg" alt="">
+                            </a>
+                        </div>
+                        <h3>Moving &amp; Storage</h3>
+                        <p>
+                            Holisticly synergize maintainable intellectual<br>
+                            capital via viral interfaces. Energistically<br>
+                            embrace functionalized
+                        </p>
+                        <a class="readmore" href="#">Read More &nbsp;<i class="fa fa-angle-right"></i> </a>
+                    </div>
+
+                </div>
+                <!-- /.col-sm-4 -->
+
+                <div class="col-sm-4">
+                    <div class="service">
+                        <div class="service-thumb-home">
+                            <a href="#">
+                                <img src="img/shipping.jpg" alt="">
+                            </a>
+                        </div>
+                        <h3>Shipping Operations</h3>
+                        <p>
+                            Holisticly synergize maintainable intellectual<br>
+                            capital via viral interfaces. Energistically<br>
+                            embrace functionalized
+                        </p>
+                        <a class="readmore" href="#">Read More &nbsp;<i class="fa fa-angle-right"></i> </a>
+                    </div>
+                </div>
+                <!-- /.col-sm-4 -->
+            </div>
+            <!-- /.row -->
+        </div>
+
+    </div>
+    <!-- /.container -->
+</section>
+<!-- services end -->
+<!-- featuer-section Reports Category wise start -->
+<section class="section-padding section-reports">
+    <div class="container text-center">
+        <div class="row text-center">
+            <div class="col-xs-12">
+                <h2 class="section-title">Popular Reports</h2>
+                <span class="section-sub">Powered by Isotope, your portfolio has never been more engaging</span>
+            </div>
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-12 col-xs-12 feature-post">
+                    @if (ViewBag.ChemicalsMaterials.Count > 0)
+                    {
+                        int a = 1;
+                        <div class="categorys">
+                            <div class="col-md-12 col-xs-12">
+                                <h2>Chemical and Materials</h2>
+                                <p>Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit.</p>
+                            </div>
+
+                            <div class="col-md-12 col-xs-12">
+
+                                @foreach (var item in ViewBag.ChemicalsMaterials)
+                                {
+                                    <div class="relatedpost">
+                                        <div class="col-md-4">
+                                            <div class="report-content">
+                                                <img src="@("/img/Chemical-and-Materials-" + a++ + "." + "jpg")" />
+                                                <h3><a href="@Url.Action("ReportDetail", "Report", new { @ReportUrl = item.ReportUrl })">@item.ReportTitle</a></h3>
+                                                <div>@Html.Raw(item.FullDescription)</div>
+                                                <a rel="nofollow" href="@Url.Action("ReportDetail", "Report", new { @ReportUrl = item.ReportUrl })">View More <i class="fa fa-arrow-circle-right"></i></a>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                }
+                            </div>
+
+                        </div>
+                    }
+
+                    @if (ViewBag.TechnologyMedia.Count > 0)
+                    {
+                        int a = 1;
+                        <div class="categorys">
+                            <div class="col-md-12 col-xs-12">
+                                <h2>Technology and Media</h2>
+                                <p>Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit.</p>
+                            </div>
+
+                            <div class="col-md-12 col-xs-12">
+
+                                @foreach (var item in ViewBag.TechnologyMedia)
+                                {
+                                    <div class="relatedpost">
+                                        <div class="col-md-4">
+                                            <div class="report-content">
+                                                <img src="@("/img/Technology-and-Media-" + a++ + "." + "jpg")" />
+                                                <h3><a href="@Url.Action("ReportDetail", "Report", new { @ReportUrl = item.ReportUrl })">@item.ReportTitle</a></h3>
+                                                <div>@Html.Raw(item.FullDescription)</div>
+                                                <a rel="nofollow" href="@Url.Action("ReportDetail", "Report", new { @ReportUrl = item.ReportUrl })">View More <i class="fa fa-arrow-circle-right"></i></a>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+
+                        </div>
+                    }
+
+                    @if (ViewBag.HealthCares.Count > 0)
+                    {
+                        int a = 1;
+                        <div class="categorys">
+                            <div class="col-md-12 col-xs-12">
+                                <h2>Helthcare</h2>
+                                <p>Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit.</p>
+                            </div>
+
+                            <div class="col-md-12 col-xs-12">
+
+
+                                @foreach (var item in ViewBag.HealthCares)
+                                {
+                                    <div class="relatedpost">
+                                        <div class="col-md-4">
+                                            <div class="report-content">
+                                                <img src="@("/img/Helthcare-" + a++ + "." + "jpg")" />
+                                                <h3><a href="@Url.Action("ReportDetail", "Report", new { @ReportUrl = item.ReportUrl })">@item.ReportTitle</a></h3>
+                                                <div>@Html.Raw(item.FullDescription)</div>
+                                                <a rel="nofollow" href="@Url.Action("ReportDetail", "Report", new { @ReportUrl = item.ReportUrl })">View More <i class="fa fa-arrow-circle-right"></i></a>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+
+                        </div>
+                    }
+
+
+                    <a href="@Url.Action("AllReports", "Report")" class="btn btn-primary quote-btn text-center">All Reports</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- featuer-section Reports Category wise end -->
+<!-- cta start -->
+<section class="cta-section" style="display:none;">
+    <div class="container text-center">
+        <a href="@Url.Action("AllReports", "Report")" class="btn btn-primary quote-btn">All Reports</a>
+
+    </div><!-- /.container -->
+</section><!-- /.cta-section -->
+<!-- cta end -->
+<!-- News-section start -->
+<section class="testimonial-section testimonial2 section-padding section-letestnews">
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 class="section-title">Letest News</h2>
+                <span class="section-sub">&nbsp;</span>
+            </div>
+        </div> <!-- /.row -->
+
+        @{Html.RenderAction("LatestNewsForIndexPage", "News");}
+
+    </div><!-- /.container -->
+</section>
+<!-- News-section end -->
+<!-- why-us-setion start -->
+<section class="why-us-setion section-padding section-getintouch">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-xs-12">
+                <h2 class="section-title">Get in Touch</h2>
+                <span class="section-sub">We Are Ready to Help You 24/7</span>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <div class="row content-row">
+
+            <div class="col-md-12">
+                <div class="col-md-5 arrow_box">
+                    <div>
+                        <address>
+                            <h3>Our Location</h3>
+                            <div class="col-md-6 padding-left-0">
+                                <strong>U.S. OFFICE:</strong><br>
+                                444 E Lake Street,
+                                <br>
+                                Suite 1700, Chicago,<br> IL 60606
+                                USA
+                                <br />   <br />
+                            </div>
+                            <div class="col-md-6 padding-left-0">
+                                <strong>ASIA PACIFIC OFFICE :</strong><br>
+                                S. No. 66/3/29, Gajanan<br>
+                                Nagar, Pimple Gurav,<br>
+                                Pune - 411061 India.<br />
+
+                            </div>
+                            <div class="col-md-12 padding-left-0">
+                                Tel: +1(312) 588-9716
+                                <br>
+                                Email: sales@excellentmarketresearch.com
+
+                            </div>
+
+
+                        </address>
+                    </div>
+                </div>
+                <div class="col-md-7 homepagecontact">
+                    @{Html.RenderAction("GetinTouch", "ContactUs");}
+
+                </div>
+            </div>
+
+
+        </div>
+        <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+</section>
+<!-- why-us-setion end -->
+<!-- counter start -->
+<section class="counter-section" data-stellar-background-ratio="0.5">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 col-xs-12">
+                <div class="counter-block">
+                    <span class="count-description flaticon-boat"><strong class="timer">799</strong>order delivered</span>
+                </div>
+            </div>
+            <div class="col-sm-4 col-xs-12">
+                <div class="counter-block">
+                    <span class="count-description flaticon-international"><strong class="timer">19</strong>order delivered</span>
+                </div>
+            </div>
+            <div class="col-sm-4 col-xs-12">
+                <div class="counter-block">
+                    <span class="count-description flaticon-compass"><strong class="timer">521</strong>order delivered</span>
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+</section>
+<!-- /.counter-section -->
+<!-- counter end -->

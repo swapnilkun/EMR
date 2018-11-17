@@ -1,0 +1,50 @@
+﻿@model IEnumerable<ExcellentMarketResearch.Areas.Admin.Models.ViewModel.ReportVM>
+@{
+    ViewBag.Title = "LatesrReport";
+}
+
+@*<div class="list-group listmargin">
+    <a href="#" class="list-group-item active">Latest Report</a>
+
+    <div class="latestreportdiv">
+        <h3 class="goodretailclass"></h3>
+        <div id="datpric">
+            <span class="glyphicon glyphicon-calendar"></span>@item.PublishingDate.ToString("MMM-yy") | <span class="glyphicon glyphicon-globe"></span>@Html.DisplayFor(model => item.CategoryName) |<span class="glyphicon glyphicon-usd"></span>Price : $ @item.PriceSingleUser
+        </div>
+        <p class="goodretailclass textjustify" style="font-size: 14px;">
+            @Html.Raw(item.FullDescription)<a href='@Url.Action("ReportDetail", "Report", new { ReportUrl = item.ReportUrl })'><br />
+                <span style="border: 1px solid #009651; background-color: #009688; color: #FFFFFF; padding: 3px;">Read More..</span>
+            </a>
+        </p>
+    </div>
+    *@
+    @*  <a href="@Url.Action("AllReports", "Reports")">
+        <p align="center">
+            <button type="submit" class="btn" style="background-color: #009688; color: #FFFFFF">More Reports</button>
+        </p>
+    </a>*@
+ @*   <a href="@Url.Action("AllReports", "Report")" class="list-group-item">
+        <ul>
+            <li>More Reports...</li>
+        </ul>
+    </a>
+</div>*@
+
+<div class="research_assistance">
+    @*<div class="title"><i class="fa fa-refresh fa-spin"></i>Latest Reports</div>*@
+    <div class="meta">
+        <ul class="category-thumb">
+            @foreach (var item in Model)
+            { 
+                <li class="clearfix">
+                    <span class="thumb-cont"></span>
+                    <div class="info">
+                        <a href='@Url.Action("ReportDetail", "Report", new { ReportUrl = item.ReportUrl })'>@item.ReportTitle</a>
+                    </div>
+                </li>
+            }
+
+        </ul>
+
+    </div>
+</div>
