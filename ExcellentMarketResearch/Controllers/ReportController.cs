@@ -463,6 +463,7 @@ namespace ExcellentMarketResearch.Controllers
                                  PublishingDate = r.PublishingDate,
                                  PublisherId = r.PublishereId,
                                  CategoryUrl = c.CategoryUrl
+                                
                              }).ToList();
 
 
@@ -479,7 +480,8 @@ namespace ExcellentMarketResearch.Controllers
                                         PublishingDate = x.PublishingDate,
                                         PublisherId = x.PublisherId,
                                         PublisherName = x.PublisherName,
-                                        CategoryUrl = x.CategoryUrl
+                                        CategoryUrl = x.CategoryUrl,
+                                        ReportImage=DDLGetparents(x.CategoryId)
                                     }).ToPagedList(pageno ?? 1, 10);
 
 
