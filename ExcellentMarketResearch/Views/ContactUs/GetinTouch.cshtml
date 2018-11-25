@@ -4,7 +4,7 @@
     Layout = null;
 }
 
-
+<script src="https://www.google.com/recaptcha/api.js" type="text/javascript"></script>
 
 <div>
     @using (Html.BeginForm("Index", "ContactUs", FormMethod.Post, new { @class = "form-horizontal", @id = "ContactUs" }))
@@ -85,16 +85,18 @@
     </div>
     <div class="form-group">
         <div class="col-md-3 col-sm-12">
-            <label for="recaptcha">
-                @*<img id="CaptchImg" style="background-color:#01819c" src="@Url.Action(" GetCaptchaImage", "InquiryForm" , new { @EncryText=Model.RealCaptcha })" />
-            </label>*@
-                <div class="g-recaptcha" data-sitekey="6LdU_nUUAAAAAA3JRpz9CyoMobL_rrNDniMknFbM"></div>
+            @*<label for="recaptcha">
+                <img id="CaptchImg" style="background-color:#01819c" src="@Url.Action(" GetCaptchaImage", "InquiryForm" , new { @EncryText=Model.RealCaptcha })" />
             </label>
+                
+            </label>*@
+            
         </div>
         <div class="col-md-9 col-sm-12">
-            @Html.TextBoxFor(model => model.CaptchaCode, new { @class = "form-control", @placeholder = "Enter Captcha", @id = "txtInput" })
+@*            @Html.TextBoxFor(model => model.CaptchaCode, new { @class = "form-control", @placeholder = "Enter Captcha", @id = "txtInput" })
             @Html.ValidationMessageFor(model => model.CaptchaCode)
-            <label id="captchaError"></label>
+            <label id="captchaError"></label>*@
+            <div class="g-recaptcha" data-sitekey="6LdU_nUUAAAAAA3JRpz9CyoMobL_rrNDniMknFbM"></div>
         </div>
         @*<p class="help-block">
             <label id="captchaError"></label>
