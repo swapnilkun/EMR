@@ -25,8 +25,12 @@ namespace ExcellentMarketResearch
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
         }
-        protected void Application_BeginRequest(object sender, EventArgs e)
+        //protected void Application_BeginRequest(object sender, EventArgs e)
+        protected void Application_BeginRequest()
         {
+            if (!Context.Request.IsSecureConnection && !Context.Request.Url.ToString().Contains("localhost"))
+                Response.Redirect(Context.Request.Url.ToString().Replace("http:", "https:"));
+
             //if ((Request.Url.Scheme != "https" || Request.Url.AbsoluteUri.Contains("www.")) && !Request.IsLocal)
             //{
             //    Response.RedirectPermanent("https://www.excellentmarketresearch.com");
@@ -47,5 +51,5 @@ namespace ExcellentMarketResearch
             //        Response.RedirectPermanent(redirecturl);
             //}
         }
-}
+    }
 }
