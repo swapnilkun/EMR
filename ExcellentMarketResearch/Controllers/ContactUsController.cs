@@ -192,15 +192,12 @@ namespace ExcellentMarketResearch.Controllers
             {
                 result = "Dear " + Name + ","
                      + "<br /><br />Thank you for your interest in <b>" + "ExcellentMarketResearch.Com" + "</b>."
-                    //+ "<br /><br />For your reference please find the below link."
-                    //+ "<br /><br />" + "QYGroup.biz"
-                    //+ "<br /><br />I'll contact you soon to serve your research needs."
                      + "<br /><br />We'll contact you soon to serve your research needs."
                      + "<b><br /><br />Warm regards,"
-                     + "<br />Miler # | Corporate Sales Specialist,USA"
-                     + "<br />Direct line: + 1-88888-8888-1#"
+                     + "<br />Robert Smith | Corporate Sales Specialist,USA"
+                     + "<br />Direct line: + 1-312-588-9716"
                      + "<br />" + "excellentmarketresearch.com"
-                     + "<br />E-mail: miler@excellentmarketresearch.com | Web: " + "excellentmarketresearch.com" + "</b>";
+                     + "<br />E-mail: robertsmith@excellentmarketresearch.com | Web: " + "excellentmarketresearch.com" + "</b>";
             }
             else
             {

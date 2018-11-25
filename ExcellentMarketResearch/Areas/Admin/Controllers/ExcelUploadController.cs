@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using ExcellentMarketResearch.Models;
 using System.Data.OleDb;
 using ExcellentMarketResearch.Areas.Admin.Models;
+using System.IO;
 
 namespace ExcellentMarketResearch.Areas.Admin.Controllers
 {
@@ -43,16 +44,20 @@ namespace ExcellentMarketResearch.Areas.Admin.Controllers
 
                 if (excelfile.FileName.EndsWith("xsl") || excelfile.FileName.EndsWith("xlsx"))
                 {
+                 
                     string path = "";
                     //   string path = Server.MapPath("~/Content/" + excelfile.FileName + DateTime.Now.ToString("MM.dd.yyyy-hh.mm.ss"));
                     try
                     {
-                        path = Server.MapPath("~/UploadSheet/" + excelfile.FileName + DateTime.Now.ToString("MM.dd.yyyy-hh.mm.ss"));
+                        //path = Server.MapPath("~/UploadSheet/" + excelfile.FileName + DateTime.Now.ToString("MM.dd.yyyy"));
+                        path = Server.MapPath("~/UploadSheet/");
                         if (System.IO.File.Exists(path))
                         {
                             System.IO.File.Delete(path);
                         }
-                        excelfile.SaveAs(path);
+                        excelfile.SaveAs(path + Path.GetFileName(excelfile.FileName));
+                        path =path + Path.GetFileName(excelfile.FileName);
+                       // excelfile.SaveAs(path);
                     }
                     catch (Exception ex)
                     {
