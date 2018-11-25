@@ -33,9 +33,9 @@ namespace ExcellentMarketResearch.Models.ViewModel
         [Required(ErrorMessage = "Customer Message should not be empty")]
         public string CustomerMessage { get; set; }
 
-        [Required(ErrorMessage = "Enter Verification Code")]
-        [Display(Name = "Verification Code:")]
-        public string CaptchaCode { get; set; }
+        //[Required(ErrorMessage = "Enter Verification Code")]
+        //[Display(Name = "Verification Code:")]
+        //public string CaptchaCode { get; set; }
 
         //[Required(ErrorMessage = "Area code not be empty")]
         //public string AreaCode { get; set; }
