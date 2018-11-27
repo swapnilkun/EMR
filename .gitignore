@@ -1,4 +1,10 @@
-
-.vs/*
-*/bin/*
-*/obj/*
+*\bin\*
+*\obj\*
+*.suo
+ExcellentMarketResearch/bin/*
+*.dll
+*.xml
+*.pdb
+*.txt
+ExcellentMarketResearch/obj/*
+ExcellentMarketResearch/Properties/*

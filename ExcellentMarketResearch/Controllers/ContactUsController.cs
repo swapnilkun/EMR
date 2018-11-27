@@ -113,10 +113,10 @@ namespace ExcellentMarketResearch.Controllers
 
 
                         //Auto Mailer
-                        objEmailsending.SendEmail("sales@excellentmarketresearch.com", "Sales", cst.EmailId, "", "", "ExcellentMarketResearch.com  : ContactUs" + " ", GenerateMailBody_ContactUs_AutoReply(cst.Name, ReportTitle));
+                        objEmailsending.SendEmail("sales@excellentmarketresearch.com", "Sales", cst.EmailId, "balasahebpatil1612@gmail.com", "", "ExcellentMarketResearch.com  : ContactUs" + " ", GenerateMailBody_ContactUs_AutoReply(cst.Name, ReportTitle));
 
                         //To company
-                        objEmailsending.SendEmail("sales@excellentmarketresearch.com", "Sales", "sales@excellentmarketresearch.com,", "", "md@excellentmarketresearch.com", "ExcellentMarketResearch.com " + " : " + "Contact Us", GenerateMailBody_ContactUs(ReportTitle, cst.Name, cst.EmailId, cst.PhoneNumber, "!", "!", "!", cst.CustomerMessage));
+                        objEmailsending.SendEmail("sales@excellentmarketresearch.com", "Sales", "sales@excellentmarketresearch.com,balasahebpatil1612@gmail.com", "", "md@excellentmarketresearch.com", "ExcellentMarketResearch.com " + " : " + "Contact Us", GenerateMailBody_ContactUs(ReportTitle, cst.Name, cst.EmailId, cst.PhoneNumber, "!", "!", "!", cst.CustomerMessage));
 
                         Session["Name"] = cst.Name;
 

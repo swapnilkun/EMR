@@ -99,8 +99,8 @@ namespace ExcellentMarketResearch.Models.PaymentGateway
                      + "<br /><br />Thank you for your interest in <b>" + "ExcellentMarketResearch.com" + "</b>."
                      + "<br /><br />We'll contact you soon to serve your research needs."
                      + "<b><br /><br />Regards,"
-                     + "<br /Daniel Miller | Corporate Sales Specialist, USA"
-                     + "<br />Direct line: +1-312-588-9716#"
+                     + "<br /Robert Smith | Corporate Sales Specialist, USA"
+                     + "<br />Direct line: +1-312-588-9716"
                      + "<br />" + "https://www.excellentmarketresearch.com"
                      + "<br />E-mail: sales@excellentmarketresearch.com | Web: " + "https://www.excellentmarketresearch.com" + "</b>";
             }
@@ -114,7 +114,7 @@ namespace ExcellentMarketResearch.Models.PaymentGateway
                     + "<br /><br />We'll contact you soon to serve your research needs."
                     + "<b><br /><br />Regards,"
                      + "<br /Daniel Miller | Corporate Sales Specialist, USA"
-                     + "<br />Direct line: +1-312-588-9716#"
+                     + "<br />Direct line: +1-312-588-9716"
                      + "<br />" + "https://www.excellentmarketresearch.com"
                      + "<br />E-mail: sales@excellentmarketresearch.com | Web: " + "https://www.excellentmarketresearch.com" + "</b>";
             }
@@ -169,23 +169,23 @@ namespace ExcellentMarketResearch.Models.PaymentGateway
         //    return result;
         //}
 
-        public string GenerateMailBody_PaypalError_AutoReply(string Name, string ReportTitle, string ReportURL)
-        {
-            string result = "";
-            result = "Dear " + Name + ","
-                + "<br /><br />You canceled payment for report,"
-                + "<br /><b>" + ReportTitle + "</b>."
-                + "<br />" + "www.excellentmarketresearch.biz" + "/report/" + ReportURL
-                + "<br /><br />Did you experienced problem in our service?"
-                + "<br /><br />Let us know."
-                + "<b><br /><br />Warm regards,"
-                + "<br />Miler John | Corporate Sales Specialist,USA"
-                + "<br />Direct line: + 1-855-465-4651"
-                + "<br />9D Research Group"
-                + "<br />E-mail: joel@9dresearchgroup.com | Web: " + "www.QYGROUP.biz" + "</b>"
-                + "<br /><br />Thanks,"
-                + "<br />9D Research Group";
-            return result;
-        }
+        ////public string GenerateMailBody_PaypalError_AutoReply(string Name, string ReportTitle, string ReportURL)
+        ////{
+        ////    string result = "";
+        ////    result = "Dear " + Name + ","
+        ////        + "<br /><br />You canceled payment for report,"
+        ////        + "<br /><b>" + ReportTitle + "</b>."
+        ////        + "<br />" + "www.excellentmarketresearch.biz" + "/report/" + ReportURL
+        ////        + "<br /><br />Did you experienced problem in our service?"
+        ////        + "<br /><br />Let us know."
+        ////        + "<b><br /><br />Warm regards,"
+        ////        + "<br />Miler John | Corporate Sales Specialist,USA"
+        ////        + "<br />Direct line: + 1-855-465-4651"
+        ////        + "<br />9D Research Group"
+        ////        + "<br />E-mail: joel@9dresearchgroup.com | Web: " + "www.QYGROUP.biz" + "</b>"
+        ////        + "<br /><br />Thanks,"
+        ////        + "<br />9D Research Group";
+        ////    return result;
+        ////}
     }
 }

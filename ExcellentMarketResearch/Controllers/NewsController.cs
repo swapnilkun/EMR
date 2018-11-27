@@ -50,7 +50,8 @@ namespace ExcellentMarketResearch.Controllers
                                   NewsPublishingDate = l.PublishingDate,
                                   CategoryName = c.CategoryName,
                                   CategoryUrl = c.CategoryUrl,
-                                  CategoryId = c.CategoryId
+                                  CategoryId = c.CategoryId,
+                                  NewsImage=l.NewsImage
                               }).Take(5).ToList();
             return PartialView(latestnews);
         }
