@@ -11,7 +11,8 @@ namespace ExcellentMarketResearch.Models.PaymentGateway
         {
             System.Web.HttpContext context = System.Web.HttpContext.Current;
 
-            string ipAddress = context.Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
+            //string ipAddress = context.Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
+            string ipAddress = "127.0.0.1";
 
             if (!string.IsNullOrEmpty(ipAddress))
             {

@@ -37,5 +37,9 @@ namespace ExcellentMarketResearch.Models
         public string TransactionId { get; set; }
         public string ReportTitle { get; set; }
         public int ReportId { get; set; }
+        public Nullable<System.DateTime> CreatedDate { get; set; }
+        public Nullable<bool> PaymentTransaction { get; set; }
+        public string ErrorReason { get; set; }
+        public string ErrorCode { get; set; }
     }
 }

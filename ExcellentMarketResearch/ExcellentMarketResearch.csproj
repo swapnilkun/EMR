@@ -41,6 +41,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -53,11 +57,23 @@
       <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="PaymentLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\user\Desktop\PaymentLibrary\PaymentLibrary.dll</HintPath>
+    </Reference>
     <Reference Include="PayPal, Version=1.9.1.0, Culture=neutral, PublicKeyToken=5b4afc1ccaef40fb, processorArchitecture=MSIL">
       <HintPath>..\packages\PayPal.1.9.1\lib\net45\PayPal.dll</HintPath>
     </Reference>
     <Reference Include="PayPalCoreSDK, Version=1.7.1.0, Culture=neutral, PublicKeyToken=5b4afc1ccaef40fb, processorArchitecture=MSIL">
       <HintPath>..\packages\PayPalCoreSDK.1.7.1\lib\net45\PayPalCoreSDK.dll</HintPath>
+    </Reference>
+    <Reference Include="StackifyLib, Version=1.21.5920.28436, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\StackifyLib.1.21.0.0\lib\StackifyLib.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="StackifyLib.log4net, Version=1.18.5890.19948, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\StackifyLib.log4net.v1_2_10.1.18.1.0\lib\StackifyLib.log4net.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -996,16 +1012,6 @@
     <Content Include="js\vendor\html5shim.js" />
     <Content Include="js\vendor\modernizr-2.8.1.min.js" />
     <Content Include="js\vendor\respond.min.js" />
-    <Content Include="Models\ExcellentMarketResearch.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ExcellentMarketResearch.edmx</DependentUpon>
-      <LastGenOutput>ExcellentMarketResearch.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\ExcellentMarketResearch.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ExcellentMarketResearch.edmx</DependentUpon>
-      <LastGenOutput>ExcellentMarketResearch.cs</LastGenOutput>
-    </Content>
     <Content Include="owl.carousel\assets\owl.carousel.css" />
     <Content Include="owl.carousel\owl.carousel.js" />
     <Content Include="owl.carousel\owl.carousel.min.js" />
@@ -1104,17 +1110,30 @@
     <Content Include="Areas\Admin\Views\Category\CategoryEdit.cshtml" />
     <Content Include="Areas\Admin\Views\Category\CategoryIndex.cshtml" />
     <Content Include="Areas\Admin\Views\Category\CreateCategory.cshtml" />
-    <EntityDeploy Include="Models\ExcellentMarketResearch.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ExcellentMarketResearch.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\ExcellentMarketResearch.edmx.diagram">
-      <DependentUpon>ExcellentMarketResearch.edmx</DependentUpon>
-    </Content>
     <Content Include="PayPal\PayPal.config" />
     <Content Include="Areas\Admin\Views\Adminlogin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Adminlogin\Login.cshtml" />
     <Content Include="Areas\Admin\Views\Adminlogin\loginfailed.cshtml" />
+    <EntityDeploy Include="Models\ExcellentMarketResearch.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ExcellentMarketResearch.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\ExcellentMarketResearch.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ExcellentMarketResearch.edmx</DependentUpon>
+      <LastGenOutput>ExcellentMarketResearch.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ExcellentMarketResearch.edmx.diagram">
+      <DependentUpon>ExcellentMarketResearch.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\ExcellentMarketResearch.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ExcellentMarketResearch.edmx</DependentUpon>
+      <LastGenOutput>ExcellentMarketResearch.cs</LastGenOutput>
+    </Content>
+    <Content Include="paypalconfig\paypal.config">
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="Properties\PublishProfiles\excellentmarketresearch.com - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\excellentmarketresearch.com - Web Deploy1.pubxml" />
     <None Include="Properties\PublishProfiles\excellentmarketresearch.com - Web Deploy2.pubxml" />
@@ -1141,7 +1160,9 @@
     <Content Include="Scripts\knockout-2.1.0.debug.js" />
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>

@@ -113,7 +113,7 @@ namespace ExcellentMarketResearch.Models.PaymentGateway
                     //+ "<br /><br />" + "hhj.biz".Substring(0, "jhjhg.biz".Length - 1) + ReportURL
                     + "<br /><br />We'll contact you soon to serve your research needs."
                     + "<b><br /><br />Regards,"
-                     + "<br /Daniel Miller | Corporate Sales Specialist, USA"
+                     + "<br /Robert Smith  | Corporate Sales Specialist, USA"
                      + "<br />Direct line: +1-312-588-9716"
                      + "<br />" + "https://www.excellentmarketresearch.com"
                      + "<br />E-mail: sales@excellentmarketresearch.com | Web: " + "https://www.excellentmarketresearch.com" + "</b>";
@@ -140,52 +140,72 @@ namespace ExcellentMarketResearch.Models.PaymentGateway
         }
 
 
-        //public string GenerateMailBody_RequestSample(string PaymentSucess, BuyingVM userdata)
-        //{
-        //    string result = "";
-        //    //result = "Dear Admin, Payment made for <br /><br />" + "<table>";
-        //    result = PaymentSucess + "<table>";
-        //    result += userdata.ReportTitle != "" ? "<tr> <td valign='top' width='30%'><b>Report Title</b></td>   <td valign='top' width='2%'><b> : </b></td> <td valign='top' width='68%'>" + userdata.ReportTitle + "</td> </tr>" : "";
-        //    result += userdata.Name != "" ? "<tr> <td valign='top'><b>Customer Name</b></td>  <td valign='top'><b> : </b></td> <td valign='top'>" + userdata.Name + "</td> </tr>" : "";
-        //    result += userdata.EmailId != "" ? "<tr> <td valign='top'><b>Email ID</b></td>       <td valign='top'><b> : </b></td> <td valign='top'>" + userdata.EmailId + "</td> </tr>" : "";
-        //    result += userdata.PhoneNumber != "" ? "<tr> <td valign='top'><b>Phone</b></td>          <td valign='top'><b> : </b></td> <td valign='top'>" + userdata.PhoneNumber + "</td> </tr>" : "";
-        //    result += userdata.Company != "" ? "<tr> <td valign='top'><b>Company Name</b></td>   <td valign='top'><b> : </b></td> <td valign='top'>" + userdata.Company + "</td> </tr>" : "";
-        //    result += userdata.Designation != "" ? "<tr> <td valign='top'><b>Designation</b></td>    <td valign='top'><b> : </b></td> <td valign='top'>" + userdata.Designation + "</td> </tr>" : "";
-        //    result += userdata.Country != "" ? "<tr> <td valign='top'><b>Country Name</b></td>   <td valign='top'><b> : </b></td> <td valign='top'>" + userdata.Country + "</td> </tr>" : "";
-        //    //result += txtComment.Text.Trim() != "" ? "<tr> <td valign='top'><b>Enquiry Text</b></td>   <td valign='top'><b> : </b></td> <td valign='top'>" + txtComment.Text.Trim() + "</td> </tr>" : "";
-        //    result += "<tr> <td valign='top'><b>IP Address</b></td>     <td valign='top'><b> : </b></td> <td valign='top'>" + userdata.IPAddress + "</td> </tr>";
-        //    result += "</table>";
-        //    return result;
-        //}
+        public string GenerateMailBody_PaymentMade(string PaymentSucess, BuyingVM userdata)
+        {
+            string result = "";
+            //result = "Dear Admin, Payment made for <br /><br />" + "<table>";
+            result = PaymentSucess + "<table>";
+            result += userdata.ReportTitle != "" ? "<tr> <td valign='top' width='30%'><b>Report Title</b></td>   <td valign='top' width='2%'><b> : </b></td> <td valign='top' width='68%'>" + userdata.ReportTitle + "</td> </tr>" : "";
+            result += userdata.Name != "" ? "<tr> <td valign='top'><b>Customer Name</b></td>  <td valign='top'><b> : </b></td> <td valign='top'>" + userdata.Name + "</td> </tr>" : "";
+            result += userdata.EmailId != "" ? "<tr> <td valign='top'><b>Email ID</b></td>       <td valign='top'><b> : </b></td> <td valign='top'>" + userdata.EmailId + "</td> </tr>" : "";
+            result += userdata.PhoneNumber != "" ? "<tr> <td valign='top'><b>Phone</b></td>          <td valign='top'><b> : </b></td> <td valign='top'>" + userdata.PhoneNumber + "</td> </tr>" : "";
+            result += userdata.Company != "" ? "<tr> <td valign='top'><b>Company Name</b></td>   <td valign='top'><b> : </b></td> <td valign='top'>" + userdata.Company + "</td> </tr>" : "";
+            result += userdata.Designation != "" ? "<tr> <td valign='top'><b>Designation</b></td>    <td valign='top'><b> : </b></td> <td valign='top'>" + userdata.Designation + "</td> </tr>" : "";
+            result += userdata.Country != "" ? "<tr> <td valign='top'><b>Country Name</b></td>   <td valign='top'><b> : </b></td> <td valign='top'>" + userdata.Country + "</td> </tr>" : "";
+            //result += txtComment.Text.Trim() != "" ? "<tr> <td valign='top'><b>Enquiry Text</b></td>   <td valign='top'><b> : </b></td> <td valign='top'>" + txtComment.Text.Trim() + "</td> </tr>" : "";
+            result += "<tr> <td valign='top'><b>IP Address</b></td>     <td valign='top'><b> : </b></td> <td valign='top'>" + userdata.IPAddress + "</td> </tr>";
+            result += "</table>";
+            return result;
+        }
 
-        //public string GenerateMailBody_RequestSample_AutoReply(string Name, string ReportTitle)
+        public string GenerateMailBody_PaymentMade_AutoReply(string Name, string ReportTitle)
+        {
+            string result = "";
+            result = "Dear " + Name + ","
+                + "<br /><br />Thanks for payment for report, <b>" + ReportTitle + "</b>."
+                + "<br /><br />Hope you like our service. We would like to service you again."
+                + "<br /><br />Thanks,"
+                + "<br />" + "www.excellentmarketresearch.com" + " | " + "www.excellentmarketresearch.com";
+            return result;
+        }
+
+        //public string GenerateMailBody_PaypalError_AutoReply(string Name, string ReportTitle, string ReportURL)
         //{
         //    string result = "";
         //    result = "Dear " + Name + ","
-        //        + "<br /><br />Thanks for payment for report, <b>" + ReportTitle + "</b>."
-        //        + "<br /><br />Hope you like our service. We would like to service you again."
+        //        + "<br /><br />You canceled payment for report,"
+        //        + "<br /><b>" + ReportTitle + "</b>."
+        //        + "<br />" + "www.excellentmarketresearch.com" + "/report/" + ReportURL
+        //        + "<br /><br />Did you experienced problem in our service?"
+        //        + "<br /><br />Let us know."
+        //        + "<b><br /><br />Warm regards,"
+        //        + "<br />Robert Smith | Corporate Sales Specialist,USA"
+        //        + "<br />Direct line: + 1-855-465-4651"
+        //        + "<br />Excellent Market Research"
+        //        + "<br />E-mail: joel@9dresearchgroup.com | Web: " + "www.excellentmarketresearch.com" + "</b>"
         //        + "<br /><br />Thanks,"
-        //        + "<br />" + "www.excellentmarketresearch.com" + " | " + "www.excellentmarketresearch.com";
+        //        + "<br />Excellent Market Research ";
         //    return result;
         //}
+        public string GenerateMailBody_PaypalError_AutoReply(string Name, string ReportTitle, string ReportURL)
+        {
+            string result = "";
 
-        ////public string GenerateMailBody_PaypalError_AutoReply(string Name, string ReportTitle, string ReportURL)
-        ////{
-        ////    string result = "";
-        ////    result = "Dear " + Name + ","
-        ////        + "<br /><br />You canceled payment for report,"
-        ////        + "<br /><b>" + ReportTitle + "</b>."
-        ////        + "<br />" + "www.excellentmarketresearch.biz" + "/report/" + ReportURL
-        ////        + "<br /><br />Did you experienced problem in our service?"
-        ////        + "<br /><br />Let us know."
-        ////        + "<b><br /><br />Warm regards,"
-        ////        + "<br />Miler John | Corporate Sales Specialist,USA"
-        ////        + "<br />Direct line: + 1-855-465-4651"
-        ////        + "<br />9D Research Group"
-        ////        + "<br />E-mail: joel@9dresearchgroup.com | Web: " + "www.QYGROUP.biz" + "</b>"
-        ////        + "<br /><br />Thanks,"
-        ////        + "<br />9D Research Group";
-        ////    return result;
-        ////}
+            result = "Dear " + Name + ","
+                + "<br /><br />You canceled payment for report,"
+                + "<br /><b>" + ReportTitle + "</b>."
+                + "<br />" + "https://www.excellentmarketresearch.com/report/" + ReportURL
+                + "<br /><br />Did you experienced problem in our service?"
+                + "<br /><br />Let us know."
+                + "<b><br /><br />Warm regards,"
+                + "<br />Robert Smith | Corporate Sales Specialist,USA"
+                + "<br />Direct line: +1-312-588-9716"
+                + "<br />excellentmarketresearch"
+                + "<br />E-mail: sales@excellentmarketresearch.com | Web: " + "https://www.excellentmarketresearch.com" + "</b>"
+                + "<br /><br />Thanks,"
+                + "<br />www.excellentmarketresearch.com";
+
+            return result;
+        }
     }
 }

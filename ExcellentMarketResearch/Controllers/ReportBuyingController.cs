@@ -12,6 +12,7 @@ using System.IO;
 using System.Text;
 using PayPal;
 using PayPal.Api;
+using System.Threading.Tasks;
 
 namespace ExcellentMarketResearch.Controllers
 {
@@ -22,7 +23,7 @@ namespace ExcellentMarketResearch.Controllers
 
         ExcellentMarketResearchEntities db = new ExcellentMarketResearchEntities();
 
-        //  Emailsending objEmailsending = new Emailsending();
+          Emailsending objEmailsending = new Emailsending();
 
         string generatedtext = string.Empty;
         string realCaptcha = string.Empty;
@@ -145,12 +146,18 @@ namespace ExcellentMarketResearch.Controllers
                             //To company
                             //                        objEmailsending.SendEmail(ObjBuy.EmailId, ObjBuy.Name, "payments@xyx.com", "", "md@xyz.com,naveen.p@xyz.com", "xyz.com" + " : Payment Initiated(pay pal )", GenerateMailBody_PaymentInitiated(ObjBuy.ReportTitle, ObjBuy.Name, ObjBuy.EmailId, ObjBuy.PhoneNumber, ObjBuy.Company, "", "", ObjBuy.Country, ""));
 
+                            //Auto Mailer
+                            Task.Run(() => objEmailsending.SendEmail("sales@excellentmarketresearch.com", "Sales", ObjBuy.EmailId, "", "balasahebpatil1612@gmail.com", "excellentmarketresearch.com : (Payment Initiated )" + ObjBuy.ReportTitle, GenerateMailBody_PaymentInitiated_AutoReply(ObjBuy.ReportTitle, ObjBuy.Name)));
 
+                            //To company
+                            // Task.Run(() => objEmailsending.SendEmail("sales@excellentmarketresearcg.com", "Sales", "balasahebpatil1612@gmail.com", "", "", "ExcellentMarketResearch.com" + " : " + Formname,objEmailsending.GenerateMailBody_RequestSample(eq.ReportTitle, cst.Name, cst.EmailId, cst.PhoneNumber, cst.Company, cst.Country, cst.Designation, cst.CustomerMessage)));
+                            Task.Run(() => objEmailsending.SendEmail("sales@excellentmarketresearch.com", "Sales", "sales@excellentmarketresearch.com", "", "", "excellentMarketResearch.com" + " : Payment Initiated(pay pal ) " , GenerateMailBody_PaymentInitiated(ObjBuy.ReportTitle, ObjBuy.Name, ObjBuy.EmailId, ObjBuy.PhoneNumber, ObjBuy.Company, "", "", ObjBuy.Country, "")));
+                                                                                                                                                                                                                                         
 
                             //The paypalpage will appear to the user or buer ....
-                            //Paypal._PayPal(ObjBuy);
+                            Paypal._PayPal(ObjBuy);
 
-                            PaymentWithPaypal(ObjBuy, null);
+                            //PaymentWithPaypal(ObjBuy, null);
                             //return RedirectToAction("PaymentWithPaypal", "ReportBuying", new {ObjBuy, Cancel = false });
                             //return RedirectToAction("PaymentWithPaypal");
 
@@ -196,59 +203,59 @@ namespace ExcellentMarketResearch.Controllers
             return randomText.ToString();
         }
 
-        //public ActionResult PayPalProcess(PaymentLibrary.PayPal.PayPalResponse response)
-        //{
-        //    var Mailbody = new QYGroupRepository.PaymentGateway.Emailsending();
-        //    string PaymentStatus = string.Empty;
-        //    BuyingVM buy = new BuyingVM();
-        //    var userdata = (from b in db.BuyingInfoes
-        //                    where b.GuId == response.guid
-        //                    select b).FirstOrDefault();
-        //    var userReport = (from r in db.ReportMasters
-        //                      where r.ReportId == userdata.ReportId
-        //                      select new { r.ReportTitle, r.ReportURL }).FirstOrDefault();
+        public ActionResult paypalprocess(PaymentLibrary.PayPal.PayPalResponse response)
+        {
+            var mailbody = new ExcellentMarketResearch.Models.PaymentGateway.Emailsending();
+            string paymentstatus = string.Empty;
+            BuyingVM buy = new BuyingVM();
+            var userdata = (from b in db.BuyingInfoes
+                            where b.GuId == response.guid
+                            select b).FirstOrDefault();
+            var userreport = (from r in db.ReportMasters
+                              where r.ReportId == userdata.ReportId
+                              select new { r.ReportTitle, r.ReportUrl }).FirstOrDefault();
 
-        //    buy.Name = userdata.Name;
-        //    buy.ReportTitle = userReport.ReportTitle.ToString();
-        //    buy.ReportUrl = userReport.ReportURL.ToString();
-        //    buy.Company = userdata.Company;
-        //    buy.EmailId = userdata.EmailId;
-        //    buy.Country = userdata.Country;
-        //    buy.IPAddress = userdata.IpAddress;
-        //    buy.PhoneNumber = userdata.PhoneNumber;
-        //    buy.Designation = userdata.Designation;
-
-
-        //    if (Paypal.PayPalProcess(response))
-        //    {
+            buy.Name = userdata.Name;
+            buy.ReportTitle = userreport.ReportTitle.ToString();
+            buy.ReportUrl = userreport.ReportUrl.ToString();
+            buy.Company = userdata.Company;
+            buy.EmailId = userdata.EmailId;
+            buy.Country = userdata.Country;
+            buy.IPAddress = userdata.IPAddress;
+            buy.PhoneNumber = userdata.PhoneNumber;
+            buy.Designation = userdata.Designation;
 
 
-        //        PaymentStatus = "Dear Admin, Payment made for <br /><br />";
-
-        //        //Auto Mailer
-        //        objEmailsending.SendEmail("sales@marketresearchtrade.com", "Sales", userdata.EmailId, "", "balasaheb.p@marketresearchstore.com", "Market Research Trade :Payment Confirmation ", Mailbody.GenerateMailBody_RequestSample(PaymentStatus, buy));
-
-        //        //To company
-        //        objEmailsending.SendEmail(userdata.EmailId, userdata.Name, "payments@marketresearchstore.com", "", "balasaheb.p@marketresearchstore.com", "Market Research Trade " + " :Payment Confirmation(Pay Pal) ", new QYGroupRepository.PaymentGateway.Emailsending().GenerateMailBody_RequestSample_AutoReply(userdata.Name.ToString(), userReport.ReportTitle.ToString()));
+            if (Paypal.PayPalProcess(response))
+            {
 
 
-        //        return RedirectToAction("Sucess", "Paymentprocess");
-        //    }
-        //    else
-        //    {
-        //        PaymentStatus = "Dear Admin, Payment canceled or unapproved for report<br /><br />";
+                paymentstatus = "dear admin, payment made for <br /><br />";
+
+                //auto mailer
+                objEmailsending.SendEmail("sales@excellentmarketresearch.com", "sales", userdata.EmailId, "", "danielmiller@excellentmarketresearch.com", "Excellent Market Research :payment confirmation ", mailbody.GenerateMailBody_PaymentMade(paymentstatus, buy));
+
+                //to company
+                objEmailsending.SendEmail("sales@excellentmarketresearch.com", userdata.Name, "sales@excellentmarketresearch.com", "danielmiller@excellentmarketresearch.com", ".com", "Excellent Market Research " + " :payment confirmation(paypal) ", mailbody.GenerateMailBody_PaymentMade_AutoReply(userdata.Name.ToString(), userreport.ReportTitle.ToString()));
 
 
-        //        //To Buyer
-        //        objEmailsending.SendEmail("sales@marketresearchtrade.com", "Sales", userdata.EmailId, "", "balasaheb.p@marketresearchstore.com", "Market Research Trade : " + " : Payment Cancel(Pay Pal)", GenerateMailBody_PaypalError_AutoReply(buy.Name, buy.ReportTitle, buy.ReportUrl));
+                return RedirectToAction("sucess", "paymentprocess");
+            }
+            else
+            {
+                paymentstatus = "dear admin, payment canceled or unapproved for report<br /><br />";
 
-        //        //To company
-        //        objEmailsending.SendEmail(userdata.EmailId, userdata.Name, "payments@marketresearchstore.com", "", "balasaheb.p@marketresearchstore.com", "Market Research Trade" + " : Payment Cancel(Pay Pal)", new QYGroupRepository.PaymentGateway.Emailsending().GenerateMailBody_PaypalError_AutoReply(userdata.Name.ToString(), userReport.ReportTitle.ToString(), userReport.ReportURL.ToString()));
 
-        //        return RedirectToAction("Failure", "Paymentprocess");
-        //    }
+                //to buyer
+                objEmailsending.SendEmail("sales@excellentmarketresearch.com", "sales", userdata.EmailId, "", "", "Excellent Market Research : " + " : payment cancel(pay pal)", mailbody.GenerateMailBody_PaypalError_AutoReply(buy.Name, buy.ReportTitle, buy.ReportUrl));
 
-        //}
+                //to company
+                objEmailsending.SendEmail("sales@excellentmarketresearch.com", userdata.Name, "sales@excellentmarketresearch.com", "danielmiller@excellentmarketresearch.com", "", "Excellent Market Research" + " : payment cancel(pay pal)", mailbody.GenerateMailBody_PaypalError_AutoReply(userdata.Name.ToString(), userreport.ReportTitle.ToString(), userreport.ReportUrl.ToString()));
+
+                return RedirectToAction("failure", "paymentprocess");
+            }
+
+        }
 
         public FileResult CaptchaImage()
         {
@@ -311,7 +318,7 @@ namespace ExcellentMarketResearch.Controllers
                         + "<tr><td><b>State</b></td><td>" + State + "</td></tr>"
                         + "<tr><td><b>Country Name -</b></td><td>" + CountryName + " </td></tr>"
                         + "<tr><td>Zip Code<b></b></td><td>" + ZipCode + "</td></tr>"
-                        + "<tr><td><b>IP Address -</b> </td><td>" + "QYGroupRepository.PaymentGateway.IPAddress.GetIPAddress()" + "</td></tr>"
+                        + "<tr><td><b>IP Address -</b> </td><td>" + ExcellentMarketResearch.Models.PaymentGateway.IPAddress.GetIPAddress() + "</td></tr>"
                     + "</table>";
             return result;
         }
@@ -326,26 +333,7 @@ namespace ExcellentMarketResearch.Controllers
             return result;
         }
 
-        private string GenerateMailBody_PaypalError_AutoReply(string Name, string ReportTitle, string ReportURL)
-        {
-            string result = "";
-
-            result = "Dear " + Name + ","
-                + "<br /><br />You canceled payment for report,"
-                + "<br /><b>" + ReportTitle + "</b>."
-                + "<br />" + "https://www.excellentmarketresearch.com/report/" + ReportURL
-                + "<br /><br />Did you experienced problem in our service?"
-                + "<br /><br />Let us know."
-                + "<b><br /><br />Warm regards,"
-                + "<br />Joel John | Corporate Sales Specialist,USA"
-                + "<br />Direct line: + 1-855-465-4651"
-                + "<br />excellentmarketresearch"
-                + "<br />E-mail: sales@excellentmarketresearch.biz | Web: " + "https://www.excellentmarketresearch.com" + "</b>"
-                + "<br /><br />Thanks,"
-                + "<br />excellentmarketresearch.com";
-
-            return result;
-        }
+        
 
         public ActionResult PaymentWithPaypal(BuyingVM buyingVM, string Cancel = null)
         {
