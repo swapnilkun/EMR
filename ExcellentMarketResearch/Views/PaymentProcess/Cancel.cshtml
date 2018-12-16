@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "Cancel";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section class="page-title-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="page-header-wrap">
+                    <div class="page-header">
+                        <h1>Payment Canceled</h1>
+                    </div>
+                    <ol class="breadcrumb">
+                        <li><a href="@Url.Action("index", "Home")">Home</a></li>
+                        <li class="active">Payment Canceled</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="faq-contents">
+    <div class="container">
+        <div class="row">
+            @*@<div class="col-md-3 col-sm-5 col-xs-12">
+                    <div class="service-sidebar sidebar-wrapper">
+                        @{Html.RenderAction("PartialCat", "Category");}
+                    </div>
+                    <!-- /.sidebar-wrapper -->
+                </div>*@
+            <!-- /.col -->
+            <div class="col-md-9 col-sm-7 col-xs-12">
+                <h2>Your Transaction has cancled Please Please cantact us for More Info...</h2>
+
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+</section>

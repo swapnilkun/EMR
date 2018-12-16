@@ -28,7 +28,7 @@ namespace ExcellentMarketResearch.Models.PaymentGateway
         private static string GetAccessToken()
         {
             // getting accesstocken from paypal  
-            string accessToken = new OAuthTokenCredential(ClientId, ClientSecret, GetConfig()).GetAccessToken();
+            string accessToken = new PayPal.Api.OAuthTokenCredential(ClientId, ClientSecret, GetConfig()).GetAccessToken();
             return accessToken;
         }
         public static PayPal.Api.APIContext GetAPIContext()

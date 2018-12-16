@@ -23,7 +23,7 @@ namespace ExcellentMarketResearch.Controllers
 
         ExcellentMarketResearchEntities db = new ExcellentMarketResearchEntities();
 
-          Emailsending objEmailsending = new Emailsending();
+        Emailsending objEmailsending = new Emailsending();
 
         string generatedtext = string.Empty;
         string realCaptcha = string.Empty;
@@ -76,7 +76,7 @@ namespace ExcellentMarketResearch.Controllers
 
             if (ModelState.IsValid)
             {
-                string realCaptcha = Session["Captchacode"].ToString();
+                //string realCaptcha = Session["Captchacode"].ToString();
                 string Publisher = string.Empty;
                 if (ObjBuy.ReportId > 0)
                 {
@@ -86,8 +86,8 @@ namespace ExcellentMarketResearch.Controllers
                                    select p).FirstOrDefault();
                     Publisher = publish.PublisherName;
                 }
-                if (ObjBuy.CaptchaCode == realCaptcha)
-                {
+                //if (ObjBuy.CaptchaCode == realCaptcha)
+                //{
                     //JavaScriptSerializer serializer = new JavaScriptSerializer();
                     //var s = serializer.Serialize(Enquiredata);
                     //BuyingInfo cst = serializer.Deserialize<BuyingInfo>(s);
@@ -107,7 +107,7 @@ namespace ExcellentMarketResearch.Controllers
                     binfo.ReportUrl = ObjBuy.ReportUrl;
                     binfo.EmailId = ObjBuy.EmailId;
                     binfo.Company = ObjBuy.Company;
-                    binfo.CaptchaCode = ObjBuy.CaptchaCode;
+                    binfo.CaptchaCode = "Systems";
                     binfo.Country = ObjBuy.Country;
                     binfo.Designation = ObjBuy.Designation;
                     binfo.State = ObjBuy.State;
@@ -151,11 +151,11 @@ namespace ExcellentMarketResearch.Controllers
 
                             //To company
                             // Task.Run(() => objEmailsending.SendEmail("sales@excellentmarketresearcg.com", "Sales", "balasahebpatil1612@gmail.com", "", "", "ExcellentMarketResearch.com" + " : " + Formname,objEmailsending.GenerateMailBody_RequestSample(eq.ReportTitle, cst.Name, cst.EmailId, cst.PhoneNumber, cst.Company, cst.Country, cst.Designation, cst.CustomerMessage)));
-                            Task.Run(() => objEmailsending.SendEmail("sales@excellentmarketresearch.com", "Sales", "sales@excellentmarketresearch.com", "", "", "excellentMarketResearch.com" + " : Payment Initiated(pay pal ) " , GenerateMailBody_PaymentInitiated(ObjBuy.ReportTitle, ObjBuy.Name, ObjBuy.EmailId, ObjBuy.PhoneNumber, ObjBuy.Company, "", "", ObjBuy.Country, "")));
-                                                                                                                                                                                                                                         
+                            Task.Run(() => objEmailsending.SendEmail("sales@excellentmarketresearch.com", "Sales", "sales@excellentmarketresearch.com", "", "", "excellentMarketResearch.com" + " : Payment Initiated(pay pal ) ", GenerateMailBody_PaymentInitiated(ObjBuy.ReportTitle, ObjBuy.Name, ObjBuy.EmailId, ObjBuy.PhoneNumber, ObjBuy.Company, "", "", ObjBuy.Country, "")));
+
 
                             //The paypalpage will appear to the user or buer ....
-                            Paypal._PayPal(ObjBuy);
+                            //Paypal._PayPal(ObjBuy);
 
                             //PaymentWithPaypal(ObjBuy, null);
                             //return RedirectToAction("PaymentWithPaypal", "ReportBuying", new {ObjBuy, Cancel = false });
@@ -176,14 +176,23 @@ namespace ExcellentMarketResearch.Controllers
                             }
                         }
                     }
-
-                }
-                else
-                    ModelState.AddModelError("", "Verification Code is Incorrect");
-
+                    Session["Name"] = ObjBuy.Name;
+                    return Json(new
+                    {
+                        msg = ObjBuy.GuId
+                        //return RedirectToAction("Index", "InquiryForm", new { reportid = ObjBuy.ReportId });
+                    });
+                //}
+                //else
+                //{
+                //    ModelState.AddModelError("", "Verification Code is Incorrect");
+                //}
             }
-            Session["Name"] = ObjBuy.Name;
-            return RedirectToAction("Index", "InquiryForm", new { reportid = ObjBuy.ReportId });
+            return Json(new
+            {
+                msg = "Error"
+                //return RedirectToAction("Index", "InquiryForm", new { reportid = ObjBuy.ReportId });
+            });
         }
 
         public string GetCaptcha()
@@ -203,7 +212,7 @@ namespace ExcellentMarketResearch.Controllers
             return randomText.ToString();
         }
 
-        public ActionResult paypalprocess(PaymentLibrary.PayPal.PayPalResponse response)
+        public ActionResult paypalprocess(PayPalResponse response)
         {
             var mailbody = new ExcellentMarketResearch.Models.PaymentGateway.Emailsending();
             string paymentstatus = string.Empty;
@@ -226,7 +235,7 @@ namespace ExcellentMarketResearch.Controllers
             buy.Designation = userdata.Designation;
 
 
-            if (Paypal.PayPalProcess(response))
+            if (response.PaymentStatus == "Success")
             {
 
 
@@ -238,8 +247,20 @@ namespace ExcellentMarketResearch.Controllers
                 //to company
                 objEmailsending.SendEmail("sales@excellentmarketresearch.com", userdata.Name, "sales@excellentmarketresearch.com", "danielmiller@excellentmarketresearch.com", ".com", "Excellent Market Research " + " :payment confirmation(paypal) ", mailbody.GenerateMailBody_PaymentMade_AutoReply(userdata.Name.ToString(), userreport.ReportTitle.ToString()));
 
-
-                return RedirectToAction("sucess", "paymentprocess");
+                return Json(new
+                {
+                    msg = "sucess"
+                    //return RedirectToAction("Index", "InquiryForm", new { reportid = ObjBuy.ReportId });
+                });
+                // return RedirectToAction("sucess", "paymentprocess");
+            }
+            else if (response.PaymentStatus == "Cancel")
+            {
+                return Json(new
+                {
+                    msg = "Cancel"
+                    //return RedirectToAction("Index", "InquiryForm", new { reportid = ObjBuy.ReportId });
+                }); 
             }
             else
             {
@@ -252,7 +273,12 @@ namespace ExcellentMarketResearch.Controllers
                 //to company
                 objEmailsending.SendEmail("sales@excellentmarketresearch.com", userdata.Name, "sales@excellentmarketresearch.com", "danielmiller@excellentmarketresearch.com", "", "Excellent Market Research" + " : payment cancel(pay pal)", mailbody.GenerateMailBody_PaypalError_AutoReply(userdata.Name.ToString(), userreport.ReportTitle.ToString(), userreport.ReportUrl.ToString()));
 
-                return RedirectToAction("failure", "paymentprocess");
+                return Json(new
+                {
+                    msg = "failure"
+                    //return RedirectToAction("Index", "InquiryForm", new { reportid = ObjBuy.ReportId });
+                });
+                //return RedirectToAction("failure", "paymentprocess");
             }
 
         }
@@ -333,7 +359,7 @@ namespace ExcellentMarketResearch.Controllers
             return result;
         }
 
-        
+
 
         public ActionResult PaymentWithPaypal(BuyingVM buyingVM, string Cancel = null)
         {
@@ -536,7 +562,7 @@ namespace ExcellentMarketResearch.Controllers
                 querystring += q + "=" + Request.QueryString[q] + "&";
 
             }
-         
+
             string paypalGuid = Request.QueryString["guid"];
             string paymentId = Request.QueryString["paymentId"];
             string token = Request.QueryString["token"];

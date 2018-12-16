@@ -2045,3 +2045,5 @@ li.disabled.PagedList-pageCountAndLocation a {width: 100px;border-radius: 20px;}
 input#Phonecode_ {width: 100%;padding: 6px;font-size: 14px;}
 .navbar-brand>img {display: block;width: 250px;position: relative;top: -15%;}
 .logo a.navbar-brand {padding: 0;margin: 0 auto;}
+.field-validation-valid {color: #ff0000;font-weight: 600;}
+
