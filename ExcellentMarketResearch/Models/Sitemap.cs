@@ -50,7 +50,7 @@ namespace ExcellentMarketResearch.Models
 
                 writer.WriteStartElement("url");
                 writer.WriteStartElement("loc");
-                writer.WriteString("http://localhost:1103/");
+                writer.WriteString("https://excellentmarketresearch.com/");
                 writer.WriteEndElement();
                 writer.WriteStartElement("changefreq");
                 writer.WriteString("daily");
@@ -65,7 +65,7 @@ namespace ExcellentMarketResearch.Models
                     //      HttpContext.Current.Request.Url.Host + "/report/" + reports[i].ReportUrl);
                     //writer.WriteString(HttpContext.Current.Request.Url.Scheme + "://" +
                     //    HttpContext.Current.Request.Url.Host+"/report/" + reports[i].ReportUrl);
-                    writer.WriteString("http://localhost:1103" + "/report/" + reports[i].ReportUrl);
+                    writer.WriteString("https://excellentmarketresearch.com" + "/report/" + reports[i].ReportUrl);
                     writer.WriteEndElement();
                     writer.WriteStartElement("changefreq");
                     writer.WriteString("daily");
@@ -99,7 +99,7 @@ namespace ExcellentMarketResearch.Models
 
             writer.WriteStartElement("url");
             writer.WriteStartElement("loc");
-            writer.WriteString("http://localhost:1103/");
+            writer.WriteString("https://excellentmarketresearch.com/");
             writer.WriteEndElement();
             writer.WriteStartElement("changefreq");
             writer.WriteString("daily");
@@ -116,7 +116,7 @@ namespace ExcellentMarketResearch.Models
                 {
                     writer.WriteStartElement("url");
                     writer.WriteStartElement("loc");
-                    writer.WriteString("http://localhost:1103/sitemap" + i + ".xml");
+                    writer.WriteString("https://excellentmarketresearch.com/"+"sitemap"+i + ".xml");
 
                     //writer.WriteString(HttpContext.Current.Request.Url.Scheme + "://" +
                     //        HttpContext.Current.Request.Url.Host + "/sitemap-report-" + i + ".xml");
