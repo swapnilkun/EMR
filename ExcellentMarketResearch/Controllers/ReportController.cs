@@ -36,10 +36,10 @@ namespace ExcellentMarketResearch.Controllers
                 if (parent > 0)
                     arr.Add((int)parent);
             }
-            
-          var i=arr.Last();
-          var caturlimag = db.CategoryMasters.Where(x => x.CategoryId == i).Select(x => x.CategoryUrl).FirstOrDefault();
-          return caturlimag;
+
+            var i = arr.Last();
+            var caturlimag = db.CategoryMasters.Where(x => x.CategoryId == i).Select(x => x.CategoryUrl).FirstOrDefault();
+            return caturlimag;
         }
         [OutputCache(Duration = 60, VaryByParam = "none")]
         public ActionResult LatestReportsForNews()
@@ -102,7 +102,7 @@ namespace ExcellentMarketResearch.Controllers
                                   RepImageCat = 0
                               }).ToList();
 
-            foreach(var item in Allreports)
+            foreach (var item in Allreports)
             {
                 item.ReportImage = DDLGetparents(item.CategoryId);
             }
@@ -125,12 +125,12 @@ namespace ExcellentMarketResearch.Controllers
             }).ToList();
 
             var reports = new StaticPagedList<ReportVM>(result, pageno ?? 1, 10, Convert.ToInt32(count.Value));
-           
+
             ViewBag.Totalreports = reports.TotalItemCount;
             ViewBag.Title = "All Latest Market Research Reports | Excellent Market Research";
             ViewBag.Description = "Excellent Market Research  Provides All Latest Market Research Reports of Different Categories and Custom Reports";
             ViewBag.Keywords = "Latest Reports, Trending Reports, Custom Reports, ";
-           
+
             return View(reports);
 
         }
@@ -201,28 +201,28 @@ namespace ExcellentMarketResearch.Controllers
                 var pricesort = sortby;
 
                 var SearchedReport = (from x in db.ReportMasters
-                                   join c in db.CategoryMasters
-                                   on x.CategoryId equals c.CategoryId
-                                   join p in db.PublisherMasters
-                                   on x.PublishereId equals p.PublisherId
-                                   where x.ReportTitle.Contains(searchkey)
-                                   orderby x.PublishingDate descending
-                                   select new ReportVM
-                                   {
-                                       ReportTitle = x.ReportTitle,
-                                       ReportUrl = x.ReportUrl,
-                                       FullDescription = x.LongDescritpion.Substring(0, 300),
-                                       NumberOfPage = x.NumberOfPages,
-                                       PriceSingleUser = x.SinglePrice,
-                                       PublishingDate = x.PublishingDate,
-                                       CategoryName = c.CategoryName,
-                                       CategoryUrl = c.CategoryUrl,
-                                       PublisherName = p.ContactName,
-                                       PublisherId = p.PublisherId,
-                                       PublishingUrl = p.publisherUrl,
-                                       CategoryId=c.CategoryId,
-                                       ReportImage=""
-                                   }).ToList();
+                                      join c in db.CategoryMasters
+                                      on x.CategoryId equals c.CategoryId
+                                      join p in db.PublisherMasters
+                                      on x.PublishereId equals p.PublisherId
+                                      where x.ReportTitle.Contains(searchkey)
+                                      orderby x.PublishingDate descending
+                                      select new ReportVM
+                                      {
+                                          ReportTitle = x.ReportTitle,
+                                          ReportUrl = x.ReportUrl,
+                                          FullDescription = x.LongDescritpion.Substring(0, 300),
+                                          NumberOfPage = x.NumberOfPages,
+                                          PriceSingleUser = x.SinglePrice,
+                                          PublishingDate = x.PublishingDate,
+                                          CategoryName = c.CategoryName,
+                                          CategoryUrl = c.CategoryUrl,
+                                          PublisherName = p.ContactName,
+                                          PublisherId = p.PublisherId,
+                                          PublishingUrl = p.publisherUrl,
+                                          CategoryId = c.CategoryId,
+                                          ReportImage = ""
+                                      }).ToList();
                 foreach (var item in SearchedReport)
                 {
                     item.ReportImage = DDLGetparents(item.CategoryId);
@@ -241,7 +241,7 @@ namespace ExcellentMarketResearch.Controllers
                                    PublisherId = z.PublisherId,
                                    PublisherName = z.PublisherName,
                                    PublishingUrl = z.PublishingUrl,
-                                   ReportImage=z.ReportImage
+                                   ReportImage = z.ReportImage
                                }).ToPagedList(pageno ?? 1, 10);
 
                 if (Reports.Count > 0)
@@ -303,8 +303,12 @@ namespace ExcellentMarketResearch.Controllers
                                                        ShortCatDesc = r.ShortDescription,
                                                        LongCatDesc = r.LongDescription,
                                                        PublisherName = r.PublisherName,
-                                                       ReportImage=DDLGetparents(r.CategoryId)
+                                                       ReportImage = DDLGetparents(r.CategoryId)
                                                    }).ToList();
+                foreach (var item in RelatedReportsOfSamefamilly)
+                {
+                    item.ReportImage = DDLGetparents(item.CategoryId);
+                }
 
                 var catreports = (from x in RelatedReportsOfSamefamilly
                                   select new ReportVM
@@ -325,7 +329,7 @@ namespace ExcellentMarketResearch.Controllers
                                       LongCatDesc = x.LongCatDesc,
                                       PublisherId = x.PublisherId,
                                       PublisherName = x.PublisherName,
-                                      ReportImage=x.ReportImage
+                                      ReportImage = x.ReportImage
                                   }).ToList();
 
                 var reports = new StaticPagedList<ReportVM>(catreports, pageno ?? 1, 10, Convert.ToInt32(count.Value));
@@ -372,6 +376,11 @@ namespace ExcellentMarketResearch.Controllers
                                           PublishingUrl = p.publisherUrl
 
                                       }).ToList();
+
+                foreach (var item in Relatedreports)
+                {
+                    item.ReportImage = DDLGetparents(item.CategoryId);
+                }
 
                 var reports = (from x in Relatedreports
                                select new ReportVM
@@ -463,7 +472,7 @@ namespace ExcellentMarketResearch.Controllers
                                  PublishingDate = r.PublishingDate,
                                  PublisherId = r.PublishereId,
                                  CategoryUrl = c.CategoryUrl
-                                
+
                              }).ToList();
 
 
@@ -481,7 +490,7 @@ namespace ExcellentMarketResearch.Controllers
                                         PublisherId = x.PublisherId,
                                         PublisherName = x.PublisherName,
                                         CategoryUrl = x.CategoryUrl,
-                                        ReportImage=DDLGetparents(x.CategoryId)
+                                        ReportImage = DDLGetparents(x.CategoryId)
                                     }).ToPagedList(pageno ?? 1, 10);
 
 
@@ -499,7 +508,7 @@ namespace ExcellentMarketResearch.Controllers
             return View(pubrelatedreport);
 
         }
-       
+
         //public JsonResult GetReports(string ReportKey)
         //{
         //    /* For  Autocomplete textbox  */

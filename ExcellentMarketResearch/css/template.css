@@ -949,7 +949,7 @@ COPYRIGHT SECTION
 --------------------------------------------------------------------- */
 .copyright-section {
   background-color: #f2f5f8;
-  padding: 45px 0;
+  padding: 5px 0;
 }
 
 .footer-menu li {
@@ -984,7 +984,7 @@ COPYRIGHT SECTION
 }
 
 .copyright-info {
-  margin-top: 14px;
+  margin-top: 0px;
   color: #b4b4b4;
   display: block;
   font-size: 14px;
