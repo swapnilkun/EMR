@@ -4,6 +4,7 @@
 }
 
 ﻿<div id="main-carousel" class="carousel slide hero-slide" data-ride="carousel">
+    @{Html.RenderAction("SearchingPartialView", "Home");}
     <!-- Indicators -->
     <ol class="carousel-indicators">
         <li data-target="#main-carousel" data-slide-to="0" class="active"></li>
@@ -22,7 +23,7 @@
                 <div class="col-md-2"><button type="submit" class="btn btn-primary">Search</button></div>
             </div>
             </form>*@
-        @{Html.RenderAction("SearchingPartialView", "Home");}
+
 
         <div class="item active">
             <img src="/img/slider/slide-1.jpg" alt="Excellent Market Research">
@@ -142,64 +143,63 @@
                 <a href="@Url.Action("MainCategories", "Category")" class="btn btn-primary quote-btn">All Categories</a>
             </div>
             <!-- /.row -->
+            @*<div class="row content-row" style="display: none;">
+                    <div class="col-sm-4">
+                        <div class="service">
+                            <div class="service-thumb-home">
+                                <a href="#">
+                                    <img src="img/trans.jpg" alt="">
+                                </a>
+                            </div>
 
-            <div class="row content-row" style="display: none;">
-                <div class="col-sm-4">
-                    <div class="service">
-                        <div class="service-thumb-home">
-                            <a href="#">
-                                <img src="img/trans.jpg" alt="">
-                            </a>
+                            <h3>Transportation &amp; Logistics</h3>
+                            <p>
+                                Holisticly synergize maintainable intellectual<br>
+                                capital via viral interfaces. Energistically<br>
+                                embrace funyctionalized
+                            </p>
+                            <a class="readmore" href="#">Read More &nbsp;<i class="fa fa-angle-right"></i> </a>
+                        </div>
+                    </div>
+                    <!-- /.col-sm-4 -->
+
+                    <div class="col-sm-4">
+                        <div class="service">
+                            <div class="service-thumb-home">
+                                <a href="#">
+                                    <img src="img/moving.jpg" alt="">
+                                </a>
+                            </div>
+                            <h3>Moving &amp; Storage</h3>
+                            <p>
+                                Holisticly synergize maintainable intellectual<br>
+                                capital via viral interfaces. Energistically<br>
+                                embrace functionalized
+                            </p>
+                            <a class="readmore" href="#">Read More &nbsp;<i class="fa fa-angle-right"></i> </a>
                         </div>
 
-                        <h3>Transportation &amp; Logistics</h3>
-                        <p>
-                            Holisticly synergize maintainable intellectual<br>
-                            capital via viral interfaces. Energistically<br>
-                            embrace funyctionalized
-                        </p>
-                        <a class="readmore" href="#">Read More &nbsp;<i class="fa fa-angle-right"></i> </a>
                     </div>
-                </div>
-                <!-- /.col-sm-4 -->
+                    <!-- /.col-sm-4 -->
 
-                <div class="col-sm-4">
-                    <div class="service">
-                        <div class="service-thumb-home">
-                            <a href="#">
-                                <img src="img/moving.jpg" alt="">
-                            </a>
+                    <div class="col-sm-4">
+                        <div class="service">
+                            <div class="service-thumb-home">
+                                <a href="#">
+                                    <img src="img/shipping.jpg" alt="">
+                                </a>
+                            </div>
+                            <h3>Shipping Operations</h3>
+                            <p>
+                                Holisticly synergize maintainable intellectual<br>
+                                capital via viral interfaces. Energistically<br>
+                                embrace functionalized
+                            </p>
+                            <a class="readmore" href="#">Read More &nbsp;<i class="fa fa-angle-right"></i> </a>
                         </div>
-                        <h3>Moving &amp; Storage</h3>
-                        <p>
-                            Holisticly synergize maintainable intellectual<br>
-                            capital via viral interfaces. Energistically<br>
-                            embrace functionalized
-                        </p>
-                        <a class="readmore" href="#">Read More &nbsp;<i class="fa fa-angle-right"></i> </a>
                     </div>
-
-                </div>
-                <!-- /.col-sm-4 -->
-
-                <div class="col-sm-4">
-                    <div class="service">
-                        <div class="service-thumb-home">
-                            <a href="#">
-                                <img src="img/shipping.jpg" alt="">
-                            </a>
-                        </div>
-                        <h3>Shipping Operations</h3>
-                        <p>
-                            Holisticly synergize maintainable intellectual<br>
-                            capital via viral interfaces. Energistically<br>
-                            embrace functionalized
-                        </p>
-                        <a class="readmore" href="#">Read More &nbsp;<i class="fa fa-angle-right"></i> </a>
-                    </div>
-                </div>
-                <!-- /.col-sm-4 -->
-            </div>
+                    <!-- /.col-sm-4 -->
+                </div>*@
             <!-- /.row -->
         </div>
 
@@ -213,7 +213,7 @@
         <div class="row text-center">
             <div class="col-xs-12">
                 <h2 class="section-title">Popular Reports</h2>
-                <span class="section-sub">Powered by Isotope, your portfolio has never been more engaging</span>
+                @*<span class="section-sub">Powered by Isotope, your portfolio has never been more engaging</span>*@
             </div>
         </div>
         <!-- /.row -->
@@ -238,7 +238,7 @@
                                             <div class="report-content">
                                                 <img src="@("/img/Chemical-and-Materials-" + a++ + "." + "jpg")" />
                                                 <h3><a href="@Url.Action("ReportDetail", "Report", new { @ReportUrl = item.ReportUrl })">@item.ReportTitle</a></h3>
-                                                <div>@Html.Raw(item.FullDescription)</div>
+                                                <div>@Html.Raw(item.FullDescription).....</div>
                                                 <a rel="nofollow" href="@Url.Action("ReportDetail", "Report", new { @ReportUrl = item.ReportUrl })">View More <i class="fa fa-arrow-circle-right"></i></a>
                                             </div>
 
@@ -269,7 +269,7 @@
                                             <div class="report-content">
                                                 <img src="@("/img/Technology-and-Media-" + a++ + "." + "jpg")" />
                                                 <h3><a href="@Url.Action("ReportDetail", "Report", new { @ReportUrl = item.ReportUrl })">@item.ReportTitle</a></h3>
-                                                <div>@Html.Raw(item.FullDescription)</div>
+                                                <div>@Html.Raw(item.FullDescription).....</div>
                                                 <a rel="nofollow" href="@Url.Action("ReportDetail", "Report", new { @ReportUrl = item.ReportUrl })">View More <i class="fa fa-arrow-circle-right"></i></a>
                                             </div>
 
@@ -300,7 +300,7 @@
                                             <div class="report-content">
                                                 <img src="@("/img/Helthcare-" + a++ + "." + "jpg")" />
                                                 <h3><a href="@Url.Action("ReportDetail", "Report", new { @ReportUrl = item.ReportUrl })">@item.ReportTitle</a></h3>
-                                                <div>@Html.Raw(item.FullDescription)</div>
+                                                <div>@Html.Raw(item.FullDescription).....</div>
                                                 <a rel="nofollow" href="@Url.Action("ReportDetail", "Report", new { @ReportUrl = item.ReportUrl })">View More <i class="fa fa-arrow-circle-right"></i></a>
                                             </div>
 

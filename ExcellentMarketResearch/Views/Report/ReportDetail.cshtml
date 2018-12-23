@@ -51,6 +51,7 @@
 
 
     });
+
 </script>
 
 <input type="hidden" value="@Model.ReportDetails.ReportId" id="RepID" />
@@ -80,48 +81,7 @@
 <section class="single-service-contents">
     <div class="container">
         <div class="row">
-            <div class="col-md-3 col-sm-5 col-xs-12">
-                <div class="service-sidebar sidebar-wrapper">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Payment Mode</div>
-                        <div class="panel-body">
-                            @using (Html.BeginForm("CheckoutForm", "ReportBuying", FormMethod.Get))
-                            {
-                            <ul class="list-group">
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <input type="hidden" name="reportid" value="@Model.ReportDetails.ReportId" />
-                                                <input name="buynow" id="PriceSingleUser" value="0" checked="checked" type="radio">Single User Price
-                                    <span class="badge badge-primary badge-pill">$ @Model.ReportDetails.PriceSingleUser</span>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <input type="radio" name="buynow" id="PriceMultiUser" value="1">Multi User Price
-                                    <span class="badge badge-primary badge-pill">$ @Model.ReportDetails.PriceMultiUser</span>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <input type="radio" name="buynow" id="PriceCUL" value="2">Corporate User Price
-                                    <span class="badge badge-primary badge-pill">$ @Model.ReportDetails.PriceCUL</span>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <a>
-                                        <span>
-                                            <input type="image" src="~/img/buynowcc-blue.png" class="buyimage">
-                                        </span>
-                                    </a>
-                                </li>
-                            </ul>
-                            }
-                        </div>
-                      </div>
-                    
-
-                    @{Html.RenderAction("PartialCat", "Category");}
-                    <!-- /.widget -->
-                </div>
-                <!-- /.sidebar-wrapper -->
-            </div>
-            <!-- /.col -->
-            <div class="col-md-9 col-sm-7 col-xs-12 report-details">
-
+            <div class="col-md-9 col-sm-7 col-xs-12 report-single">
                 <div class="col-md-12">
                     <div class="row text-center">
                         <h1 class="title">
@@ -205,7 +165,46 @@
                     <!-- /.css-tab -->
                 </div>
                 <!-- /.col-md-12 -->
+            </div>
+            <!-- /.col -->
+            <div class="col-md-3 col-sm-5 col-xs-12 report-details">
+				<div class="service-sidebar sidebar-wrapper">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Payment Mode</div>
+                        <div class="panel-body">
+                            @using (Html.BeginForm("CheckoutForm", "ReportBuying", FormMethod.Get))
+                            {
+                            <ul class="list-group">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <input type="hidden" name="reportid" value="@Model.ReportDetails.ReportId" />
+                                                <input name="buynow" id="PriceSingleUser" value="0" checked="checked" type="radio">Single User Price
+                                    <span class="badge badge-primary badge-pill">$ @Model.ReportDetails.PriceSingleUser</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <input type="radio" name="buynow" id="PriceMultiUser" value="1">Multi User Price
+                                    <span class="badge badge-primary badge-pill">$ @Model.ReportDetails.PriceMultiUser</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <input type="radio" name="buynow" id="PriceCUL" value="2">Corporate User Price
+                                    <span class="badge badge-primary badge-pill">$ @Model.ReportDetails.PriceCUL</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <a>
+                                        <span>
+                                            <input type="image" src="~/img/buynowcc-blue.png" class="buyimage">
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                            }
+                        </div>
+                      </div>
+                    
 
+                    @{Html.RenderAction("PartialCat", "Category");}
+                    <!-- /.widget -->
+                </div>
+                <!-- /.sidebar-wrapper -->
             </div>
             <!-- /.col -->
         </div>

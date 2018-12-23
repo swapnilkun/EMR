@@ -28,7 +28,7 @@ namespace ExcellentMarketResearch.Controllers
                                           {
                                               ReportTitle = r.ReportTitle,
                                               ReportUrl = r.ReportUrl,
-                                              FullDescription=r.LongDescritpion.Substring(0,150)
+                                              FullDescription=r.LongDescritpion.Substring(0,200)
                                           }).Take(3).ToList();
 
             ViewBag.TechnologyMedia = (from l in db.CategoryMasters
@@ -40,7 +40,7 @@ namespace ExcellentMarketResearch.Controllers
                                             {
                                                 ReportTitle = r.ReportTitle,
                                                 ReportUrl = r.ReportUrl,
-                                                FullDescription = r.LongDescritpion.Substring(0, 150)
+                                                FullDescription = r.LongDescritpion.Substring(0, 200)
                                             }).Take(3).ToList();
 
             ViewBag.ICTMedia = (from l in db.CategoryMasters
@@ -52,7 +52,7 @@ namespace ExcellentMarketResearch.Controllers
                                 {
                                     ReportTitle = r.ReportTitle,
                                     ReportUrl = r.ReportUrl,
-                                    FullDescription = r.LongDescritpion.Substring(0, 150)
+                                    FullDescription = r.LongDescritpion.Substring(0, 200)
                                 }).Take(3).ToList();
 
             ViewBag.HealthCares = (from l in db.CategoryMasters
@@ -64,7 +64,7 @@ namespace ExcellentMarketResearch.Controllers
                                      {
                                          ReportTitle = r.ReportTitle,
                                          ReportUrl = r.ReportUrl,
-                                         FullDescription = r.LongDescritpion.Substring(0, 150)
+                                         FullDescription = r.LongDescritpion.Substring(0, 200)
                                      }).Take(3).ToList();
 
             ViewBag.ParentCategory = db.CategoryMasters.Where(x => x.ParentCategoryId == 0).ToList();
