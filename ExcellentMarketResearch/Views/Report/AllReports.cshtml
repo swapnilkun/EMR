@@ -24,9 +24,9 @@
                         <h1>Reports</h1>
                         <div class="report-search-section">@{Html.RenderAction("SearchingPartialView", "Home");}</div>
                     </div>
-                    <ol class="breadcrumb">
-                        <li><a href="/">Home</a></li>
-                        <li class="active">Reports</li>
+                    <ol itemscope itemtype="http://schema.org/BreadcrumbList" class="breadcrumb">
+                        <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a property="item" typeof="WebPage" href="https://www.excellentmarketresearch.com/"><span itemprop="name">Home</span></a><meta itemprop="position" content="1" /></li>
+                        <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" class="active"><a property="item" typeof="WebPage" href="https://www.excellentmarketresearch.com/latest/reports"><span itemprop="name">Latest Reports</span></a><meta itemprop="position" content="2" /></li>
                     </ol>
                 </div>
             </div>
@@ -50,47 +50,47 @@
                     {
                         if (i++ % 2 == 0)
                         {
-                        <div class="row report-lst-view">
-                            <div class="col-md-3 report-img">
-                                <img src="~/img/icons/@(String.Format("{0}{1}",item.ReportImage, ".png"))" />
-                                  
-                            </div>
-                            <div class="col-md-9 report-content">
-                                <a href="@Url.Action("ReportDetail", "Report", new { @ReportUrl = item.ReportUrl })">
-                                    <h3 class="panel-title">@item.ReportTitle</h3>
-                                </a>
-                                <div class="panel-body category-short-note">
-                                    <p class="date-info"><i class="fa fa-calendar"></i>@item.PublishingDate.ToString("MMM-yy") | <a href="@Url.Action("PublisherRelatedReports", "Report", new { @puburl = item.PublishingUrl })">@item.PublisherName </a>| <a href="@Url.Action("CategoryRelatedReports", "Report", new { @caturl = item.CategoryUrl })">@item.CategoryName </a></p>
+                            <div class="row report-lst-view">
+                                <div class="col-md-3 report-img">
+                                    <img src="~/img/icons/@(String.Format("{0}{1}",item.ReportImage, ".png"))" alt="@item.ReportTitle" />
 
-                                    @Html.Raw(item.FullDescription)...
+                                </div>
+                                <div class="col-md-9 report-content">
+                                    <a href="@Url.Action("ReportDetail", "Report", new { @ReportUrl = item.ReportUrl })">
+                                        <h3 class="panel-title">@item.ReportTitle</h3>
+                                    </a>
+                                    <div class="panel-body category-short-note">
+                                        <p class="date-info"><i class="fa fa-calendar"></i>@item.PublishingDate.ToString("MMM-yy") | <a href="@Url.Action("PublisherRelatedReports", "Report", new { @puburl = item.PublishingUrl })">@item.PublisherName </a>| <a href="@Url.Action("CategoryRelatedReports", "Report", new { @caturl = item.CategoryUrl })">@item.CategoryName </a></p>
 
-                                    <br>
-                                    <a rel="nofollow" href="@Url.Action("ReportDetail", "Report", new { @ReportUrl = item.ReportUrl })">View More <i class="fa fa-arrow-circle-right"></i></a>
+                                        @Html.Raw(item.FullDescription)...
+
+                                        <br>
+                                        <a rel="nofollow" href="@Url.Action("ReportDetail", "Report", new { @ReportUrl = item.ReportUrl })">View More <i class="fa fa-arrow-circle-right"></i></a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                         }
                         else
                         {
-                        <div class="row report-lst-view">
-                            <div class="col-md-9 report-content">
-                                <a href="@Url.Action("ReportDetail", "Report", new { @ReportUrl = item.ReportUrl })">
-                                    <h3 class="panel-title">@item.ReportTitle</h3>
-                                </a>
-                                <div class="panel-body category-short-note">
-                                    <p class="date-info"><i class="fa fa-calendar"></i>@item.PublishingDate.ToString("MMM-yy") | <a href="@Url.Action("PublisherRelatedReports", "Report", new { @puburl = item.PublishingUrl })">@item.PublisherName </a>| <a href="@Url.Action("CategoryRelatedReports", "Report", new { @caturl = item.CategoryUrl })">@item.CategoryName </a></p>
+                            <div class="row report-lst-view">
+                                <div class="col-md-9 report-content">
+                                    <a href="@Url.Action("ReportDetail", "Report", new { @ReportUrl = item.ReportUrl })">
+                                        <h3 class="panel-title">@item.ReportTitle</h3>
+                                    </a>
+                                    <div class="panel-body category-short-note">
+                                        <p class="date-info"><i class="fa fa-calendar"></i>@item.PublishingDate.ToString("MMM-yy") | <a href="@Url.Action("PublisherRelatedReports", "Report", new { @puburl = item.PublishingUrl })">@item.PublisherName </a>| <a href="@Url.Action("CategoryRelatedReports", "Report", new { @caturl = item.CategoryUrl })">@item.CategoryName </a></p>
 
-                                    @Html.Raw(item.FullDescription)...
+                                        @Html.Raw(item.FullDescription)...
 
-                                    <br>
-                                    <a rel="nofollow" href="@Url.Action("ReportDetail", "Report", new { @ReportUrl = item.ReportUrl })">View More <i class="fa fa-arrow-circle-right"></i></a>
+                                        <br>
+                                        <a rel="nofollow" href="@Url.Action("ReportDetail", "Report", new { @ReportUrl = item.ReportUrl })">View More <i class="fa fa-arrow-circle-right"></i></a>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-3 report-img">
-                                <img src="~/img/icons/@(String.Format("{0}{1}",item.ReportImage, ".png"))" />
-                            </div>
+                                <div class="col-md-3 report-img">
+                                    <img src="~/img/icons/@(String.Format("{0}{1}",item.ReportImage, ".png"))" alt="@item.ReportTitle" />
+                                </div>
 
-                        </div>
+                            </div>
                         }
 
                     }
@@ -118,4 +118,3 @@
     <!-- /.container -->
 </section>
 <!-- Single-Service-End-->
-

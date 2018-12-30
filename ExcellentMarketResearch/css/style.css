@@ -1889,11 +1889,14 @@ input.form-control.phno {
 	color: #ffffff;
 }
 
-#main-carousel .carousel-caption h1 {
-	margin: 150px 0 20px;
-	color: #ffffff;
-	width: 1200px;
-	text-align: center;
+#main-carousel .carousel-caption h2 {
+    margin: 150px 0 50px;
+    color: #ffffff;
+    width: 1200px;
+    text-align: center;
+    font-size: 2.5em;
+    font-weight: 700;
+    text-transform: capitalize;
 }
 
 .testimonial2 .carousel:before {

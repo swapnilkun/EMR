@@ -12,9 +12,9 @@
                     <div class="page-header">
                         <h1>Reports Category</h1>
                     </div>
-                    <ol class="breadcrumb">
-                        <li><a href="/">Home</a></li>
-                        <li class="active">Reports Category</li>
+                    <ol itemscope itemtype="http://schema.org/BreadcrumbList" class="breadcrumb">
+                        <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a property="item" typeof="WebPage" href="https://www.excellentmarketresearch.com/"><span itemprop="name">Home</span></a><meta itemprop="position" content="1" /></li>
+                        <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" class="active"><a property="item" typeof="WebPage" href="https://www.excellentmarketresearch.com/all-category"><span itemprop="name">Reports Categories</span></a><meta itemprop="position" content="2" /></li>
                     </ol>
                 </div>
             </div>
@@ -48,7 +48,7 @@
                         {
                             <div class="col-md-4">
                                 <div class="panel panel-default">
-                                    <div class="panel-heading" data-toggle="collapse" data-target="#demo-@counter"><span>@item.CategoryName</span> <img src="~/img/icons/@(String.Format("{0}{1}", item.CategoryUrl, ".png"))" /></div>
+                                    <div class="panel-heading" data-toggle="collapse" data-target="#demo-@counter"><span>@item.CategoryName</span> <img src="~/img/icons/@(String.Format("{0}{1}", item.CategoryUrl, ".png"))" alt="@item.CategoryName" /></div>
                                     <div id="demo-@counter" class="panel-body collapse">
                                         <ul>
                                             <li><a href="@Url.Action("CategoryRelatedReports", "Report", new { @caturl = item.CategoryUrl })">@item.CategoryName</a>

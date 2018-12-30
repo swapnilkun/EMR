@@ -34,7 +34,7 @@
                     <article class="blog-post-wrapper">
                         <div class="figure">
                             <div class="post-thumbnail">
-                                <img src="@Model.NewsImage" class="img-responsive " alt="">
+                                <img src="@Model.NewsImage" class="img-responsive " alt="@Model.NewsTitle">
                             </div>
 
                         </div>
@@ -65,7 +65,7 @@
                                     </li>
                                     <li>
                                         <span class="posted-in">
-                                            <small>Under</small> <a href="#">Feature</a>, <a href="#">Tag</a>, <a href="#">Concept</a>
+                                            @*<small>Under</small> <a href="#">Feature</a>, <a href="#">Tag</a>, <a href="#">Concept</a>*@
                                         </span>
                                     </li>
                                     <li>
@@ -75,7 +75,7 @@
                                     </li>
                                     <li>
                                         <span class="post-comments-number">
-                                            <a href="#" title="">1 Comments</a>
+                                            @*<a href="#" title="">1 Comments</a>*@
                                         </span>
                                     </li>
                                 </ul>
@@ -91,7 +91,7 @@
                     <!-- /.blog-post-wrapper -->
 
                     <div class="social-share">
-                        <ul class="list-inline social-links">
+                        @*<ul class="list-inline social-links">
                             <!-- Facebook link-->
                             <li>Share:</li>
                             <li><a href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
@@ -101,14 +101,14 @@
                             <li><a href="#" target="_blank"><i class="fa fa-google-plus"></i></a></li>
                             <!-- Linkedin link -->
                             <li><a href="#" target="_blank"><i class="fa fa-linkedin"></i></a></li>
-                        </ul>
+                        </ul>*@
                     </div>
                 </div>
                 <!-- /.col -->
                 <div class="col-md-4 col-sm-4">
-                    <div class="sidebar-wrapper right-sidebar">
+                    <div class="sidebar-wrapper right-sidebar" style="display:none;">
 
-                        <aside class=" widget widget_recent_entries">
+                        @*<aside class=" widget widget_recent_entries">
                             <div class="sidebar-tab">
                                 <!-- Nav tabs -->
                                 <ul class="nav nav-tabs" role="tablist">
@@ -263,7 +263,7 @@
                         <aside class="widget widget_flicker_photo">
                             <h2 class="widget-title">Flicker Photo</h2>
                             <ul id="photoStream"></ul>
-                        </aside>
+                        </aside>*@
                     </div>
                     <!-- /.sidebar -->
                 </div>
