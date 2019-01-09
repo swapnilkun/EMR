@@ -46,7 +46,7 @@
                         <article class="blog-post-wrapper">
                             <div class="figure sticky-post">
                                 <div class="post-thumbnail">
-                                    <img src="@item.NewsImage" class="img-responsive " alt="">
+                                    <img src="@item.NewsImage" class="img-responsive " alt="@item.NewsTitle">
                                     <div class="blog-post-overlay"></div>
                                     <a class="img-link" href="@item.NewsImage"><small>
                                         <img src="@item.NewsImage" alt="zoom"></small>
@@ -57,12 +57,12 @@
                                 <aside>
                                     <div class="posted-date pull-left">
                                         <span class="day">23</span>
-                                        <span class="month">Oct,</span>
-                                        <span class="year">2015</span>
+                                        <span class="month">Aug,</span>
+                                        <span class="year">2018</span>
                                     </div>
                                     <div class="post-like pull-right">
                                         <a href="#" title="Like this">
-                                            <i class="fa fa-heart"></i><span>3</span>
+                                            @*<i class="fa fa-heart"></i><span>3</span>*@
                                         </a>
                                     </div>
                                     <div class="clearfix"></div>
@@ -80,17 +80,17 @@
                                         </li>
                                         <li>
                                             <span class="posted-in">
-                                                <small>Under</small> <a href="#">Feature</a>, <a href="#">Tag</a>, <a href="#">Concept</a>
+                                                @*<small>Under</small> <a href="#">Feature</a>, <a href="#">Tag</a>, <a href="#">Concept</a>*@
                                             </span>
                                         </li>
                                         <li>
                                             <span class="post-category">
-                                                <small>In</small><a href="#" title="">Blog</a>
+                                                @*<small>In</small><a href="#" title="">Blog</a>*@
                                             </span>
                                         </li>
                                         <li>
                                             <span class="post-comments-number">
-                                                <a href="#" title="">1 Comments</a>
+                                                @*<a href="#" title="">1 Comments</a>*@
                                             </span>
                                         </li>
                                     </ul>
@@ -168,7 +168,7 @@
                                             {
                                                 <li>
                                                     <div class="tab-post-thumb">
-                                                        <img class="img-responsive" src="@item.NewsImage" alt="Image">
+                                                        <img class="img-responsive" src="@item.NewsImage" alt="@item.NewsTitle">
                                                     </div>
 
                                                     <div class="tab-post-heading">
@@ -194,7 +194,7 @@
                                             {
                                                 <li>
                                                     <div class="tab-post-thumb">
-                                                        <img class="img-responsive" src="@item.NewsImage" alt="Image">
+                                                        <img class="img-responsive" src="@item.NewsImage" alt="@item.NewsTitle">
                                                     </div>
 
                                                     <div class="tab-post-heading">
@@ -218,7 +218,7 @@
                             <!-- /tab-wrap -->
 
                         </aside>
-                        <aside class="widget widget_categories">
+                        @*<aside class="widget widget_categories" style="display:none;">
                             <h2 class="widget-title">News Categories</h2>
 
                             <ul>
@@ -231,7 +231,7 @@
                                 <li><a href="#">Uncategorized</a></li>
                             </ul>
                         </aside>
-                        <aside class="widget widget_archive">
+                        <aside class="widget widget_archive" style="display:none;">
                             <h2 class="widget-title">Archived</h2>
                             <ul>
                                 <li><a href="#">August 2014</a>&nbsp;(3)</li>
@@ -261,7 +261,7 @@
                         <aside class="widget widget_flicker_photo">
                             <h2 class="widget-title">Flicker Photo</h2>
                             <ul id="photoStream"></ul>
-                        </aside>
+                        </aside>*@
                     </div>
                     <!-- /.sidebar -->
 

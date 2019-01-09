@@ -4,12 +4,17 @@
     //var CountryNames = _OBJBuingForm.GetCountries();
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<script src="https://www.paypalobjects.com/api/checkout.js"></script>
+<script src="https://www.google.com/recaptcha/api.js" type="text/javascript"></script>
 <script type="text/javascript">
     $(document).ready(function () {
 
+
         $("#Checkout_country").change(function () {
             var v = $(this).val();
-            debugger;
+
+
+            //debugger;
             $.ajax({
                 type: "post",
                 url: '@Url.Action("GetCountryCode", "InquiryForm")',
@@ -17,7 +22,7 @@
                 dataType: "json",
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
-                    debugger;
+                    //debugger;
                     $("#Phonecode_").empty();//just cleans all html from the control, element
                     $("#Phonecode_").val(data);
                     //foreach loop
@@ -82,6 +87,7 @@
                                     <label class="input-medium col-sm-1" for="name">Title:</label>
                                     <div class="col-sm-10"><a href="@Url.Action("ReportDetail", "Report", new { @ReportUrl = Model.ReportUrl })">@Model.ReportTitle</a></div>
                                     @*    @Html.HiddenFor(model => model.RealCaptcha, new { @id = "#txtCaptcha" })*@
+                                    @Html.HiddenFor(model => model.ReportTitle, new { @Id = "repTitle" })
                                 </div>
                             </div>
                             <div class="col-md-12">
@@ -89,6 +95,7 @@
                                     <label class="input-medium col-sm-1" for="name">Type:</label>
                                     <div class="col-sm-10">
                                         @Html.DisplayFor(model => model.Type)
+                                        @Html.HiddenFor(model => model.Type, new { @Id = "repType" })
                                     </div>
                                 </div>
                             </div>
@@ -97,6 +104,7 @@
                                     <label class="input-medium col-sm-1" for="name">Price:</label>
                                     <div class="col-sm-10">
                                         $ @Html.DisplayFor(model => model.Price)
+                                        @Html.HiddenFor(model => model.Price, new { @Id = "repPrice" })
                                     </div>
                                 </div>
                             </div>
@@ -119,7 +127,7 @@
                                                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
                                                 @Html.TextBoxFor(model => model.Name, new { @class = "form-control", @placeholder = "Enter Name", @id = "name" })
                                             </div>
-                                            @Html.ValidationMessageFor(model => model.Name)
+                                            @Html.ValidationMessageFor(model => model.Name, "", new { @id = "ErrName" })
                                         </div>
                                     </div>
 
@@ -130,7 +138,7 @@
                                                 <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
                                                 @Html.TextBoxFor(model => model.EmailId, new { @class = "form-control", @placeholder = "myname@example.com", @id = "email" })
                                             </div>
-                                            @Html.ValidationMessageFor(model => model.EmailId)
+                                            @Html.ValidationMessageFor(model => model.EmailId, "", new { @id = "ErrEmail" })
                                         </div>
                                     </div>
 
@@ -146,7 +154,7 @@
                                                                                           Value = l.nicename.ToString()
                                                                                       }, "- Select Country -", new { @Class = "form-control", @id = "Checkout_country" })
                                             </div>
-                                            @Html.ValidationMessageFor(model => model.Country)
+                                            @Html.ValidationMessageFor(model => model.Country, "", new { @id = "ErrCountry" })
                                         </div>
                                     </div>
 
@@ -155,14 +163,14 @@
                                         <div class="col-md-3 inputGroupContainer">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-                                                @Html.TextBoxFor(model => model.AreaCode, new { @class = "form-contol areacodebuyingcss", @placeholder = "Area-Code",@id="Phonecode_" })
+                                                @Html.TextBoxFor(model => model.AreaCode, new { @class = "form-contol areacodebuyingcss", @placeholder = "Area-Code", @id = "Phonecode_" })
                                             </div>
                                             @Html.ValidationMessageFor(model => model.AreaCode)
                                             <span class="field-validation-valid"></span>
                                         </div>
                                         <div class="col-md-6 inputGroupContainer">
                                             @Html.TextBoxFor(model => model.PhoneNumber, new { @class = "form-control", @placeholder = "Phone-Number", @id = "phonenumber" })
-                                            @Html.ValidationMessageFor(model => model.PhoneNumber)
+                                            @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @id = "ErrPhoneNumber" })
                                         </div>
                                     </div>
 
@@ -173,7 +181,7 @@
                                                 <span class="input-group-addon"><i class="fa fa-users"></i></span>
                                                 @Html.TextBoxFor(model => model.Company, new { @class = "form-control", @placeholder = " Company ", @id = "company" })
                                             </div>
-                                            @Html.ValidationMessageFor(model => model.Company)
+                                            @Html.ValidationMessageFor(model => model.Company, "", new { @id = "ErrCompany" })
                                         </div>
                                     </div>
 
@@ -184,7 +192,7 @@
                                                 <span class="input-group-addon"><i class="fa fa-building"></i></span>
                                                 @Html.TextBoxFor(model => model.Designation, new { @class = "form-control", @placeholder = "Designation/Title", @id = "designation" })
                                             </div>
-                                            @Html.ValidationMessageFor(model => model.Designation)
+                                            @Html.ValidationMessageFor(model => model.Designation, "", new { @id = "ErrDesignation" })
                                         </div>
                                     </div>
 
@@ -230,23 +238,25 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group">
+                                    @*<div class="form-group">
                                         <label class="input-medium col-sm-4" for="captcha"></label>
                                         <div class="col-sm-7 ">
                                             <img id="CaptchaImg" alt="Captcha" src="@Url.Action("CaptchaImage")" style="" />
                                         </div>
-                                    </div>
+                                    </div>*@
 
                                     <div class="form-group">
-                                        <label class="col-md-3 control-label required">Enter captcha:</label>
+                                        <label class="col-md-3 control-label required"></label>
                                         <div class="col-sm-8 selectContainer">
-                                            <div class="input-group" style="width: 100%;">
-                                                @Html.TextBoxFor(model => model.CaptchaCode, new { @id = "txtInput", @class = "form-control", @placeholder = "Enter Captcha" })
-                                            </div>
-                                            @Html.ValidationMessageFor(model => model.CaptchaCode)
-                                            <p class="help-block">
-                                                <label id="captchaError" style="color: red"></label>
-                                            </p>
+                                            <div class="g-recaptcha" data-callback="recaptchaCallback" data-sitekey="6LdU_nUUAAAAAA3JRpz9CyoMobL_rrNDniMknFbM"></div>
+                                            <label id="captchaError" style="color: red; font-weight:600;"></label>
+                                            @*<div class="input-group" style="width: 100%;">
+                                                    @Html.TextBoxFor(model => model.CaptchaCode, new { @id = "txtInput", @class = "form-control", @placeholder = "Enter Captcha" })
+                                                </div>
+                                                @Html.ValidationMessageFor(model => model.CaptchaCode, "", new { @id = "ErrtxtInput" })
+                                                <p class="help-block">
+                                                    <label id="captchaError" style="color: red"></label>
+                                                </p>*@
                                         </div>
                                     </div>
                                 </div>
@@ -260,6 +270,9 @@
                                 @Html.HiddenFor(model => model.ReportTitle)
                                 @Html.HiddenFor(model => model.ReportUrl)
                                 @Html.HiddenFor(model => model.Price)
+                                <input type="hidden" name="paymentmode" id="paymentmode" value="paypal" />
+                                @*@Html.Hidden("validch", Session["Captchacode"])*@
+                                @*<input type="hidden" name="validch" id="validch" value="@Session["Captchacode"].ToString();" />*@
                                 <div class="panel panel-primary">
                                     <div class="panel-heading">
                                         <input data-val="true" data-val-required="Payment type is required." id="hdnPaymentType" name="PaymentType" type="hidden" value="" />
@@ -268,27 +281,37 @@
                                     </div>
                                     <div class="panel-body">
                                         <div class="row">
-                                            <div class="col-sm-2 gaywayicon">
-                                                <label>
-                                                    <input type="radio" name="paymentmode" value="paypal" id="RadioGroup1_1" style="margin-left: 85px;" checked onchange="jsPaymentType(this)" />
-                                                    <img src="~/img/PayPal2.png" class="img-responsive" />
-                                                </label>
-                                            </div>
+                                            <div class="col-md-12">
+                                                <p id="msg" class="error" style="display:none; color:red;">Please agree terms and Conditions First</p>
+                                                <p>
+                                                    <label><input id="check" onchange="CheckIsValidForm();" type="checkbox"> I agree </label>
+                                                </p>
 
-                                            <div class="col-sm-2 gaywayicon">
-                                                <label>
-                                                    <input type="radio" name="paymentmode" value="wireTransfer" id="RadioGroup1_3" style="margin-left: 85px;" onchange="jsPaymentType(this)" />
-                                                    <img src="~/img/wire-transfer.png" class="img-responsive" />
-                                                </label>
+                                                <div id="paypal-button-container"></div>
                                             </div>
-                                            <div class="col-sm-2">
-                                                <div class="form-group">
-                                                    <br />
-                                                    <div class=" col-sm-7 gaywayicon">
-                                                        <button type="submit" id="btnSubmit" class="btn btn-warning btnsize"><strong>Proceed To Payment </strong></button>
-                                                    </div>
+                                            @*<div class="col-sm-2 gaywayicon">
+                                                    <label>
+                                                        <input type="radio" name="paymentmode" value="paypal" id="RadioGroup1_1" style="margin-left: 85px;" checked onchange="jsPaymentType(this)" />
+                                                        <img src="~/img/PayPal2.png" class="img-responsive" />
+                                                    </label>
                                                 </div>
-                                            </div>
+
+                                                <div class="col-sm-2 gaywayicon">
+                                                    <label>
+                                                        <input type="radio" name="paymentmode" value="wireTransfer" id="RadioGroup1_3" style="margin-left: 85px;" onchange="jsPaymentType(this)" />
+                                                        <img src="~/img/wire-transfer.png" class="img-responsive" />
+                                                    </label>
+                                                </div>
+                                                <div class="col-sm-2">
+                                                    <div class="form-group">
+                                                        <br />
+                                                        <div class=" col-sm-7 gaywayicon">
+
+                                                            <button type="submit" id="btnSubmit" class="btn btn-warning btnsize"><strong>Proceed To Payment </strong></button>
+                                                        </div>
+                                                    </div>
+                                                </div>*@
+
                                         </div>
                                     </div>
                                 </div>
@@ -303,9 +326,269 @@
         </div>
         <!-- /.container -->
     </section>
+
     <!-- Single-Service-End-->
 }
+<script>
+    var curr = 'USD';
+    var paymentStatus = 'Cancel';
+    var guId = '';
+    var checkCaptch = false;
 
+    if ($("#Checkout_country").val() == "India") {
+        curr = 'INR';
+    }
+
+    function recaptchaCallback() {
+        checkCaptch = true;
+    };
+
+    function CheckIsValidForm()
+    {
+        //alert('asdf');
+        if ($("#name").val() == "") { $("#ErrName").html("Please Enter Name"); $("#check").prop("checked", false); }
+        else if ($("#email").val() == "") { $("#ErrEmail").html("Please Enter Email"); $("#check").prop("checked", false); }
+        else if ($("#Checkout_country").val() == "") { $("#ErrCountry").html("Please Select Country"); $("#check").prop("checked", false); }
+        else if ($("#phonenumber").val() == "") { $("#ErrPhoneNumber").html("Please Enter Phone Number"); $("#check").prop("checked", false); }
+        else if ($("#txtInput").val() == "") { $("#ErrtxtInput").html("Please Enter Captcha"); $("#check").prop("checked", false); }
+        else if (!checkCaptch) { $("#captchaError").html("Please Select Captcha"); $("#check").prop("checked", false); }
+
+    }
+
+    function PaymentIniciate()
+    {
+        //var BuyingVM = {
+        //    Name: $("#name").val(),
+        //    EmailId: $("#email").val(),
+        //    Designation: $("#designation").val(),
+        //    Company: $("#company").val(),
+        //    ReportId: $("#ReportId").val(),
+        //    CaptchaCode: $("#txtInput").val(),
+        //    CustomerMessage: $("#CustomerMessage").val(),
+        //    Country: $("#Checkout_country").val(),
+        //    PhoneNumber: $("#PhoneNumber").val(),
+        //    Price: $("#Price").val(),
+        //    State: $("#State").val(),
+        //    City: $("#City").val(),
+        //    Type: $("#Type").val(),
+        //    Address: $("#Address").val(),
+        //    Zipcode: $("#Zipcode").val(),
+        //    AreaCode: $("#Phonecode_").val(),
+        //    ReportUrl: $("#ReportUrl").val(),
+        //    ReportTitle: $("#ReportTitle").val(),
+        //    CustomerId: $("#CustomerId").val()
+        //};
+        $.ajax({
+            type: "POST",
+            url: "/ReportBuying/CheckoutForm",
+            data: $('#Buyingform').serialize(),  // JSON.stringify(BuyingVM),
+            dataType: "json",
+           // contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                //console.log(data);
+                if (data.msg != "Error") { guId = data.msg; }
+            },
+            error: function () {
+                alert("Error occured!!");
+            }
+        });
+    }
+
+    function isValid() {
+        return document.querySelector('#check').checked;
+    }
+
+    function onChangeCheckbox(handler) {
+        document.querySelector('#check').addEventListener('change', handler);
+    }
+
+    function toggleValidationMessage() {
+        if (isValid()) {
+
+            PaymentIniciate();
+        }
+        document.querySelector('#msg').style.display = (isValid() ? 'none' : 'block');
+    }
+
+    function toggleButton(actions) {
+        if (guId != "" && isValid()) {
+            return true;
+        }
+        else { return false; }
+        //return isValid() ? actions.enable() : actions.disable();
+    }
+
+        paypal.Button.render({
+
+            env: 'sandbox', // sandbox | production
+
+            // PayPal Client IDs - replace with your own
+            // Create a PayPal app: https://developer.paypal.com/developer/applications/create
+            client: {
+                sandbox:    'ARWtIVHeCWrunm8c5s28u7c9DyI2KNXI_yFekoQ01ZkkborG9CVOtEg5U6JgcYuJmzZ-ZnjMKiBujubv',
+                //production: 'Ab6zaBMiBAN37e82tMIklgdmm-7gcgo778RWkybxdOXRsmJVd8JZ4AjfAOpuAhIPrvj3QlcDx0k5eZf5'
+            },
+
+            validate: function (actions) {
+                toggleButton(actions);
+
+                onChangeCheckbox(function () {
+                    toggleButton(actions);
+                });
+            },
+
+            onClick: function () {
+                toggleValidationMessage();
+            },
+
+            // Show the buyer a 'Pay Now' button in the checkout flow
+            commit: true,
+
+            // payment() is called when the button is clicked
+            // Set up a payment
+            payment: function (data, actions) {
+                return actions.payment.create({
+                    transactions: [{
+                        amount: {
+                            total: @Html.Raw(Json.Encode(Model.Price)),//'100',
+                            currency: curr,  //'USD'//,
+                            //details: {
+                            //    subtotal: '30.00',
+                            //    tax: '0.07',
+                            //    shipping: '0.03',
+                            //    handling_fee: '1.00',
+                            //    shipping_discount: '-1.00',
+                            //    insurance: '0.01'
+                            //}
+                        },
+                        description: 'The payment transaction description.',
+                        //custom: '90048630024435',
+                        //invoice_number: '12345', Insert a unique invoice number
+                        //payment_options: {
+                        //    allowed_payment_method: 'INSTANT_FUNDING_SOURCE'
+                        //},
+                        soft_descriptor: 'ECHI5786786',
+                        item_list: {
+                            items: [
+                                {
+                                    name: @Html.Raw(Json.Encode(Model.ReportTitle)),//'hat',
+                                    description: @Html.Raw(Json.Encode(Model.Type)),//'Brown hat.',
+                                    quantity: '1',
+                                    price: @Html.Raw(Json.Encode(Model.Price)),//"3",
+                                    tax: '0.01',
+                                    sku: '1',
+                                    currency: curr  // 'USD'
+                                }//,
+                                //{
+                                //    name: 'handbag',
+                                //    description: 'Black handbag.',
+                                //    quantity: '1',
+                                //    price: '15',
+                                //    tax: '0.02',
+                                //    sku: 'product34',
+                                //    currency: 'INR'
+                                //}
+                            ]//,
+                            //shipping_address: {
+                            //    recipient_name: $("#name").val(),//'Brian Robinson',
+                            //    line1: $("#address").val(),//'4th Floor',
+                            //    // line2: 'Unit #34',
+                            //    city: $("#city").val(),//'San Jose',
+                            //    //country_code: 'US',
+                            //    postal_code: $("#zipcode").val(),//'95131',
+                            //    phone: $("#phonenumber").val(),// '011862212345678',
+                            //    state: $("#state").val()//'CA'
+                            //}
+                        }
+                    }],
+                    note_to_payer: 'Contact us for any questions on your order. sales@excellentmarketresearch.com'
+                });
+            },
+            onAuthorize: function (data, actions) {
+                return actions.payment.execute()
+                    .then(function () {
+                        //console.log("S- " + JSON.stringify(data));
+                        paymentStatus = 'Success';
+                        //var data = JSON.stringify(data);
+                        //console.log("guId :"+guId)
+                       // window.alert('Thank you for your purchase!');
+                       var PayPalResponse =
+                            {
+                               PAYERID:data.payerID,
+                               TOKEN:data.paymentToken,
+                               OrderID:data.orderID,
+                               PaymentID:data.paymentID,
+                               Intent:data.intent,
+                               ReturnUrl:data.returnUrl,
+                               PaymentStatus: paymentStatus,
+                               guid: guId
+                            };
+                        //console.log("PayPalResponse :" + JSON.stringify(PayPalResponse));
+                        $.ajax({
+                            type: "POST",
+                            url: "/ReportBuying/paypalprocess",
+                            data: JSON.stringify(PayPalResponse),
+                            dataType: "json",
+                            contentType: 'application/json; charset=utf-8',
+                            success: function (data) {
+                                if (data.msg == "sucess") { window.location = '/PaymentProcess/Success';} else { alert("Error occured!!"); }
+
+                            },
+                            error: function () {
+                                alert("Error occured!!");
+                                window.location = '/PaymentProcess/Failure';
+                            }
+                        });
+
+                    });
+            },
+            onCancel: function (data, actions) {
+                // return actions.redirect();
+                //console.log("C- " + JSON.stringify(data));
+                //window.alert('You cancelled');
+                paymentStatus = 'Cancel';
+                //var data = JSON.stringify(data);
+                //console.log("guId :"+guId)
+                // window.alert('Thank you for your purchase!');
+                var PayPalResponse =
+                    {
+                        PAYERID: data.payerID,
+                        TOKEN: data.paymentToken,
+                        OrderID: data.orderID,
+                        PaymentID: data.paymentID,
+                        Intent: data.intent,
+                        ReturnUrl: data.returnUrl,
+                        PaymentStatus: paymentStatus,
+                        guid: guId
+                    };
+                //console.log("PayPalResponse :" + JSON.stringify(PayPalResponse));
+                $.ajax({
+                    type: "POST",
+                    url: "/ReportBuying/paypalprocess",
+                    data: JSON.stringify(PayPalResponse),
+                    dataType: "json",
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (data) {
+                        if (data.msg == "Cancel") { window.location = '/PaymentProcess/Cancel'; } else { alert("Error occured!!"); }
+
+                    },
+                    error: function () {
+                        alert("Error occured!!");
+                        window.location = '/PaymentProcess/Failure';
+                    }
+                });
+
+            },
+            onError: function (error) {
+                // You will want to handle this differently
+                //  return alert(error);
+                //console.log("E- " + JSON.stringify(error));
+                window.alert('Some Error Occuring');
+                window.location = '/PaymentProcess/Failure';
+                }
+        }, '#paypal-button-container');
+
+</script>
 
 
 

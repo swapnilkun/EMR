@@ -4,6 +4,7 @@
 }
 
 ﻿<div id="main-carousel" class="carousel slide hero-slide" data-ride="carousel">
+    @{Html.RenderAction("SearchingPartialView", "Home");}
     <!-- Indicators -->
     <ol class="carousel-indicators">
         <li data-target="#main-carousel" data-slide-to="0" class="active"></li>
@@ -22,7 +23,7 @@
                 <div class="col-md-2"><button type="submit" class="btn btn-primary">Search</button></div>
             </div>
             </form>*@
-        @{Html.RenderAction("SearchingPartialView", "Home");}
+
 
         <div class="item active">
             <img src="/img/slider/slide-1.jpg" alt="Excellent Market Research">
@@ -30,7 +31,7 @@
 
             <div class="container">
                 <div class="carousel-caption">
-                    <h1 class="animated bounceIn">We value your time and money</h1>
+                    <h2 class="animated bounceIn">We work with reliable sources</h2>
                 </div>
                 <!--.carousel-caption-->
             </div>
@@ -45,7 +46,7 @@
             <div class="container">
                 <div class="carousel-caption">
 
-                    <h1 class="animated bounceIn">We value your time and money</h1>
+                    <h2 class="animated bounceIn">We value your time and money</h2>
                 </div>
                 <!--.carousel-caption-->
             </div>
@@ -71,7 +72,7 @@
         <div class="row text-center">
             <div class="col-xs-12">
                 <h2 class="section-title">Popular Categories</h2>
-                <span class="section-sub">Powered by Isotope, your portfolio has never been more engaging</span>
+                <span class="section-sub">Browse All Categories</span>
             </div>
         </div>
         <!-- /.row -->
@@ -98,42 +99,42 @@
                         }*@
                     <div class="col-sm-12 col-md-2">
                         <div class="popular-categories">
-                            <img src="~/img/icons/consumer-goods.png" />
+                            <img src="~/img/icons/consumer-goods.png" alt="Consumer Goods" />
                             <p class="cat-title"><a href="/category/consumer-goods">Consumer Goods</a></p>
                             <p class="cat-info"></p>
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-2">
                         <div class="popular-categories">
-                            <img src="~/img/icons/chemical-and-materials.png" />
+                            <img src="~/img/icons/chemical-and-materials.png" alt="Chemical and Materials" />
                             <p class="cat-title"><a href="/category/chemical-and-materials">Chemical and Materials</a></p>
                             <p class="cat-info"></p>
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-2">
                         <div class="popular-categories">
-                            <img src="~/img/icons/food-beverage.png" />
+                            <img src="~/img/icons/food-beverage.png" alt="Food And Beverages" />
                             <p class="cat-title"><a href="/category/food-beverage">Food & Beverages</a></p>
                             <p class="cat-info"></p>
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-2">
                         <div class="popular-categories">
-                            <img src="~/img/icons/technology-media.png" />
+                            <img src="~/img/icons/technology-media.png" alt="Technology And Media" />
                             <p class="cat-title"><a href="/category/technology-media">Technology & Media</a></p>
                             <p class="cat-info"></p>
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-2">
                         <div class="popular-categories">
-                            <img src="~/img/icons/manufacturing-and-construction.png" />
+                            <img src="~/img/icons/manufacturing-and-construction.png" alt="Manufacturing And Construction" />
                             <p class="cat-title"><a href="/category/manufacturing-construction">Manufacturing & Construction</a></p>
                             <p class="cat-info"></p>
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-2">
                         <div class="popular-categories">
-                            <img src="~/img/icons/electrical-and-electronic-device.png" />
+                            <img src="~/img/icons/electrical-and-electronic-device.png" alt="Electrical And Electronic Device" />
                             <p class="cat-title"><a href="/category/electronics">Electrical & Electronic Device</a></p>
                             <p class="cat-info"></p>
                         </div>
@@ -142,64 +143,63 @@
                 <a href="@Url.Action("MainCategories", "Category")" class="btn btn-primary quote-btn">All Categories</a>
             </div>
             <!-- /.row -->
+            @*<div class="row content-row" style="display: none;">
+                    <div class="col-sm-4">
+                        <div class="service">
+                            <div class="service-thumb-home">
+                                <a href="#">
+                                    <img src="img/trans.jpg" alt="">
+                                </a>
+                            </div>
 
-            <div class="row content-row" style="display: none;">
-                <div class="col-sm-4">
-                    <div class="service">
-                        <div class="service-thumb-home">
-                            <a href="#">
-                                <img src="img/trans.jpg" alt="">
-                            </a>
+                            <h3>Transportation &amp; Logistics</h3>
+                            <p>
+                                Holisticly synergize maintainable intellectual<br>
+                                capital via viral interfaces. Energistically<br>
+                                embrace funyctionalized
+                            </p>
+                            <a class="readmore" href="#">Read More &nbsp;<i class="fa fa-angle-right"></i> </a>
+                        </div>
+                    </div>
+                    <!-- /.col-sm-4 -->
+
+                    <div class="col-sm-4">
+                        <div class="service">
+                            <div class="service-thumb-home">
+                                <a href="#">
+                                    <img src="img/moving.jpg" alt="">
+                                </a>
+                            </div>
+                            <h3>Moving &amp; Storage</h3>
+                            <p>
+                                Holisticly synergize maintainable intellectual<br>
+                                capital via viral interfaces. Energistically<br>
+                                embrace functionalized
+                            </p>
+                            <a class="readmore" href="#">Read More &nbsp;<i class="fa fa-angle-right"></i> </a>
                         </div>
 
-                        <h3>Transportation &amp; Logistics</h3>
-                        <p>
-                            Holisticly synergize maintainable intellectual<br>
-                            capital via viral interfaces. Energistically<br>
-                            embrace funyctionalized
-                        </p>
-                        <a class="readmore" href="#">Read More &nbsp;<i class="fa fa-angle-right"></i> </a>
                     </div>
-                </div>
-                <!-- /.col-sm-4 -->
+                    <!-- /.col-sm-4 -->
 
-                <div class="col-sm-4">
-                    <div class="service">
-                        <div class="service-thumb-home">
-                            <a href="#">
-                                <img src="img/moving.jpg" alt="">
-                            </a>
+                    <div class="col-sm-4">
+                        <div class="service">
+                            <div class="service-thumb-home">
+                                <a href="#">
+                                    <img src="img/shipping.jpg" alt="">
+                                </a>
+                            </div>
+                            <h3>Shipping Operations</h3>
+                            <p>
+                                Holisticly synergize maintainable intellectual<br>
+                                capital via viral interfaces. Energistically<br>
+                                embrace functionalized
+                            </p>
+                            <a class="readmore" href="#">Read More &nbsp;<i class="fa fa-angle-right"></i> </a>
                         </div>
-                        <h3>Moving &amp; Storage</h3>
-                        <p>
-                            Holisticly synergize maintainable intellectual<br>
-                            capital via viral interfaces. Energistically<br>
-                            embrace functionalized
-                        </p>
-                        <a class="readmore" href="#">Read More &nbsp;<i class="fa fa-angle-right"></i> </a>
                     </div>
-
-                </div>
-                <!-- /.col-sm-4 -->
-
-                <div class="col-sm-4">
-                    <div class="service">
-                        <div class="service-thumb-home">
-                            <a href="#">
-                                <img src="img/shipping.jpg" alt="">
-                            </a>
-                        </div>
-                        <h3>Shipping Operations</h3>
-                        <p>
-                            Holisticly synergize maintainable intellectual<br>
-                            capital via viral interfaces. Energistically<br>
-                            embrace functionalized
-                        </p>
-                        <a class="readmore" href="#">Read More &nbsp;<i class="fa fa-angle-right"></i> </a>
-                    </div>
-                </div>
-                <!-- /.col-sm-4 -->
-            </div>
+                    <!-- /.col-sm-4 -->
+                </div>*@
             <!-- /.row -->
         </div>
 
@@ -213,7 +213,7 @@
         <div class="row text-center">
             <div class="col-xs-12">
                 <h2 class="section-title">Popular Reports</h2>
-                <span class="section-sub">Powered by Isotope, your portfolio has never been more engaging</span>
+                @*<span class="section-sub">Powered by Isotope, your portfolio has never been more engaging</span>*@
             </div>
         </div>
         <!-- /.row -->
@@ -226,7 +226,7 @@
                         <div class="categorys">
                             <div class="col-md-12 col-xs-12">
                                 <h2>Chemical and Materials</h2>
-                                <p>Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit.</p>
+                                <p>&nbsp;</p>
                             </div>
 
                             <div class="col-md-12 col-xs-12">
@@ -236,9 +236,9 @@
                                     <div class="relatedpost">
                                         <div class="col-md-4">
                                             <div class="report-content">
-                                                <img src="@("/img/Chemical-and-Materials-" + a++ + "." + "jpg")" />
+                                                <img src="@("/img/Chemical-and-Materials-" + a++ + "." + "jpg")" alt="@item.ReportTitle" />
                                                 <h3><a href="@Url.Action("ReportDetail", "Report", new { @ReportUrl = item.ReportUrl })">@item.ReportTitle</a></h3>
-                                                <div>@Html.Raw(item.FullDescription)</div>
+                                                <div>@Html.Raw(item.FullDescription).....</div>
                                                 <a rel="nofollow" href="@Url.Action("ReportDetail", "Report", new { @ReportUrl = item.ReportUrl })">View More <i class="fa fa-arrow-circle-right"></i></a>
                                             </div>
 
@@ -257,7 +257,7 @@
                         <div class="categorys">
                             <div class="col-md-12 col-xs-12">
                                 <h2>Technology and Media</h2>
-                                <p>Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit.</p>
+                                <p>&nbsp;</p>
                             </div>
 
                             <div class="col-md-12 col-xs-12">
@@ -267,9 +267,9 @@
                                     <div class="relatedpost">
                                         <div class="col-md-4">
                                             <div class="report-content">
-                                                <img src="@("/img/Technology-and-Media-" + a++ + "." + "jpg")" />
+                                                <img src="@("/img/Technology-and-Media-" + a++ + "." + "jpg")" alt="@item.ReportTitle" />
                                                 <h3><a href="@Url.Action("ReportDetail", "Report", new { @ReportUrl = item.ReportUrl })">@item.ReportTitle</a></h3>
-                                                <div>@Html.Raw(item.FullDescription)</div>
+                                                <div>@Html.Raw(item.FullDescription).....</div>
                                                 <a rel="nofollow" href="@Url.Action("ReportDetail", "Report", new { @ReportUrl = item.ReportUrl })">View More <i class="fa fa-arrow-circle-right"></i></a>
                                             </div>
 
@@ -287,7 +287,7 @@
                         <div class="categorys">
                             <div class="col-md-12 col-xs-12">
                                 <h2>Helthcare</h2>
-                                <p>Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit.</p>
+                                <p>&nbsp;</p>
                             </div>
 
                             <div class="col-md-12 col-xs-12">
@@ -298,9 +298,9 @@
                                     <div class="relatedpost">
                                         <div class="col-md-4">
                                             <div class="report-content">
-                                                <img src="@("/img/Helthcare-" + a++ + "." + "jpg")" />
+                                                <img src="@("/img/Helthcare-" + a++ + "." + "jpg")" alt="@item.ReportTitle" />
                                                 <h3><a href="@Url.Action("ReportDetail", "Report", new { @ReportUrl = item.ReportUrl })">@item.ReportTitle</a></h3>
-                                                <div>@Html.Raw(item.FullDescription)</div>
+                                                <div>@Html.Raw(item.FullDescription).....</div>
                                                 <a rel="nofollow" href="@Url.Action("ReportDetail", "Report", new { @ReportUrl = item.ReportUrl })">View More <i class="fa fa-arrow-circle-right"></i></a>
                                             </div>
 
@@ -311,8 +311,6 @@
 
                         </div>
                     }
-
-
                     <a href="@Url.Action("AllReports", "Report")" class="btn btn-primary quote-btn text-center">All Reports</a>
                 </div>
             </div>
@@ -353,9 +351,7 @@
             </div>
         </div>
         <!-- /.row -->
-
         <div class="row content-row">
-
             <div class="col-md-12">
                 <div class="col-md-5 arrow_box">
                     <div>
@@ -374,26 +370,19 @@
                                 S. No. 66/3/29, Gajanan<br>
                                 Nagar, Pimple Gurav,<br>
                                 Pune - 411061 India.<br />
-
                             </div>
                             <div class="col-md-12 padding-left-0">
                                 Tel: +1(312) 588-9716
                                 <br>
                                 Email: sales@excellentmarketresearch.com
-
                             </div>
-
-
                         </address>
                     </div>
                 </div>
                 <div class="col-md-7 homepagecontact">
                     @{Html.RenderAction("GetinTouch", "ContactUs");}
-
                 </div>
             </div>
-
-
         </div>
         <!-- /.row -->
 
@@ -407,17 +396,17 @@
         <div class="row">
             <div class="col-sm-4 col-xs-12">
                 <div class="counter-block">
-                    <span class="count-description flaticon-boat"><strong class="timer">799</strong>order delivered</span>
+                    <span class="count-description flaticon-boat"><strong class="timer">6000</strong>Uploaded Reports</span>
                 </div>
             </div>
             <div class="col-sm-4 col-xs-12">
                 <div class="counter-block">
-                    <span class="count-description flaticon-international"><strong class="timer">19</strong>order delivered</span>
+                    <span class="count-description flaticon-international"><strong class="timer">19</strong>Order Delivered</span>
                 </div>
             </div>
             <div class="col-sm-4 col-xs-12">
                 <div class="counter-block">
-                    <span class="count-description flaticon-compass"><strong class="timer">521</strong>order delivered</span>
+                    <span class="count-description flaticon-compass"><strong class="timer">121</strong>Order Requestes</span>
                 </div>
             </div>
         </div>

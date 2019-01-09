@@ -10,7 +10,7 @@ Author: Cloud Software Solution Ltd.
  *  HERO SLIDER
  *-------------------------------------*/
 
-@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic);
+/*@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic);*/
 
 .hero-slide img {
 	min-width: 100%;
@@ -337,7 +337,7 @@ Whyus Setion
 		display: inline-block;
 		padding: 5px;
 		border-radius: 30px;
-		margin-bottom: 45px;
+		margin-bottom: 5px;
 		text-align: center;
 	}
 
@@ -541,7 +541,7 @@ TESTIMONIAL SECTION
 }
 
 .testimonial2 .testimonial-content {
-	padding: 50px;
+	padding: 20px;
 	background: #fff;
 	border-radius: 20px;
 }
@@ -657,7 +657,7 @@ PARTNER SECTION
 COUNTER SECTION
 --------------------------------------------------------------------- */
 .counter-section {
-	padding: 100px 0;
+	padding: 20px 0;
 	background: url(../img/counter-bg.jpg) no-repeat center top fixed;
 	background-size: cover;
 }
@@ -1632,11 +1632,11 @@ Contact Page
 	}
 
 .categorys h3 {
-	font-size: 15px;
+	font-size: 14px;
 	line-height: 25px;
 	text-align: left;
     padding: 0 10px;
-	min-height: 140px;
+	min-height: 60px;
 }
 
 .report-content h3 a {
@@ -1686,12 +1686,12 @@ Contact Page
 .categorys pre {
     background-color: transparent;
     border: 0;
-    font-size: 18px;
-    font-family: 'Source Sans Pro', Arial, Helvetica, sans-serif !important;
+    font-size: 14px;
+    /*font-family: 'Source Sans Pro', Arial, Helvetica, sans-serif !important;*/
     padding: 0 15px;
     overflow: hidden;
     text-align: left;
-    min-height: 125px;
+    min-height: 155px;
     white-space: pre-wrap; /* Since CSS 2.1 */
     white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
     white-space: -pre-wrap; /* Opera 4-6 */
@@ -1702,11 +1702,19 @@ Contact Page
 .report-content:hover {
 	box-shadow: 0px 7px 60px #928e8e78;
 }
+.report-single .css-tab {
+    box-shadow: 0px 0px 10px #757171e3;
+    padding-top: 10px;
+    border-radius: 35px;
+}
+.report-single div#reportdetails {
+    padding-top: 0px;
+}
 
 .letestnews {
-	margin-left: 25px;
-	padding: 0 30px;
-	box-shadow: 0px 0px 10px #f2f2f2;
+    margin-left: 25px;
+    padding: 0 30px;
+    box-shadow: 0px 0px 10px #f2f2f2;
 }
 
 .popular-categories-row {
@@ -1867,7 +1875,10 @@ input.form-control.phno {
 	}
 
 .img-responsive, .thumbnail > img, .thumbnail a > img, .carousel-inner > .item > img, .carousel-inner > .item > a > img {
-	height: 300px;
+	height: 200px;
+}
+.section-letestnews .col-xs-12 {
+    height: 0px;
 }
 .tab-post-thumb .img-responsive {
     height: auto;
@@ -1878,11 +1889,14 @@ input.form-control.phno {
 	color: #ffffff;
 }
 
-#main-carousel .carousel-caption h1 {
-	margin: 150px 0 20px;
-	color: #ffffff;
-	width: 1200px;
-	text-align: center;
+#main-carousel .carousel-caption h2 {
+    margin: 150px 0 50px;
+    color: #ffffff;
+    width: 1200px;
+    text-align: center;
+    font-size: 2.5em;
+    font-weight: 700;
+    text-transform: capitalize;
 }
 
 .testimonial2 .carousel:before {
@@ -2045,3 +2059,5 @@ li.disabled.PagedList-pageCountAndLocation a {width: 100px;border-radius: 20px;}
 input#Phonecode_ {width: 100%;padding: 6px;font-size: 14px;}
 .navbar-brand>img {display: block;width: 250px;position: relative;top: -15%;}
 .logo a.navbar-brand {padding: 0;margin: 0 auto;}
+.field-validation-valid {color: #ff0000;font-weight: 600;}
+

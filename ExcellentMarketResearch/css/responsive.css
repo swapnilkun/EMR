@@ -16,6 +16,7 @@
         width: 100%;
         margin-bottom: 30px;
     }
+
     .company-in-number {
         margin-left: 25%;
     }
@@ -47,7 +48,7 @@
 
     .mainnav {
         position: relative;
-        height: 75px;
+        height: 90px;
     }
 
     .navbar-brand > img {
@@ -108,13 +109,47 @@
     }
 
     .service-home .section-title, .section-reports .section-title, .section-letestnews .section-title, .section-getintouch .section-title {
-        font-size: 1.8em;
+        font-size: 1.2em;
+    }
+
+    section.testimonial-section.testimonial2.section-padding.section-letestnews .col-xs-12 {
+        height: 0px;
+    }
+
+    .testimonial2 .testimonial-content {
+        padding: 5px;
+    }
+
+    .testimonial2 .carousel-inner {
+        padding-bottom: 15px;
+    }
+
+    .arrow_box {
+        width: 100%;
+    }
+
+    .why-us-setion .content-row {
+        margin-top: 10px;
+    }
+
+    .arrow_box:after {
+        border-width: 0;
+        margin-top: 0;
+    }
+
+    .arrow_box:before {
+        border-width: 0;
+        margin-top: 0;
     }
 
     .categorys h2 {
         margin-bottom: 12px;
         line-height: 32px;
-        font-size: 1.8em;
+        font-size: 1.2em;
+    }
+
+    .categorys p {
+        font-size: 14px;
     }
 
     .report-content h3 {
@@ -217,9 +252,27 @@
     }
 }
 
-@media (max-width: 991px) {
+@media (min-width: 768px) and (max-width: 991px) {
     #mainContact {
         margin-bottom: 60px;
+    }
+
+    #main-carousel .carousel-caption h1 {
+        margin: 115px -190px 22px;
+    }
+
+    .col-md-7.homepagecontact {
+        float: right;
+        width: 55%;
+    }
+
+    .col-md-5.arrow_box {
+        float: left;
+        width: 45%;
+    }
+
+    .footer-widget-section.section-padding .col-sm-5 {
+        width: 32% !important;
     }
 }
 
@@ -246,10 +299,12 @@
         float: left;
         margin-bottom: 20px;
     }
+
     .about-intro p {
         margin-bottom: 25px;
         width: 63%;
     }
+
     section.about-intro-section {
         padding: 0;
     }

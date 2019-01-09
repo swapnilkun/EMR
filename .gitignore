@@ -8,3 +8,12 @@ ExcellentMarketResearch/bin/*
 *.txt
 ExcellentMarketResearch/obj/*
 ExcellentMarketResearch/Properties/*
+.vs/config/applicationhost.config
+.vs/ExcellentMarketResearch/DesignTimeBuild/.dtbcache
+*.lock
+.vs/*
+ExcellentMarketResearch/Web.config
+packages/*
+ExcellentMarketResearch/Properties/PublishProfiles/FolderProfile.pubxml
+ExcellentMarketResearch/Properties/PublishProfiles/FolderProfile.pubxml.user
+EMRPaymentLibrary/*

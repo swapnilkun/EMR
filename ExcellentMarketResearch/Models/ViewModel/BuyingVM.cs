@@ -30,8 +30,8 @@ namespace ExcellentMarketResearch.Models.ViewModel
         [Required(ErrorMessage = "Company is required."), MaxLength(50, ErrorMessage = "Company name should not be more than 50 characters.")]
         public string Company { get; set; }
 
-        [Required(ErrorMessage = "Captcha is required."), MaxLength(8, ErrorMessage = "Captcha should not be more than 5 characters.")]
-        [Display(Name = "Verification Code:")]
+        //[Required(ErrorMessage = "Captcha is required."), MaxLength(8, ErrorMessage = "Captcha should not be more than 5 characters.")]
+        //[Display(Name = "Verification Code:")]
         public string CaptchaCode { get; set; }
 
         [Display(Name = "Customer Message")]

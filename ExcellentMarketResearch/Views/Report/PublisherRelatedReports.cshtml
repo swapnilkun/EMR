@@ -4,6 +4,7 @@
 @{
     ViewBag.Title = "PublisherRelatedReports";
 }
+<script src="https://www.paypalobjects.com/api/checkout.js"></script>
 <section class="page-title-section" style="height:100px;">
     <div class="container">
         <div class="row">
@@ -28,51 +29,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3 col-sm-5 col-xs-12">
-                <div class="service-sidebar sidebar-wrapper">
-
-                    <div class="widget">
-                        <h2 class="widget-title">Services</h2>
-                        <ul class="service-list">
-                            <li><a href="air.html" class="icon-air">Air transportation</a></li>
-                            <li><a href="marine.html" class="icon-marine">Marine transportation</a></li>
-                            <li><a href="moving.html" class="icon-store">Moving &amp; storage</a></li>
-                            <li><a href="shipping.html" class="icon-shipping">Shipping &amp; operations</a></li>
-                            <li><a href="transportation.html" class="icon-transportation">Transportation logistics</a></li>
-                            <li class="active"><a href="trucking.html" class="icon-trucking">Trucking</a></li>
-                        </ul>
-                    </div>
-                    <!-- /.widget -->
-
-                    <div class="widget">
-                        <div class="download-wrap company">
-                            <a href="#">Company profile <span>Download</span><i class="fa fa-download"></i></a>
-                        </div>
-                        <!-- /.download-wrap -->
-                        <div class="download-wrap annual">
-                            <a href="#">Annual Report <span>Download</span><i class="fa fa-download"></i></a>
-                        </div>
-                        <!-- /.download-wrap -->
-                        <div class="download-wrap brochure">
-                            <a href="#">Corporate Brochure <span>Download</span><i class="fa fa-download"></i></a>
-                        </div>
-                        <!-- /.download-wrap -->
-                    </div>
-                    <!-- /.widget -->
-
-                    <div class="widget">
-                        <h2 class="widget-title">Office Hours</h2>
-                        <div class="textwidget">
-                            <p>
-                                Monday -
-                                                    Friday: 9:00 - 18:00<br>
-                                Saturday: 9:00 - 2:00<br>
-                                Holidays: 9:00 - 12:00
-                            </p>
-                        </div>
-                    </div>
-                    <!-- /.widget -->
-                </div>
-                <!-- /.sidebar-wrapper -->
+                @{Html.RenderAction("PartialCat", "Category");}
             </div>
             <!-- /.col -->
 
@@ -85,7 +42,7 @@
                         {
                         <div class="row report-lst-view">
                             <div class="col-md-3 report-img">
-                                <img />
+                                <img src="~/img/icons/@(String.Format("{0}{1}",item.ReportImage, ".png"))" alt="@item.ReportTitle" />
                             </div>
                             <div class="col-md-9 report-content">
                                 <a href="@Url.Action("ReportDetail", "Report", new { @ReportUrl = item.ReportUrl })">
@@ -119,7 +76,7 @@
                                 </div>
                             </div>
                             <div class="col-md-3 report-img">
-                                <img />
+                                <img src="~/img/icons/@(String.Format("{0}{1}", item.ReportImage, ".png"))" @item.ReportTitle />
                             </div>
 
                         </div>

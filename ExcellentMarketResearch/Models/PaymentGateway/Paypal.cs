@@ -18,7 +18,7 @@ namespace ExcellentMarketResearch.Models.PaymentGateway
         public static void _PayPal(BuyingVM buynow)
         {
 
-            PayPalConfig config = PayPalConfig.GetConfiguration(HttpContext.Current.Server.MapPath("/paypalconfig/paypal.config"));
+            PayPalConfig config = PayPalConfig.GetConfiguration(HttpContext.Current.Server.MapPath("~/paypalconfig/paypal.config"));
             config.guid = buynow.GuId;
             List<PaymentLibrary.PayPal.Item> items = new List<PaymentLibrary.PayPal.Item>();
             //foreach (OrderSummary orderSummary in buynow.OrderSummary)
@@ -41,8 +41,8 @@ namespace ExcellentMarketResearch.Models.PaymentGateway
                 Price = buynow.Price
             });
 
-            //PaymentLibrary.PayPal.Token tkn = PaymentLibrary.PayPal.PayPal.GetToken(config, items);
-            PaymentLibrary.PayPal.Token tkn = GetToken(config, items);
+            // PaymentLibrary.PayPal.Token tkn = PaymentLibrary.PayPal.PayPal.GetToken(config, items, true);
+            PaymentLibrary.PayPal.Token tkn = GetToken(config, items, true);
 
             if (!string.IsNullOrEmpty(tkn.L_ERRORCODE0))
             {
@@ -58,50 +58,45 @@ namespace ExcellentMarketResearch.Models.PaymentGateway
         }
         public static Token GetToken(PayPalConfig cnf, List<Item> items, bool isSandbox = false)
         {
-            StringBuilder stringBuilder = new StringBuilder();
-            string value = (!isSandbox) ? "https://api-3t.paypal.com/nvp?" : "https://api-3t.sandbox.paypal.com/nvp?";
-            stringBuilder.Append(value);
-            PayPalRequest payPalRequest = new PayPalRequest();
-            payPalRequest.METHOD = "SetExpressCheckout";
-            payPalRequest.VERSION = ((!isSandbox) ? "109.0" : "104.0");
-            payPalRequest.USER = cnf.User;
-            payPalRequest.PWD = cnf.Password;
-            payPalRequest.SIGNATURE = cnf.Signature;
-            payPalRequest.Items = new Dictionary<string, object>();
-            int num = 0;
-            foreach (Item current in items)
+            StringBuilder builder = new StringBuilder();
+            builder.Append(!isSandbox ? "https://api-3t.paypal.com/nvp?" : "https://api-3t.sandbox.paypal.com/nvp?");
+            PayPalRequest request = new PayPalRequest
             {
-                payPalRequest.Items.Add("L_PAYMENTREQUEST_0_NAME" + num, current.Name);
-                payPalRequest.Items.Add("L_PAYMENTREQUEST_0_NUMBER" + num, num);
-                payPalRequest.Items.Add("L_PAYMENTREQUEST_0_QTY" + num, current.Quantity);
-                payPalRequest.Items.Add("L_PAYMENTREQUEST_0_AMT" + num, current.TotalAmount);
+                METHOD = "SetExpressCheckout",
+                VERSION = !isSandbox ? "109.0" : "104.0",
+                USER = cnf.User,
+                PWD = cnf.Password,
+                SIGNATURE = cnf.Signature,
+                Items = new Dictionary<string, object>()
+            };
+            int num = 0;
+            foreach (Item item in items)
+            {
+                request.Items.Add("L_PAYMENTREQUEST_0_NAME" + num, item.Name);
+                request.Items.Add("L_PAYMENTREQUEST_0_NUMBER" + num, num);
+                request.Items.Add("L_PAYMENTREQUEST_0_QTY" + num, item.Quantity);
+                request.Items.Add("L_PAYMENTREQUEST_0_AMT" + num, item.TotalAmount);
                 num++;
             }
-            PayPalRequest arg_162_0 = payPalRequest;
-            //Func<Item, decimal?> arg_15D_1;
-            //if ((arg_15D_1 =PayPal.<>c.<>9__0_0) == null)
-            //{
-            //    arg_15D_1 = (PayPal.<>c.<>9__0_0 = new Func<Item, decimal?>(PayPal.<>c.<>9.<GetToken>b__0_0));
-            //}
-            //arg_162_0.PAYMENTREQUEST_0_AMT = items.Sum(arg_15D_1);
-            payPalRequest.PAYMENTREQUEST_0_CURRENCYCODE = "USD";
-            payPalRequest.RETURNURL = cnf.ReturnUrl + "?guid=" + cnf.guid;
-            payPalRequest.CANCELURL = cnf.CancelUrl + "?guid=" + cnf.guid;
-            payPalRequest.PAYMENTREQUEST_0_PAYMENTACTION = "Sale";
-            payPalRequest.SOLUTIONTYPE = "Sole";
-            payPalRequest.LANDINGPAGE = "Billing";
-            payPalRequest.BRANDNAME = cnf.CompanyName;
-            stringBuilder.Append(QuerystringSerializer.Serialize(payPalRequest));
+            request.PAYMENTREQUEST_0_AMT = items.Sum<Item>(x => x.TotalAmount);
+            request.PAYMENTREQUEST_0_CURRENCYCODE = "USD";
+            request.RETURNURL = cnf.ReturnUrl + "?guid=" + cnf.guid;
+            request.CANCELURL = cnf.CancelUrl + "?guid=" + cnf.guid;
+            request.PAYMENTREQUEST_0_PAYMENTACTION = "Sale";
+            request.SOLUTIONTYPE = "Sole";
+            request.LANDINGPAGE = "Billing";
+            request.BRANDNAME = cnf.CompanyName;
+            builder.Append(QuerystringSerializer.Serialize(request));
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-            WebResponse expr_1FE = WebRequest.Create(stringBuilder.ToString()).GetResponse();
-            StreamReader expr_209 = new StreamReader(expr_1FE.GetResponseStream());
-            string s = expr_209.ReadToEnd();
-            expr_209.Close();
-            expr_1FE.Close();
+            WebResponse response = WebRequest.Create(builder.ToString()).GetResponse();
+            StreamReader reader1 = new StreamReader(response.GetResponseStream());
+            string s = reader1.ReadToEnd();
+            reader1.Close();
+            response.Close();
             return QuerystringSerializer.Deserialize<Token>(HttpContext.Current.Server.UrlDecode(s), "", false);
         }
 
-        public static bool PayPalProcess(PayPalResponse paypalResponse)
+        public static bool PayPalProcess(PaymentLibrary.PayPal.PayPalResponse paypalResponse)
         {
             ExcellentMarketResearchEntities db = new ExcellentMarketResearchEntities();
 
@@ -182,5 +177,26 @@ namespace ExcellentMarketResearch.Models.PaymentGateway
             return buyer;
         }
 
+    }
+
+    public class PayPalResponse
+    {
+        public string PAYERID { get; set; }
+
+        public string guid { get; set; }
+
+        public string TOKEN { get; set; }
+
+        public string ACK { get; set; }
+
+        public string OrderID { get; set; }
+
+        public string PaymentID { get; set; }
+
+        public string Intent { get; set; }
+
+        public string ReturnUrl { get; set; }
+
+        public string PaymentStatus { get; set; }
     }
 }

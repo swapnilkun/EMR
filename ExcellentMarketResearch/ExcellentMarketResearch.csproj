@@ -39,11 +39,11 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
-      <HintPath>..\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -59,21 +59,13 @@
     </Reference>
     <Reference Include="PaymentLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\user\Desktop\PaymentLibrary\PaymentLibrary.dll</HintPath>
+      <HintPath>ExternalDll\PaymentLibrary.dll</HintPath>
     </Reference>
     <Reference Include="PayPal, Version=1.9.1.0, Culture=neutral, PublicKeyToken=5b4afc1ccaef40fb, processorArchitecture=MSIL">
       <HintPath>..\packages\PayPal.1.9.1\lib\net45\PayPal.dll</HintPath>
     </Reference>
     <Reference Include="PayPalCoreSDK, Version=1.7.1.0, Culture=neutral, PublicKeyToken=5b4afc1ccaef40fb, processorArchitecture=MSIL">
       <HintPath>..\packages\PayPalCoreSDK.1.7.1\lib\net45\PayPalCoreSDK.dll</HintPath>
-    </Reference>
-    <Reference Include="StackifyLib, Version=1.21.5920.28436, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\StackifyLib.1.21.0.0\lib\StackifyLib.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="StackifyLib.log4net, Version=1.18.5890.19948, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\StackifyLib.log4net.v1_2_10.1.18.1.0\lib\StackifyLib.log4net.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -240,6 +232,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InquiryFormController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
+    <Compile Include="Controllers\PaymentProcessController.cs" />
     <Compile Include="Controllers\ReportBuyingController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\SitemapController.cs" />
@@ -1110,7 +1103,6 @@
     <Content Include="Areas\Admin\Views\Category\CategoryEdit.cshtml" />
     <Content Include="Areas\Admin\Views\Category\CategoryIndex.cshtml" />
     <Content Include="Areas\Admin\Views\Category\CreateCategory.cshtml" />
-    <Content Include="PayPal\PayPal.config" />
     <Content Include="Areas\Admin\Views\Adminlogin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Adminlogin\Login.cshtml" />
     <Content Include="Areas\Admin\Views\Adminlogin\loginfailed.cshtml" />
@@ -1218,6 +1210,9 @@
     <Content Include="Views\ContactUs\GetinTouch.cshtml" />
     <Content Include="Views\Home\Faqs.cshtml" />
     <Content Include="Views\ReportBuying\PaymentSuccess.cshtml" />
+    <Content Include="Views\PaymentProcess\Success.cshtml" />
+    <Content Include="Views\PaymentProcess\Failure.cshtml" />
+    <Content Include="Views\PaymentProcess\Cancel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

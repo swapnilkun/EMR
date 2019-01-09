@@ -472,83 +472,83 @@ jQuery(function ($) {
 
     }());
 
-    //Modal map
-    (function () {
+    ////Modal map
+    //(function () {
 
 
-    if ($('#googleMap').length > 0) {
+    //if ($('#googleMap').length > 0) {
 
 
-        //set google map options
-        var map_options = {
-            center: new google.maps.LatLng($latitude, $longitude),
-            zoom: $map_zoom,
-            panControl: true,
-            zoomControl: true,
-            mapTypeControl: false,
-            streetViewControl: true,
-            mapTypeId: google.maps.MapTypeId.ROADMAP,
-            scrollwheel: false,
-            styles: style,
-        }
-        //initialize the map
-        var map = new google.maps.Map(document.getElementById('googleMap'), map_options);
-        //add a custom marker to the map
-        var marker = new google.maps.Marker({
-            position: new google.maps.LatLng($latitude, $longitude),
-            map: map,
-            visible: true,
-            icon: $marker_url,
-        });
+    //    //set google map options
+    //    var map_options = {
+    //        center: new google.maps.LatLng($latitude, $longitude),
+    //        zoom: $map_zoom,
+    //        panControl: true,
+    //        zoomControl: true,
+    //        mapTypeControl: false,
+    //        streetViewControl: true,
+    //        mapTypeId: google.maps.MapTypeId.ROADMAP,
+    //        scrollwheel: false,
+    //        styles: style,
+    //    }
+    //    //initialize the map
+    //    var map = new google.maps.Map(document.getElementById('googleMap'), map_options);
+    //    //add a custom marker to the map
+    //    var marker = new google.maps.Marker({
+    //        position: new google.maps.LatLng($latitude, $longitude),
+    //        map: map,
+    //        visible: true,
+    //        icon: $marker_url,
+    //    });
 
-        $('#cssMapModal').on('shown.bs.modal', function(){
+    //    $('#cssMapModal').on('shown.bs.modal', function(){
 
-         google.maps.event.trigger(map, 'resize');
-         map.setCenter(new google.maps.LatLng($latitude, $longitude));
-       });
+    //     google.maps.event.trigger(map, 'resize');
+    //     map.setCenter(new google.maps.LatLng($latitude, $longitude));
+    //   });
 
-       };
+    //   };
 
-    }());
+    //}());
 
 
 
-    // Twitter Feed on Footer Widget
-    (function () {
-        var twitterConfig = {
-            id: "567185781790228482", //put your Widget ID here
-            domId: "twitterWidget",
-            maxTweets: 3,
-            enableLinks: true,
-            showUser: false,
-            showTime: true,
-            showInteraction: false,
-            customCallback: handleTweets
-        };
-        twitterFetcher.fetch(twitterConfig);
+    //// Twitter Feed on Footer Widget
+    //(function () {
+    //    var twitterConfig = {
+    //        id: "567185781790228482", //put your Widget ID here
+    //        domId: "twitterWidget",
+    //        maxTweets: 3,
+    //        enableLinks: true,
+    //        showUser: false,
+    //        showTime: true,
+    //        showInteraction: false,
+    //        customCallback: handleTweets
+    //    };
+    //    twitterFetcher.fetch(twitterConfig);
 
-        function handleTweets(tweets) {
-            var x = tweets.length;
-            var n = 0;
-            var html = "";
-            while (n < x) {
-                html += '<div class="item">' + tweets[n] +
-                    "</div>";
-                n++
-            }
-            $(".twitter-widget").html(html);
-            $(".twitter_retweet_icon").html(
-                '<i class="fa fa-retweet"></i>');
-            $(".twitter_reply_icon").html(
-                '<i class="fa fa-reply"></i>');
-            $(".twitter_fav_icon").html(
-                '<i class="fa fa-star"></i>');
-            $(".twitter-widget").owlCarousel({
-                items: 1,
-                loop: true,
-                autoplay: true
-            });
+    //    function handleTweets(tweets) {
+    //        var x = tweets.length;
+    //        var n = 0;
+    //        var html = "";
+    //        while (n < x) {
+    //            html += '<div class="item">' + tweets[n] +
+    //                "</div>";
+    //            n++
+    //        }
+    //        $(".twitter-widget").html(html);
+    //        $(".twitter_retweet_icon").html(
+    //            '<i class="fa fa-retweet"></i>');
+    //        $(".twitter_reply_icon").html(
+    //            '<i class="fa fa-reply"></i>');
+    //        $(".twitter_fav_icon").html(
+    //            '<i class="fa fa-star"></i>');
+    //        $(".twitter-widget").owlCarousel({
+    //            items: 1,
+    //            loop: true,
+    //            autoplay: true
+    //        });
 
-        }
-    }());
+    //    }
+    //}());
 }); // JQuery end
