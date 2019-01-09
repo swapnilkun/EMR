@@ -1213,6 +1213,7 @@
     <Content Include="Views\PaymentProcess\Success.cshtml" />
     <Content Include="Views\PaymentProcess\Failure.cshtml" />
     <Content Include="Views\PaymentProcess\Cancel.cshtml" />
+    <Content Include="Views\Home\PrivacyAndCookies.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

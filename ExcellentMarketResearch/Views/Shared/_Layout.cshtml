@@ -22,8 +22,8 @@
     <meta name="document-type" content="Public" />
     <meta name="Page-Topic" content="Market Research" />
     <meta name="Audience" content="All, Business, Research, Services" />
-    <link rel="canonical" href="https://www.excellentmarketresearch.com" />
-    <base href="https://www.excellentmarketresearch.com/" />
+    @*<link rel="canonical" href="https://www.excellentmarketresearch.com" />
+    <base href="https://www.excellentmarketresearch.com/" />*@
     <meta name="robots" content="NOODP" />
 
 
@@ -345,7 +345,7 @@
                     <div class="container text-center">
                         <div class="footer-menu">
                             <ul>
-                                <li><a href="@Url.Action("#", "")">Privacy &amp; Cookies</a></li>
+                                <li><a href="@Url.Action("PrivacyAndCookies", "Home")">Privacy &amp; Cookies</a></li>
                                 <li><a href="@Url.Action("TermsAndCondition", "Home")">Terms &amp; Conditions</a></li>
                             </ul>
                         </div>
@@ -405,6 +405,15 @@
             <div class="status-mes"></div>
         </div>
     </div>-->
+    <!-- Cookie Consent by https://TermsFeed.com -->
+    <script type="text/javascript" src="//termsfeed.com/cookie-consent/releases/2.0.0/cookie-consent.js"></script>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+            cookieconsent.run({ "notice_banner_type": "simple", "consent_type": "express", "palette": "dark", "website_name": "www.excellentmarketresearch.com" });
+        });
+    </script>
+    <noscript>By <a href="https://termsfeed.com/">TermsFeed</a></noscript>
+    <!-- End Cookie Consent -->
     <!-- jQuery -->
     <!-- jQuery -->
     <script src="@Url.Content("~/js/jquery.js")"></script>

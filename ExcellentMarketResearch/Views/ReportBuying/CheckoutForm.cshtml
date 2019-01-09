@@ -411,22 +411,22 @@
     }
 
     function toggleButton(actions) {
-        if (guId != "" && isValid()) {
-            return true;
-        }
-        else { return false; }
-        //return isValid() ? actions.enable() : actions.disable();
+        //if (guId != "" && isValid()) {
+        //    return true;
+        //}
+        //else { return false; }
+        return isValid() ? actions.enable() : actions.disable();
     }
 
         paypal.Button.render({
 
-            env: 'sandbox', // sandbox | production
+            env: 'production', // sandbox | production
 
             // PayPal Client IDs - replace with your own
             // Create a PayPal app: https://developer.paypal.com/developer/applications/create
             client: {
-                sandbox:    'ARWtIVHeCWrunm8c5s28u7c9DyI2KNXI_yFekoQ01ZkkborG9CVOtEg5U6JgcYuJmzZ-ZnjMKiBujubv',
-                //production: 'Ab6zaBMiBAN37e82tMIklgdmm-7gcgo778RWkybxdOXRsmJVd8JZ4AjfAOpuAhIPrvj3QlcDx0k5eZf5'
+                //sandbox:    'ARWtIVHeCWrunm8c5s28u7c9DyI2KNXI_yFekoQ01ZkkborG9CVOtEg5U6JgcYuJmzZ-ZnjMKiBujubv',
+                production: 'Ab6zaBMiBAN37e82tMIklgdmm-7gcgo778RWkybxdOXRsmJVd8JZ4AjfAOpuAhIPrvj3QlcDx0k5eZf5'
             },
 
             validate: function (actions) {
