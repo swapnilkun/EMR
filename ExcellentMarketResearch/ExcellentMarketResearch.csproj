@@ -348,6 +348,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\PaymentLibrary.dll" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -1126,6 +1127,7 @@
     <Content Include="paypalconfig\paypal.config">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="libman.json" />
     <None Include="Properties\PublishProfiles\excellentmarketresearch.com - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\excellentmarketresearch.com - Web Deploy1.pubxml" />
     <None Include="Properties\PublishProfiles\excellentmarketresearch.com - Web Deploy2.pubxml" />
@@ -1225,6 +1227,9 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -1261,7 +1266,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>1118</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:1033/</IISUrl>
+          <IISUrl>http://localhost:1623/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

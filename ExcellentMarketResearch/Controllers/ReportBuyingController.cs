@@ -13,6 +13,7 @@ using System.Text;
 using PayPal;
 using PayPal.Api;
 using System.Threading.Tasks;
+using System.Data;
 
 namespace ExcellentMarketResearch.Controllers
 {
@@ -234,6 +235,14 @@ namespace ExcellentMarketResearch.Controllers
             buy.PhoneNumber = userdata.PhoneNumber;
             buy.Designation = userdata.Designation;
 
+
+            var updatestatus = db.BuyingInfoes.Where(x => x.GuId == response.guid).FirstOrDefault();
+           // b.PaymentTransaction = true;
+            //updatestatus.PaymentTransaction = response.PaymentTransaction;
+            
+            db.Entry(updatestatus).State = EntityState.Modified;
+            db.SaveChanges();
+            return true;
 
             if (response.PaymentStatus == "Success")
             {
