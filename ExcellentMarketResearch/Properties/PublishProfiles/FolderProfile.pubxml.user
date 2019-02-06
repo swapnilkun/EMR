@@ -6,7 +6,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>E:\New folder\EMR\03012019</_PublishTargetUrl>
+    <_PublishTargetUrl>E:\New folder\EMR\04022019</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="Areas/Admin/Views/Action/ActionIndex.cshtml">
@@ -106,16 +106,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/14/2018 00:42:06</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Report/ReportCreate.cshtml">
-      <publishTime>01/10/2018 11:18:20</publishTime>
+      <publishTime>10/01/2018 11:18:20</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Report/ReportDelete.cshtml">
-      <publishTime>01/10/2018 11:18:20</publishTime>
+      <publishTime>10/01/2018 11:18:20</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Report/ReportDetails.cshtml">
-      <publishTime>01/10/2018 11:18:20</publishTime>
+      <publishTime>10/01/2018 11:18:20</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Report/ReportEdit.cshtml">
-      <publishTime>01/10/2018 11:18:20</publishTime>
+      <publishTime>10/01/2018 11:18:20</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Report/ReportIndex.cshtml">
       <publishTime>10/15/2018 21:38:22</publishTime>
@@ -178,13 +178,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/23/2018 22:07:34</publishTime>
     </File>
     <File Include="bin/ExcellentMarketResearch.dll">
-      <publishTime>01/07/2019 22:33:47</publishTime>
+      <publishTime>02/04/2019 23:57:40</publishTime>
     </File>
     <File Include="bin/ExcellentMarketResearch.pdb">
-      <publishTime>01/07/2019 22:33:47</publishTime>
+      <publishTime>02/04/2019 23:57:40</publishTime>
     </File>
     <File Include="bin/log4net.dll">
-      <publishTime>08/03/2017 19:26:22</publishTime>
+      <publishTime>03/08/2017 19:26:22</publishTime>
     </File>
     <File Include="bin/Microsoft.Web.Infrastructure.dll">
       <publishTime>07/23/2018 22:07:34</publishTime>
@@ -208,7 +208,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/23/2018 22:07:34</publishTime>
     </File>
     <File Include="bin/PaymentLibrary.dll">
-      <publishTime>08/02/2017 18:21:36</publishTime>
+      <publishTime>02/08/2017 18:21:36</publishTime>
     </File>
     <File Include="bin/PayPal.dll">
       <publishTime>10/23/2017 16:17:36</publishTime>
@@ -1696,7 +1696,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/23/2018 22:07:33</publishTime>
     </File>
     <File Include="css/blog.css">
-      <publishTime>07/23/2018 22:07:33</publishTime>
+      <publishTime>01/31/2019 23:43:28</publishTime>
     </File>
     <File Include="css/bootstrap.min.css">
       <publishTime>07/23/2018 22:07:33</publishTime>
@@ -1720,10 +1720,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/23/2018 22:07:33</publishTime>
     </File>
     <File Include="css/responsive.css">
-      <publishTime>12/23/2018 14:45:50</publishTime>
+      <publishTime>01/13/2019 11:02:09</publishTime>
     </File>
     <File Include="css/style.css">
-      <publishTime>12/29/2018 22:22:04</publishTime>
+      <publishTime>01/31/2019 23:43:03</publishTime>
     </File>
     <File Include="css/template.css">
       <publishTime>12/29/2018 21:27:38</publishTime>
@@ -2401,7 +2401,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/14/2018 18:25:18</publishTime>
     </File>
     <File Include="Models/ExcellentMarketResearch.edmx.diagram">
-      <publishTime>09/12/2018 12:43:23</publishTime>
+      <publishTime>12/09/2018 12:43:23</publishTime>
     </File>
     <File Include="Models/ModernMarketResearch.edmx.diagram">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -2416,13 +2416,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/23/2018 22:07:33</publishTime>
     </File>
     <File Include="packages.config">
-      <publishTime>09/12/2018 14:32:20</publishTime>
+      <publishTime>12/09/2018 14:32:20</publishTime>
     </File>
     <File Include="PayPal/PayPal.config">
       <publishTime>10/18/2018 10:45:25</publishTime>
     </File>
     <File Include="paypalconfig/paypal.config">
-      <publishTime>09/12/2018 15:06:58</publishTime>
+      <publishTime>12/09/2018 15:06:58</publishTime>
     </File>
     <File Include="Scripts/bootstrap.bundle.js">
       <publishTime>07/23/2018 22:07:33</publishTime>
@@ -2530,7 +2530,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/29/2018 21:16:05</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>12/29/2018 22:30:17</publishTime>
+      <publishTime>01/12/2019 09:31:54</publishTime>
     </File>
     <File Include="Views/Home/PageTitleDiv.cshtml">
       <publishTime>09/13/2018 20:10:34</publishTime>
@@ -2554,13 +2554,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/29/2018 21:52:30</publishTime>
     </File>
     <File Include="Views/News/AllNews.cshtml">
-      <publishTime>12/29/2018 21:51:17</publishTime>
+      <publishTime>01/31/2019 23:40:45</publishTime>
     </File>
     <File Include="Views/News/LatestNewsForIndexPage.cshtml">
       <publishTime>09/14/2018 00:42:24</publishTime>
     </File>
     <File Include="Views/News/NewsDetails.cshtml">
-      <publishTime>12/29/2018 21:52:27</publishTime>
+      <publishTime>01/31/2019 23:46:30</publishTime>
     </File>
     <File Include="Views/PaymentProcess/Cancel.cshtml">
       <publishTime>12/29/2018 21:56:19</publishTime>
@@ -2593,7 +2593,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/29/2018 22:02:53</publishTime>
     </File>
     <File Include="Views/ReportBuying/CheckoutForm.cshtml">
-      <publishTime>01/03/2019 01:29:36</publishTime>
+      <publishTime>02/03/2019 15:30:38</publishTime>
     </File>
     <File Include="Views/ReportBuying/PaymentSuccess.cshtml">
       <publishTime>10/19/2018 00:28:36</publishTime>
@@ -2611,7 +2611,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/23/2018 22:07:33</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>12/16/2018 20:28:58</publishTime>
+      <publishTime>02/04/2019 23:57:43</publishTime>
     </File>
   </ItemGroup>
 </Project>

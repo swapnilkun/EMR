@@ -478,3 +478,10 @@ Blog Section Main
   border: 2px solid #65d3e3;
 }
 
+.emr-news .post-thumbnail {
+    display: none !important;
+}
+
+.emr-news .tab-post-thumb {
+    display: none !important;
+}

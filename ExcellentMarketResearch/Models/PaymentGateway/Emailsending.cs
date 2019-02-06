@@ -39,7 +39,7 @@ namespace ExcellentMarketResearch.Models.PaymentGateway
                     DeliveryMethod = SmtpDeliveryMethod.Network,
                     UseDefaultCredentials=false,
                     // Credentials = new NetworkCredential("danielmiller@excellentmarketresearch.com", "Jmt?23r2"),
-                    Credentials = new NetworkCredential("sales@excellentmarketresearch.com", "bUt#m061"),
+                    Credentials = new NetworkCredential("sales@excellentmarketresearch.com", "6xJ26Ac+d8=pc+g&"),
                     EnableSsl = false
                     //DeliveryMethod = SmtpDeliveryMethod.Network,
                     // UseDefaultCredentials = false,
