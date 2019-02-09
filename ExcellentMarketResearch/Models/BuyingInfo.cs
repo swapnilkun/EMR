@@ -41,5 +41,13 @@ namespace ExcellentMarketResearch.Models
         public Nullable<bool> PaymentTransaction { get; set; }
         public string ErrorReason { get; set; }
         public string ErrorCode { get; set; }
+        public string PayerId { get; set; }
+        public string Token { get; set; }
+        public string ACK { get; set; }
+        public Nullable<int> OrderId { get; set; }
+        public string PaymentId { get; set; }
+        public string Intent { get; set; }
+        public string ReturnUrl { get; set; }
+        public string PaymentStatus { get; set; }
     }
 }

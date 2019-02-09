@@ -237,12 +237,18 @@ namespace ExcellentMarketResearch.Controllers
 
 
             var updatestatus = db.BuyingInfoes.Where(x => x.GuId == response.guid).FirstOrDefault();
-           // b.PaymentTransaction = true;
+            // b.PaymentTransaction = true;
             //updatestatus.PaymentTransaction = response.PaymentTransaction;
-            
+            updatestatus.PaymentStatus = response.PaymentStatus;
+            updatestatus.Intent = response.Intent;
+            updatestatus.PaymentId = response.PaymentID;
+            updatestatus.PayerId = response.PAYERID;
+            updatestatus.OrderId = Convert.ToInt32(response.OrderID);
+            updatestatus.Token = response.TOKEN;
+            updatestatus.ACK = response.ACK;
             db.Entry(updatestatus).State = EntityState.Modified;
             db.SaveChanges();
-            return true;
+          
 
             if (response.PaymentStatus == "Success")
             {

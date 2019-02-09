@@ -30,7 +30,7 @@ namespace ExcellentMarketResearch.Controllers
                                               ReportUrl = r.ReportUrl,
                                               FullDescription=r.LongDescritpion.Substring(0,200)
                                           }).Take(3).ToList();
-
+             
             ViewBag.TechnologyMedia = (from l in db.CategoryMasters
                                             join r in db.ReportMasters on l.CategoryId equals r.CategoryId
                                             //where l.CategoryName == "Electrical & Electronic"
