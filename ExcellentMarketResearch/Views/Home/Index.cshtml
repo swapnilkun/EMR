@@ -2,9 +2,9 @@
 @{
     ViewBag.Title = "Index";
 }
-
+@{Html.RenderAction("SearchingPartialView", "Home");}
 ﻿<div id="main-carousel" class="carousel slide hero-slide" data-ride="carousel">
-    @{Html.RenderAction("SearchingPartialView", "Home");}
+
     <!-- Indicators -->
     <ol class="carousel-indicators">
         <li data-target="#main-carousel" data-slide-to="0" class="active"></li>

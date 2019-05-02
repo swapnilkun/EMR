@@ -507,7 +507,7 @@
             onAuthorize: function (data, actions) {
                 return actions.payment.execute()
                     .then(function () {
-                        //console.log("S- " + JSON.stringify(data));
+                        console.log("S- " + JSON.stringify(data));
                         paymentStatus = 'Success';
                         //var data = JSON.stringify(data);
                         //console.log("guId :"+guId)
@@ -544,7 +544,7 @@
             },
             onCancel: function (data, actions) {
                 // return actions.redirect();
-                //console.log("C- " + JSON.stringify(data));
+                console.log("C- " + JSON.stringify(data));
                 //window.alert('You cancelled');
                 paymentStatus = 'Cancel';
                 //var data = JSON.stringify(data);

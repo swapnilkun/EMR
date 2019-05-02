@@ -6,7 +6,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>E:\New folder\EMR\03012019</_PublishTargetUrl>
+    <_PublishTargetUrl>E:\New folder\EMR\04022019</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="Areas/Admin/Views/Action/ActionIndex.cshtml">
@@ -176,12 +176,6 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>01/01/0001 00:00:00</publishTime>
-    </File>
-    <File Include="bin/ExcellentMarketResearch.dll">
-      <publishTime>07/01/2019 22:33:47</publishTime>
-    </File>
-    <File Include="bin/ExcellentMarketResearch.pdb">
-      <publishTime>07/01/2019 22:33:47</publishTime>
     </File>
     <File Include="bin/log4net.dll">
       <publishTime>03/08/2017 19:26:22</publishTime>
@@ -1695,9 +1689,6 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="css/animate.css">
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
-    <File Include="css/blog.css">
-      <publishTime>01/01/0001 00:00:00</publishTime>
-    </File>
     <File Include="css/bootstrap.min.css">
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
@@ -1717,12 +1708,6 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="css/menu.css">
-      <publishTime>01/01/0001 00:00:00</publishTime>
-    </File>
-    <File Include="css/responsive.css">
-      <publishTime>01/01/0001 00:00:00</publishTime>
-    </File>
-    <File Include="css/style.css">
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="css/template.css">
@@ -2529,9 +2514,6 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/Home/Faqs.cshtml">
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
-    <File Include="Views/Home/Index.cshtml">
-      <publishTime>01/01/0001 00:00:00</publishTime>
-    </File>
     <File Include="Views/Home/PageTitleDiv.cshtml">
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
@@ -2553,13 +2535,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/InquiryForm/SampleRequest.cshtml">
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
-    <File Include="Views/News/AllNews.cshtml">
-      <publishTime>01/01/0001 00:00:00</publishTime>
-    </File>
     <File Include="Views/News/LatestNewsForIndexPage.cshtml">
-      <publishTime>01/01/0001 00:00:00</publishTime>
-    </File>
-    <File Include="Views/News/NewsDetails.cshtml">
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/PaymentProcess/Cancel.cshtml">
@@ -2592,9 +2568,6 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/Report/SearchedReports.cshtml">
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
-    <File Include="Views/ReportBuying/CheckoutForm.cshtml">
-      <publishTime>03/01/2019 01:29:36</publishTime>
-    </File>
     <File Include="Views/ReportBuying/PaymentSuccess.cshtml">
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
@@ -2608,9 +2581,6 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/01/2019 23:27:06</publishTime>
     </File>
     <File Include="Views/_ViewStart.cshtml">
-      <publishTime>01/01/0001 00:00:00</publishTime>
-    </File>
-    <File Include="Web.config">
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
   </ItemGroup>
