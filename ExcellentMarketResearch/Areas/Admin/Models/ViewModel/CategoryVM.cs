@@ -38,6 +38,7 @@ namespace ExcellentMarketResearch.Areas.Admin.Models.ViewModel
         public DateTime CreatedDate { get; set; }
         public DateTime? ModifiedDate { get; set; }
         public bool IsActive { get; set; }
+        public List<CategoryVM> categorylist { get; set; }
 
         //public List<CategoryMaster> GetParent()
         //{

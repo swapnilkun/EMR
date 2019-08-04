@@ -15,21 +15,21 @@
 
 @using (Html.BeginForm("ReportIndex", "Report", FormMethod.Get))
 {
-@*<div class="col-sm-12" style="margin-left: 10px; margin-bottom: 50px">*@
+    @*<div class="col-sm-12" style="margin-left: 10px; margin-bottom: 50px">*@
 
-@*<div class="col-sm-6">
+    @*<div class="col-sm-6">
             <input type="text" name="searchkey" class="form-control" value="@Request.QueryString["searchkey"]" placeholder="Search Report" />
             <span class="input-group-btn">
                 <button class="btn btn-search" type="submit"><i class="fa fa-search fa-fw">Search</i></button>
             </span>
         </div>*@
 
-    
+
     <div class="row">
         <div class="col-sm-12">
-            <div class="col-sm-4">
+            <div class="col-sm-3">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search Keyword"  value="@Request.QueryString["searchkey"]"  name="searchkey" id="txtSearch" />
+                    <input type="text" class="form-control" placeholder="Search Keyword" value="@Request.QueryString["searchkey"]" name="searchkey" id="txtSearch" />
                     <div class="input-group-btn">
                         <button class="btn btn-primary" type="submit">
                             <span class="glyphicon glyphicon-search"></span>
@@ -37,45 +37,52 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-4">
-                            @Html.DropDownList("pagesize", from l in new ExcellentMarketResearch.Areas.Admin.Models.ViewModel.ReportVM().GetPageSize().ToList()
-                                                           select new SelectListItem
-                                                           {
-                                                               Text = l.Text,
-                                                               Value = l.Value
-                                                           }
-            , "Select Size", new { @class = "form-control" })
+            <div class="col-sm-3">
+                @Html.DropDownList("pagesize", from l in new ExcellentMarketResearch.Areas.Admin.Models.ViewModel.ReportVM().GetPageSize().ToList()
+                                               select new SelectListItem
+                                               {
+                                                   Text = l.Text,
+                                                   Value = l.Value
+                                               }
+, "Select Size", new { @class = "form-control" })
+            </div>
+            <div class="col-sm-3">
+                @Html.DropDownList("categoryId", from l in new ExcellentMarketResearch.Areas.Admin.Models.ViewModel.ReportVM().CategoryListDrop().ToList()
+                                               select new SelectListItem
+                                               {
+                                                   Text = l.CategoryName,
+                                                   Value = l.CategoryId.ToString()
+                                               }
+, "Select Category", new { @class = "form-control" })
             </div>
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-12">
+        <div class="col-sm-10">
             <div class="col-sm-3">
                 <input type="text" name="FromDate" class="form-control txtCalender" placeholder="From Date" autocomplete="off" />
             </div>
             <div class="col-sm-3">
-                <input type="text" name="ToDate" class="form-control txtCalender" placeholder="To Date" autocomplete="off"  />
+                <input type="text" name="ToDate" class="form-control txtCalender" placeholder="To Date" autocomplete="off" />
             </div>
-            <div class="col-sm-3">
-                <input type="submit" value="Submit"   background-color: #eadaa6" />
-            </div>
-            <div class="col-sm-3">
-                <input type="button" value="Download"  background-color:" #eadaa6"  onclick="location.href='@Url.Action("DownloadSheet", "Report")    '" />
-               
+            <div class="col-sm-4">
+                <span> <input type="submit" value="Submit" background-color: #eadaa6" /></span>
+                <span><input type="button" value="Download" background-color:" #eadaa6" onclick="location.href='@Url.Action("DownloadSheet", "Report")    '" /></span>
             </div>
         </div>
     </div>
-   
 
-@*</div>*@
-    
+
+    @*</div>*@
+
 
 }
 @using (Html.BeginForm("ReportIndex", "Report", FormMethod.Get))
 {
     <table class="table table-bordered" style="width: 80%; margin-left: 10px">
         <tr>
-            <th>Report Title
+            <th>
+                Report Title
             </th>
             <th>Actions</th>
         </tr>
@@ -88,8 +95,8 @@
                 </td>
                 <td>
                     @Html.ActionLink("Edit", "ReportEdit", new { id = item.ReportId }) |
-            @Html.ActionLink("Details", "ReportDetails", new { id = item.ReportId }) |
-            @Html.ActionLink("Delete", "ReportDelete", new { id = item.ReportId })
+                    @Html.ActionLink("Details", "ReportDetails", new { id = item.ReportId }) |
+                    @Html.ActionLink("Delete", "ReportDelete", new { id = item.ReportId })
                 </td>
             </tr>
         }
@@ -103,8 +110,6 @@
            pagesize = @Request.QueryString["pagesize"],
            FromDate=@Request.QueryString["FromDate"],
            ToDate=@Request.QueryString["ToDate"]
-           
-
        }), new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded, DisplayPageCountAndCurrentLocation = true })
     </div>
 }

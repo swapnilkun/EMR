@@ -170,7 +170,7 @@ namespace ExcellentMarketResearch.Areas.Admin.Models.ViewModel
         //}
         public IEnumerable<ReportVM> RelatedReports { get; set; }
 
-       // public Category Category { get; set; }
+        // public Category Category { get; set; }
 
         public List<ReportType> GetReportType()
         {
@@ -201,9 +201,33 @@ namespace ExcellentMarketResearch.Areas.Admin.Models.ViewModel
             return getparent;
         }
 
+        public List<CategoryMaster> CategoryListDrop()
+        {
+            List<CategoryMaster> catlist = new List<CategoryMaster>();
+            try
+            {
+                catlist = (from l in db.CategoryMasters
+                           orderby l.CategoryName ascending
+                           select new
+                           {
+                               l.CategoryId,
+                               l.CategoryName
+                           }).ToList().Select(x => new CategoryMaster
+                           {
+                               CategoryId = x.CategoryId,
+                               CategoryName = x.CategoryName
+                           }).ToList();
+            }
+            catch (Exception ex)
+            {
+            }
+            return catlist;
+        }
+
+
         public List<SelectListItem> GetPageSize()
         {
-            
+
             List<SelectListItem> items = new List<SelectListItem>();
             items.Add(new SelectListItem() { Text = "20", Value = "20" });
             items.Add(new SelectListItem() { Text = "50", Value = "50" });

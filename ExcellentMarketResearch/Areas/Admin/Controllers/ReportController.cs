@@ -39,13 +39,14 @@ namespace ExcellentMarketResearch.Areas.Admin.Controllers
         ExcellentMarketResearchEntities db = new ExcellentMarketResearchEntities();
 
         [CustomAuthentication("ReportUploader,ReportCreater", "Create,Delete")]
-        public ActionResult ReportIndex(int? pageno, string searchkey, int? pagesize, DateTime? FromDate, DateTime? ToDate)
+        public ActionResult ReportIndex(int? pageno, string searchkey, int? pagesize, DateTime? FromDate, DateTime? ToDate,string categoryId)
         {
 
+            int catid = Convert.ToInt32(categoryId);
             if (FromDate != null)
             {
                 var reports = (from r in db.ReportMasters
-                               where r.CreatedDate >= FromDate
+                               where r.CreatedDate >= FromDate && (r.CategoryId==catid)
                                select new ExcelReport
                                {
                                    ReportId = r.ReportId,
